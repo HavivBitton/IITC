@@ -1,17 +1,19 @@
 // 1. What is the data type of x = 5?
-// A number data type.
+let x = 5;
+console.log(x); // A number data type.
 
 // 2. How do you declare a string variable in JavaScript?
-// with "" or '' or ``
+// With "" , '' or ``.
 
 // 3. What's the difference between null and undefined?
-// undefined is some value that not define yet, but null is some no sense value that defined.
+// Undefined is some value that not define yet,
+// But null is some no sense value that defined.
 
 // 4. How can you check the type of a variable in JavaScript?
 // With a 'typOf Operator'.
 //For example:
-let x = 4;
-console.log(typeof x); // number
+let a = 4;
+console.log(typeof a); // number
 
 // 5. What's the data type of the result of 5 / 2?
 console.log(typeof (5 / 2)); // number
@@ -23,10 +25,10 @@ console.log(typeof true); // boolean
 // With a curly brackets.
 // For example:
 let man = {
-  name: "haviv",
+  name: "Haviv",
   age: "24",
 };
-console.log(man); // {name: "haviv", age: "24"}
+console.log(man); // {name: "Haviv", age: "24"}
 
 // 8. What's the data type of NaN?
 console.log(typeof NaN); // number
@@ -36,10 +38,10 @@ console.log(typeof NaN); // number
 // Anyways, With '===' we use and with '==' we dont.
 
 // 10. How do you convert a string to a number?
-// Im use 'Number()' operator.
+// I'm use 'Number()' operator.
 // For example :
-let a = "5";
-console.log(Number(a)); // 5 in number type
+let b = "5";
+console.log(Number(b)); // 5 in number type
 
 // 11. What's the data type of the result of "5" + 3?
 console.log("5" + 3); // 53 in string type.
@@ -47,29 +49,47 @@ console.log("5" + 3); // 53 in string type.
 // 12. How can you check if a variable is of a specific type?
 // Im use 'typeOf' operator.
 //For example:
-console.log(typeof a); // string
+let c = "Haviv";
+console.log(typeof c); // string
 
 // 13. How do you create a multi-line string in JavaScript?
-// Im use with ` sign and not with " sign/
+// Im use with ` sign and not with " sign.
 //For example:
 console.log(`Haviv
 Bitton`);
 
 // 14. What's the difference between single quotes, double quotes, and backticks for strings?
 // With " im use for regular text. for example:
-a = "text";
-console.log(a);
+let d = "text";
+console.log(d); // text in a string type.
 // With ' im use if i want to put " in the text. for example:
-a = '"text"';
-console.log(a);
+let e = '"text"';
+console.log(e); // "text" in a string type.
+// And with the backticks strings i use when i want to crate a multi-line strings.
+//For example:
+let f = `Multi-line
+text`;
 
 // 15. How do you convert a number to a string?
+// With a 'toString()' method.
+// For example:
+let g = 123;
+console.log(a.toString()); // 123 in a strings type.
 
 // 16. What's the result of typeof null?
+console.log(typeof null); // Object
 
 // 17. How do you declare a constant variable in JavaScript?
+// With a 'const' keyword.
+// For example:
+const h = 4;
+console.log(h);
 
 // 18. What happens when you add a string and a number? How can you handle this?
+// Is convert the number variable to strings variable and than is adding that to the strings value.
+let i = "Haviv";
+let j = 4;
+console.log(i + j); // Haviv4 in string type.
 
 // 19. What's the data type of the result of 3 > 2?
 
