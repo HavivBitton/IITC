@@ -29,3 +29,28 @@
 //   console.log(y + x);
 //   y = y + x;
 // }
+
+// // for (let i = 1; i <= 5; i++) console.log("*".repeat(i));
+// let number = 1;
+// // let number = Number(prompt("Enter"));
+// while (number <= 100) {
+//   console.log(number);
+//   number *= 2;
+// }
+
+// let number1;
+// do {
+//   number1 = Number(prompt("Enter"));
+// } while (number1 <= 0);
+
+// let number = 1;
+// do {
+//   console.log(number);
+//   number++;
+// } while (number <= 5);
+
+let playAgain;
+do {
+  playAgain = prompt("Do you want to play again? (yes/no)");
+  playAgain = playAgain.toLowerCase();
+} while (playAgain === "yes");
