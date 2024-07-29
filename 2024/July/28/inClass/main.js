@@ -49,8 +49,19 @@
 //   number++;
 // } while (number <= 5);
 
-let playAgain;
-do {
-  playAgain = prompt("Do you want to play again? (yes/no)");
-  playAgain = playAgain.toLowerCase();
-} while (playAgain === "yes");
+// let playAgain;
+// do {
+//   playAgain = prompt("Do you want to play again? (yes/no)");
+//   playAgain = playAgain.toLowerCase();
+// } while (playAgain === "yes");
+
+//Task 1
+let foods = ["Pizza", "Pasta", "Steak", "Milk", "Mango"];
+console.log(foods);
+
+//Task2
+console.log(foods[2]);
+
+// Task3
+foods[1] = "Banana";
+console.log(foods);
