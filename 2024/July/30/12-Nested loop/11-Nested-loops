@@ -1,0 +1,506 @@
+// // https://docs.google.com/document/d/1yB6ErFdyjXWh7INfikVXyVpZ5sTM-htDnYth5FXK0sM/edit?usp=sharing
+
+// "use strict";
+
+// // count the char in a string
+// function countChar(string, char) {
+//   let count = 0;
+//   for (let i = 0; i < string.length; i++) {
+//     let currentChar = string[i];
+//     if (char === currentChar) {
+//       count++;
+//     }
+//   }
+
+//   console.log(`count of ${char}: ${count} in ${string}`);
+// }
+
+// // countChar("hello", "l");
+
+// //////////////////////////////////////////////////////////
+
+// // count the char in a strings array (Verbose)
+// function countCharInArrayVerbose(elements, char) {
+//   let count = 0;
+
+//   for (let i = 0; i < elements.length; i++) {
+//     let currentElement = elements[i];
+
+//     for (let j = 0; j < currentElement.length; j++) {
+//       let currentChar = currentElement[j];
+//       if (char === currentChar) {
+//         count++;
+//       }
+//     }
+//   }
+
+//   console.log(`count of ${char}: ${count}`);
+// }
+
+// // count the char in a strings array
+// function countCharInArray(elements, char) {
+//   let count = 0;
+//   for (let i = 0; i < elements.length; i++) {
+//     for (let j = 0; j < elements[i].length; j++) {
+//       if (char === elements[i][j]) {
+//         count++;
+//       }
+//     }
+//   }
+
+//   console.log(`count of ${char}: ${count}`);
+// }
+
+// let names = ["sasha", "omer", "sason", "shai"];
+// // countCharInArray(names, "s");
+// // countCharInArray(names, "a");
+// // countCharInArray(names, "b");
+
+// //////////////////////////////////////////////////////////
+
+// function sumInArray(nums) {
+//   let sum = 0;
+//   for (let i = 0; i < nums.length; i++) {
+//     console.log("i", i);
+//     let currentNumber = nums[i];
+//     console.log("currentNumber", currentNumber);
+//     sum = sum + currentNumber;
+//   }
+
+//   console.log(`sum is: ${sum}`);
+// }
+
+// // sumInArray([10, 4, 5]);
+
+// //////////////////////////////////////////////////////////
+
+// function sumNestedNumbersArray(nestedNumbers) {
+//   let sum = 0;
+
+//   for (let i = 0; i < nestedNumbers.length; i++) {
+//     let currentArray = nestedNumbers[i];
+//     console.log("currentArray", currentArray);
+//     for (let j = 0; j < currentArray.length; j++) {
+//       let currentNumber = currentArray[j];
+//       console.log("currentNumber", currentNumber);
+//       sum = sum + currentNumber;
+//       console.log("sum", sum);
+//     }
+//   }
+
+//   console.log(`sum is: ${sum}`);
+// }
+
+// // sumNestedNumbersArray([[5, 2], [3, 20, 10], [1]]); // 41
+
+// //////////////////////////////////////////////////////////
+
+// /*Exercise 1: Star Pattern
+// Objective: Create a program that prints a right triangle pattern of stars (*).
+// Instructions:
+// Use two nested loops. The outer loop should iterate through numbers 1 to 5 (representing the row number).
+// The inner loop should print stars equal to the current row number.
+// Each row should end with a new line.
+// Example Output:
+// *
+// **
+// ***
+// ****
+// *****
+
+// */
+
+// function starPattern_1() {
+//   for (let i = 1; i <= 5; i++) {
+//     let stars = "";
+//     for (let j = 1; j <= i; j++) {
+//       stars += "*";
+//     }
+//     console.log(stars);
+//   }
+// }
+
+// function starPattern_2() {
+//   let stars = "";
+//   for (let i = 1; i <= 5; i++) {
+//     for (let j = 1; j <= i; j++) {
+//       stars += "*";
+//     }
+//     stars += " ";
+//   }
+//   console.log(stars);
+// }
+
+// function starPattern_3() {
+//   let stars = "";
+//   for (let i = 1; i <= 5; i++) {
+//     for (let j = 1; j <= i; j++) {
+//       stars += "*";
+//     }
+//     stars += "\n";
+//   }
+//   console.log(stars);
+// }
+
+// // starPattern_1();
+// // starPattern_2();
+// // starPattern_3();
+
+// /*
+// Exercise 2: Multiplication Table
+// Objective: Write a program that prints a multiplication table for numbers 1 through 5.
+// Instructions:
+// Use two nested for loops. The outer loop should iterate through numbers 1 to 5.
+// The inner loop should also iterate through numbers 1 to 5.
+// Multiply the numbers from the outer and inner loops and print the result.
+// Example Output:
+// Copy code
+// 1 2 3 4 5
+// 2 4 6 8 10
+// 3 6 9 12 15
+// 4 8 12 16 20
+// 5 10 15 20 25
+// */
+
+// function makeMultTable() {
+//   for (let i = 1; i <= 10; i++) {
+//     let row = `Mult of ${i} --- `;
+//     for (let j = 1; j <= 10; j++) {
+//       row += i * j + " ";
+//     }
+//     console.log(row);
+//   }
+// }
+
+// // makeMultTable();
+// /*
+// Exercise 3: Array Search
+// Objective: Find a specific number in a 2D array and print its position.
+// Instructions:
+// Create a 2D array (e.g., let arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];).
+// Use two nested loops to iterate over the elements of the array.
+// Check each element to see if it matches the target number.
+// If the target number is found, print its position (row and column).
+// Example Output:
+// For target = 5, output: Found 5 at position (1, 1)
+// For target = 7, output: Found 7 at position (2, 0)
+// */
+
+// function searchInArray(array_2D, target) {
+//   let row = null;
+//   let col = null;
+
+//   for (let i = 0; i < array_2D.length; i++) {
+//     let currentArray = array_2D[i];
+//     console.log("currentArray", currentArray);
+
+//     for (let j = 0; j < currentArray.length; j++) {
+//       let currentNumber = currentArray[j];
+//       console.log("currentNumber", currentNumber);
+//       if (currentNumber === target) {
+//         row = i;
+//         col = j;
+//         break;
+//       }
+//     }
+//     if (row !== null || col !== null) {
+//       break;
+//     }
+//   }
+
+//   if (row !== null || col !== null) {
+//     console.log(
+//       `For target = ${target}, output: Found ${target} at position (${row}, ${col})`
+//     );
+//   } else {
+//     console.log(`Target ${target} not found`);
+//   }
+// }
+
+// let arr = [
+//   [1, 2, 3],
+//   [4, 5, 6],
+//   [7, 8, 9],
+// ];
+// searchInArray(arr, 6);
+//
+//
+// Exercise 4: Count Vowels and Consonants
+// Objective: Write a program to count the number of vowels and consonants in a given string.
+// Instructions:
+// Take a string as input.
+// Use a loop to iterate over each character in the string.
+// Use another loop (or a set of conditions) to check if the character is a vowel or consonant.
+// Keep a count of vowels and consonants.
+// for simplicity,string should contain only letters.
+// Example Output:
+// For input = "hello", output: Vowels: 2, Consonants: 3
+// For input = "world", output: Vowels: 1, Consonants: 4
+//
+// Answer 1:
+// let vowels = "aeiouAEIOU";
+// let vowelsCounter = 0;
+// let consonantsCounter = 0;
+// function characterCheck(string) {
+//   for (i = 0; i < string.length; i++) {
+//     if (vowels.includes(string[i])) {
+//       vowelsCounter++;
+//     } else {
+//       consonantsCounter++;
+//     }
+//   }
+//   console.log(
+//     `For input = ${string}, output: Vowels: ${vowelsCounter}, Consonants: ${consonantsCounter}`
+//   );
+// }
+// characterCheck("Haviv");
+//
+// Answer 2:
+// let vowels = "aeiouAEIOU";
+// function characterCheck(string) {
+//   let vowelsCounter = 0;
+//   for (let=i = 0; i < string.length; i++) {
+//     for (let=j = 0; j < vowels.length; j++) {
+//       if (vowels[j] === string[i]) {
+//         vowelsCounter++;
+//       }
+//     }
+//   }
+//   console.log(
+//     `For input = ${string}, output: Vowels: ${vowelsCounter}, Consonants: ${
+//       string.length - vowelsCounter
+//     }`
+//   );
+// }
+// characterCheck("Haviv");
+//
+//
+// Exercise 5: Reverse a String
+// Objective: Write a program that reverses a given string using nested loops.
+// Instructions:
+// Take a string as input.
+// Use a loop to iterate over each character in the string.
+// Use a nested loop to reverse the string by iterating from the end to the beginning.
+// Example Output:
+// For input = "hello", output: olleh
+// For input = "world", output: dlrow
+//
+// function reverseString(string) {
+//   let reverseStr = " ";
+//   for (let i = string.length - 1; i >= 0; i--) {
+//     reverseStr += string[i];
+//   }
+//   console.log(reverseStr);
+// }
+// reverseString("Haviv");
+//
+//
+// Exercise 6: Number Pyramid
+// Objective: Create a program that prints a number pyramid.
+// Instructions:
+// Use nested loops to print a pyramid of numbers.
+// The outer loop should iterate through the number of rows (e.g., 5).
+// The inner loop should print numbers from 1 up to the current row number.
+// Example Output:
+// 1
+// 12
+// 123
+// 1234
+// 12345
+
+// function numberPyramid(numberOfRow) {
+//   let currentNumber = " ";
+//   for (let i = 1; i <= numberOfRow; i++) {
+//     for (let j = 1; j <= i; j++) {
+//       if (j === 1) {
+//         currentNumber += i.toString();
+//         console.log(currentNumber);
+//       }
+//     }
+//   }
+// }
+// numberPyramid(7);
+//
+//
+// Exercise 7: Sum of 2D Array Elements
+// Objective: Calculate the sum of all elements in a 2D array.
+// Instructions:
+// Create a 2D array with numbers.
+// Use nested loops to iterate over each element.
+// Sum all the elements and print the total.
+//
+// function sumOf2DArr(array) {
+//   let sum = null;
+//   let currentArray;
+//   for (let i = 0; i < array.length; i++) {
+//     currentArray = array[i];
+//     for (let j = 0; j < currentArray.length; j++) {
+//       sum += currentArray[j];
+//     }
+//   }
+//   console.log(sum);
+// }
+// let arr = [
+//   [1, 2],
+//   [3, 4],
+//   [5, 6],
+//   [7, 8],
+// ];
+// sumOf2DArr(arr);
+//
+//
+// Exercise 9: Flatten a 2D Array
+// Objective: Convert a 2D array into a 1D array.
+// Instructions:
+// Create a 2D array with some numbers.
+// Use nested loops to iterate over each element.
+// Store all elements in a new 1D array and print the result.
+// Example Output:
+// For arr = [[1, 2], [3, 4], [5, 6]], output: [1, 2, 3, 4, 5, 6]
+// function new1DArr(array) {
+//   let newArray = [];
+//   let currentArray;
+//   for (let i = 0; i < array.length; i++) {
+//     currentArray = array[i];
+//     for (let j = 0; j < currentArray.length; j++) {
+//       newArray.push(currentArray[j]);
+//     }
+//   }
+//   console.log(newArray);
+// }
+// let arr = [
+//   [1, 2],
+//   [3, 4],
+//   [5, 6],
+//   [7, 8],
+// ];
+// new1DArr(arr);
+//
+//
+// Exercise 10: Matrix Transpose
+// Objective: Transpose a given matrix.
+// Instructions:
+// Create a 2D array representing a matrix.
+// Use nested loops to switch the rows and columns of the matrix.
+// Print the transposed matrix.
+// Example Output:
+// For matrix = [[1, 2, 3], [4, 5, 6]], output: [[1, 4], [2, 5], [3, 6]]
+
+// let matrix = [
+//   [1, 2, 3],
+//   [4, 5, 6],
+// ];
+
+// function makeNewMatrix(matrix) {
+//   let rows = matrix.length;
+//   let cols = matrix[0].length;
+//   let newMatrix = [];
+
+//   for (let i = 0; i < cols; i++) {
+//     newMatrix[i] = [];
+//     for (let j = 0; j < rows; j++) {
+//       newMatrix[i][j] = matrix[j][i];
+//     }
+//   }
+//   console.log(newMatrix);
+// }
+// makeNewMatrix(matrix);
+//
+// ////////////////////Exercise 11: Palindrome Check
+//
+//  Objective: Check if a given string is a palindrome.
+// Instructions:
+// Take a string as input.
+// Use nested loops to compare characters from the beginning and end of the string.
+// Print whether the string is a palindrome.
+// Example Output:
+// For input = "radar", output: Palindrome
+// For input = "hello", output: Not a palindrome
+
+// function checkPali(string) {
+//   let numOfCheck = Math.floor(string.length / 2);
+//   for (let i = 0; i < numOfCheck; i++)
+//     if (string[i] !== string[string.length - i - 1]) {
+//       console.log("Not a palindrome");
+//       break;
+//     } else if (i === numOfCheck - 1) console.log("Palindrome");
+// }
+// checkPali("haviv");
+//
+//
+// ///////////////Exercise 12: Find Common Elements in Two Arrays
+//
+// Objective: Find common elements between two arrays.
+// Instructions:
+// Create two arrays with numbers.
+// Use nested loops to find and print the common elements.
+// Example Output:
+// For arr1 = [1, 2, 3, 4] and arr2 = [3, 4, 5, 6], output: Common elements: 3, 4
+//
+// function commonElements(arr1, arr2) {
+//   let commonElem = "";
+//   for (let i = 0; i < arr1.length; i++) {
+//     for (let j = 0; j < arr2.length; j++) {
+//       if (arr1[i] === arr2[j]) {
+//         commonElem += arr1[i].toString() + ", ";
+//         break;
+//       }
+//     }
+//   }
+//   console.log(`Common elements: ${commonElem}`);
+// }
+// let array1 = [1, 2, 3, 4];
+// let array2 = [3, 4, 5, 6];
+// commonElements(array1, array2);
+//
+//
+//
+/////////////////Exercise 13: Check for Prime Numbers in a Range
+//
+//  Objective: Write a program to find all prime numbers in a given range.
+// Instructions:
+// Take a range (start and end) as input.
+// Use nested loops to check each number in the range.
+// Print the prime numbers found.
+// Example Output:
+// For range = (10, 20), output: Prime numbers: 11, 13, 17, 19
+//
+//
+// function isPrime(num) {
+//   if (num <= 1) return false;
+//   if (num <= 3) return true;
+//   if (num % 2 === 0 || num % 3 === 0) return false;
+//   for (let i = 5; i * i <= num; i += 6) {
+//     if (num % i === 0 || num % (i + 2) === 0) return false;
+//   }
+//   return true;
+// }
+// function allPrimeNum(startNum, endNum) {
+//   let counter;
+//   for (let i = startNum; i <= endNum; i++) {
+//     if (isPrime(i)) {
+//       counter += i.toString() + ", ";
+//     }
+//   }
+//   console.log(`Prime numbers: ${counter}`);
+// }
+// allPrimeNum(1, 20);
+//
+//
+//
+// /////////////Exercise 14: Sort a 2D Array by Row Sum
+//
+// Objective: Sort the rows of a 2D array based on the sum of their elements.
+// Instructions:
+// Create a 2D array with numbers.
+// Use nested loops to calculate the sum of each row.
+// Sort the rows based on their sum and print the sorted array.
+// Example Output:
+// For arr = [[3, 1, 2], [1, 4, 5], [2, 3, 1]], output: [[2, 3, 1], [3, 1, 2], [1, 4, 5]]
+
+// function sortArray(arr1) {
+//   let arraySum;
+//   for (let i = 0; i < arr1.length; i++) {
+//     arraySum += arr1[i];
+//   }}
+// // }

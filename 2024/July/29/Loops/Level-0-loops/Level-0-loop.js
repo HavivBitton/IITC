@@ -119,39 +119,42 @@
 
 // 21. Write a for loop to calculate the sum of numbers from 1 to 5.
 //     ```javascript
-let sum = 0;
-for (i = 1; i <= 5; i++) {
-  sum += i;
-}
-console.log(sum);
-//     // Your code here
-//     ```
+// let sum = 0;
+// for (i = 1; i <= 5; i++) {
+//   sum += i;
+// }
+// console.log(sum);
 
 // 22. Create a for loop to calculate the product of numbers from 1 to 5.
 //     ```javascript
-//     let product = 1;
-//     // Your code here
-//     ```
+// let product = 2;
+// for (i = 1; i <= 5; i++) {
+//   console.log(product * i);
+// }
 
 // 23. Use a for loop to count how many even numbers are in `[1, 2, 3, 4, 5, 6, 7, 8]`.
 //     ```javascript
-//     let arr = [1, 2, 3, 4, 5, 6, 7, 8];
-//     let count = 0;
-//     // Your code here
-//     ```
+// let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+// let count = 0;
+// for (i = 0; i < arr.length; i++) {
+//   if (arr[i] % 2 === 0) count++;
+// }
+// console.log(count);
 
 // 24. Write a for loop to find the largest number in `[10, 5, 8, 12, 3]`.
-//     ```javascript
-//     let arr = [10, 5, 8, 12, 3];
-//     let largest = arr[0];
-//     // Your code here
-//     ```
+// let arr = [10, 5, 8, 12, 3];
+// let largest = arr[0];
+// for (i = 1; i <= arr.length; i++) {
+//   if (arr[i] > largest) largest = arr[i];
+// }
+// console.log(largest);
 
 // 25. Use a for loop to calculate the sum of even numbers from 1 to 10.
-//     ```javascript
-//     let sum = 0;
-//     // Your code here
-//     ```
+// let sum = 0;
+// for (i = 1; i <= 10; i++) {
+//   if (i % 2 === 0) sum += i;
+// }
+// console.log(sum);
 
 // ## Nested Loops
 
@@ -161,9 +164,9 @@ console.log(sum);
 //     **
 //     ***
 //     ```
-//     ```javascript
-//     // Your code here
-//     ```
+// for (let i = 1; i <= 3; i++) {
+//   console.log("*".repeat(i));
+// }
 
 // 27. Create nested for loops to print a 3x3 grid of asterisks.
 //     ```javascript
