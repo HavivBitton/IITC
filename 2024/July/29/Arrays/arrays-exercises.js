@@ -149,12 +149,29 @@ console.log(squarNum);
 //     Hint: The callback function for `filter()` should check the length of each word.
 //     [Learn more about filter()](https://www.w3schools.com/jsref/jsref_filter.asp)
 let words = ["haviv", "bitton", "hello", "watermelon"];
-let;
+let longWord = words.filter((word) => word.length > 5);
+console.log(longWord); //["bitton", "watermelon"] (2)
 
 // 24. Use the `includes()` method to check if your `colors` array includes the color "purple".
 //     Hint: `arrayName.includes(element)` returns `true` if the element is in the array.
 //     [Learn more about includes()](https://www.w3schools.com/jsref/jsref_includes_array.asp)
+console.log(color); //["yellow", "blue", "green"] (3)
+console.log(color.includes("purple")); //false
 
 // 25. IMPOSIBLE: Create a 2D array representing a tic-tac-toe board. Fill it with "X", "O", and empty strings. Then, write a function that console.logs the board in a readable format.
 //     Hint: Use nested arrays to create a 2D array. Use nested loops to print the board.
 //     [Learn more about multidimensional arrays](https://www.w3schools.com/js/js_array_methods.asp)
+let tinTacToe = [
+  ["x", "o", " "],
+  ["x", "x", "o"],
+  [" ", "o", " "],
+];
+console.log(tinTacToe);
+let print1 = "";
+for (let i = 0; i < 3; i++) {
+  for (let j = 0; j < 3; j++) {
+    print1 += tinTacToe[i][j] + ", ";
+  }
+  print1 += "\n";
+}
+console.log(print1);
