@@ -149,7 +149,7 @@
 // }
 // console.log(largest);
 
-// 25. Use a for loop to calculate the sum of even numbers from 1 to 10.
+//////////// 25. Use a for loop to calculate the sum of even numbers from 1 to 10.
 // let sum = 0;
 // for (i = 1; i <= 10; i++) {
 //   if (i % 2 === 0) sum += i;
@@ -158,7 +158,7 @@
 
 // ## Nested Loops
 
-// 26. Write nested for loops to create this pattern:
+//////////////// 26. Write nested for loops to create this pattern:
 //     ```
 //     *
 //     **
@@ -168,11 +168,18 @@
 //   console.log("*".repeat(i));
 // }
 
-// 27. Create nested for loops to print a 3x3 grid of asterisks.
-//     ```javascript
-//     // Your code here
-//     ```
-
+/////////////////// 27. Create nested for loops to print a 3x3 grid of asterisks.
+// let grid = "";
+// for (let i = 0; i < 3; i++) {
+//   for (let j = 0; j < 3; j++) {
+//     grid += "* ";
+//   }
+//   grid += "\n";
+// }
+// console.log(grid);
+//
+//
+//
 // 28. Use nested for loops to create this number pattern:
 //     ```
 //     1
@@ -182,11 +189,36 @@
 //     ```javascript
 //     // Your code here
 //     ```
-
+/*
+function numberPyramid(numberOfRow) {
+  let currentNumber = " ";
+  for (let i = 1; i <= numberOfRow; i++) {
+    for (let j = 1; j <= i; j++) {
+      if (j === 1) {
+        currentNumber += i.toString();
+        console.log(currentNumber);
+      }
+    }
+  }
+}
+numberPyramid(7);
+*/
+//
+//
 // 29. Write nested for loops to create a 4x4 multiplication table.
-//     ```javascript
-//     // Your code here
-//     ```
+/*
+function multyTable(numberOfRow) {
+    let row = "";
+    for (let i = 1; i <= numberOfRow; i++) {
+        for (let j = 1; j <= numberOfRow; j++) {
+            row += j * i + ", ";
+        }
+        row += "\n";
+    }
+    console.log(row);
+}
+multyTable(10);
+*/
 
 // 30. Create nested for loops to print this pattern:
 //     ```
@@ -194,6 +226,17 @@
 //     22
 //     333
 //     ```
-//     ```javascript
-//     // Your code here
-//     ```
+/*
+function numberPyramid(numberOfRow) {
+  let currentNumber = " ";
+  for (let i = 1; i <= numberOfRow; i++) {
+    for (let j = 1; j <= i; j++) {
+      currentNumber += i.toString();
+    }
+    console.log(currentNumber);
+    currentNumber = "";
+  }
+}
+
+numberPyramid(7);
+*/
