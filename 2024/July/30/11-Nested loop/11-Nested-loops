@@ -293,7 +293,7 @@
 //   console.log(reverseStr);
 // }
 // reverseString("Haviv");
-//
+
 //
 // Exercise 6: Number Pyramid
 // Objective: Create a program that prints a number pyramid.
