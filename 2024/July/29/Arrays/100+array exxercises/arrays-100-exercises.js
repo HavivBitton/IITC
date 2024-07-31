@@ -61,36 +61,57 @@ console.log(dynamic.length); //5
 
 // 11. Print the first element of the `colors` array.
 //     Hint: Array indices start at 0.
+console.log(color[1]); //green
 
 // 12. Access and display the last element of the `seasons` array.
 //     Hint: Use `array.length - 1` to get the last index.
+console.log(seasons[seasons.length - 1]); //Autumn
 
 // 13. Print the middle element of the `numbers` array.
 //     Hint: Calculate the middle index using `Math.floor()`.
+let middleArr = Math.floor(numbers.length / 2);
+console.log(numbers); //[1, 2, 3, 4, 5] (5)
+console.log(numbers[middleArr]); //3
 
 // 14. Try to access an index that doesn't exist in `fruits` and print the result.
 //     Hint: Accessing a non-existent index returns `undefined`.
+console.log(fruits.length); //0
+console.log(fruits[1]); //undefined
 
 // 15. Use a template literal to print "The second color is [second color]" using the `colors` array.
 //     Hint: Use `${}` in template literals to embed expressions.
+console.log(`The second color is ${color[1]}`); //The second color is green
 
 // ## Modifying Elements
 // [W3Schools Changing Array Elements](https://www.w3schools.com/js/js_array_methods.asp)
 
 // 16. Change the first element of `fruits` to "apple".
 //     Hint: Assign a new value using the index.
+fruits[0] = "apple";
 
 // 17. Update the last element of `numbers` to be 10.
 //     Hint: Use `array.length - 1` to get the last index.
+numbers[numbers.length - 1] = 10;
 
 // 18. Double the value of the third element in the `numbers` array.
 //     Hint: Multiply the current value by 2.
+console.log(2 * numbers[2]); //6
 
 // 19. Change all elements in `colors` to uppercase.
 //     Hint: Use a loop and the `toUpperCase()` method.
+console.log(color); //["red", "green", "blue"] (3)
+for (let i = 0; i < color.length; i++) {
+  color[i] = color[i].toUpperCase();
+}
+console.log(color); //["RED", "GREEN", "BLUE"] (3)
 
 // 20. Swap the first and last elements of the `seasons` array.
 //     Hint: Use a temporary variable to hold one value during the swap.
+console.log(seasons); // ["Summer", "Winter", "Spring", "Autumn"](4);
+let temporary = seasons[0];
+seasons[0] = seasons[seasons.length - 1];
+seasons[seasons.length - 1] = temporary;
+console.log(seasons); //["Autumn", "Winter", "Spring", "Summer"] (4)
 
 // ## Array Methods: push() and pop()
 // [W3Schools Array push()](https://www.w3schools.com/jsref/jsref_push.asp)
