@@ -128,6 +128,18 @@ console.log(`Its ${animal.isWild} that this animals is wild`);
 
 // **Learn more:** [MDN Web Docs - Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
 //////answer
+let smartphone = {
+  brand: "Apple",
+  model: "12 Pro",
+  storageGB: 256,
+};
+console.log(`The brand's of this smartphone is ${smartphone.brand}`);
+console.log(`This smartphone have a ${smartphone.storageGB} storage GB`);
+//Output :The brand's of this smartphone is Apple
+//Output :This smartphone have a 256 storage GB
+smartphone.model = "12 Pro Max";
+console.log(`This smartphone's model is ${smartphone.model}`);
+//Output :This smartphone's model is 12 Pro Max
 
 // ## Exercise 7: Recipe
 
@@ -139,6 +151,21 @@ console.log(`Its ${animal.isWild} that this animals is wild`);
 
 // **Learn more:** [MDN Web Docs - Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 //////answer
+let recipe = {
+  name: "Pizza",
+  ingredients: ["Tomato", "flour", "onion"],
+  preparationTime: 60,
+};
+console.log(`This is a recipe to making ${recipe.name}`);
+//Output: This is a recipe to making Pizza
+console.log(`The first ingredients is ${recipe.ingredients[0]}`);
+//Output: The first ingredients is Tomato
+recipe.ingredients.push("olives");
+console.log(recipe);
+//Output:{name: "Pizza", ingredients: ["Tomato", "flour", "onion", "olives"], preparationTime: 60}
+//
+//
+//
 // ## Exercise 8: Movie
 
 // 1. Create an object called `movie` with properties: title (string), director (string), and releaseYear (number).
@@ -149,6 +176,19 @@ console.log(`Its ${animal.isWild} that this animals is wild`);
 
 // **Learn more:** [JavaScript.info - Object methods, "this"](https://javascript.info/object-methods)
 //////answer
+let movie = {
+  title: '"Deadpool"',
+  director: "Tim Miller",
+  releaseYear: 2015,
+};
+console.log(
+  `This movie title is ${movie.title} and his directed by ${movie.director}`
+);
+//Output :This movie title is "Deadpool" and his directed by Tim Miller
+movie.releaseYear = 2016;
+console.log(`This movie's release year is ${movie.releaseYear}`);
+//Output :This movie's release year is 2016
+
 // ## Exercise 9: Country
 
 // 1. Create an object called `country` with properties: name (string), capital (string), and population (number).
@@ -159,6 +199,19 @@ console.log(`Its ${animal.isWild} that this animals is wild`);
 
 // **Learn more:** [MDN Web Docs - Object initializer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer)
 //////answer
+let country = {
+  name: '"Israel"',
+  capital: '"Jerusalem"',
+  population: 8000000,
+};
+console.log(
+  `This country name's is ${country.name} and its capital is ${country.capital}`
+);
+//Output :This country name's is "Israel" and its capital is "Jerusalem"
+country.population += 1000000;
+console.log(`This country populations is ${country.population}`);
+//Output : This country populations is 9000000
+
 // ## Exercise 10: Computer
 
 // 1. Create an object called `computer` with properties: brand (string), CPU (string), and RAMinGB (number).
@@ -169,4 +222,17 @@ console.log(`Its ${animal.isWild} that this animals is wild`);
 
 // **Learn more:** [JavaScript.info - Objects](https://javascript.info/object)
 //////answer
+let computer = {
+  brand: "Apple",
+  CPU: "8-core",
+  RAMinGB: 8,
+};
+console.log(
+  `This computer brand's is ${computer.brand} and its have ${computer.CPU} CPU`
+);
+//Output:This computer brand's is Apple and its have 8-core CPU
+computer.RAMinGB *= 2;
+console.log(`This computer have ${computer.RAMinGB} GB RAM `);
+//Output:This computer have 16 GB RAM
+
 // Remember, practice is key to mastering JavaScript objects. Try to complete these exercises without looking at the solutions, and don't hesitate to use console.log() to check your work at each step!

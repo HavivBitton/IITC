@@ -26,16 +26,16 @@ person.isStudent = false;
 console.log(`Its ${person.isStudent} that this person is student`);
 // Output: Its false that this person is student
 
-let car = {
-  make: "Ford",
-  model: "Fiesta",
-  year: 2002,
-};
-console.log(`The car make is ${car.make} and the model is ${car.model}`);
-// Output:The car make is Ford and the model is Fiesta
-car.year = 2012;
-console.log(`The manufacture year is ${car.year} `);
-// Output:The manufacture year is 2012
+// let car = {
+//   make: "Ford",
+//   model: "Fiesta",
+//   year: 2002,
+// };
+// console.log(`The car make is ${car.make} and the model is ${car.model}`);
+// // Output:The car make is Ford and the model is Fiesta
+// car.year = 2012;
+// console.log(`The manufacture year is ${car.year} `);
+// // Output:The manufacture year is 2012
 
 let fruit = {
   name: "Banana",
@@ -73,3 +73,32 @@ console.log(
 animal.isWild = true;
 console.log(`Its ${animal.isWild} that this animals is wild`);
 //Output :s true that this animals is wild
+
+let car = {
+  make: "Ford",
+  model: "Fiesta",
+  year: 2002,
+  details: function () {
+    console.log(
+      `This car make is ${this.make},
+      the model is ${this.model}
+      and the manufactory year is ${this.year}`
+    );
+  },
+};
+console.log(`The car model's is ${car.model}`);
+//Output:The car model's is Fiesta
+car.year = 2016;
+car.color = "black";
+console.log(car);
+//Output:{make: "Ford", model: "Fiesta", year: 2016, details: function, color: "black"}
+
+car.details();
+//Output:This car make is Ford,
+// the model is Fiesta
+// and the manufactory year is 2016
+
+let carKeys = Object.keys(car);
+for (let i = 0; i < carKeys.length; i++) {
+  console.log(`This car's ${carKeys[i]} is ${Object.values(car)[i]} `);
+}
