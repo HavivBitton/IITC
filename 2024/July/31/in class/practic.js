@@ -85,20 +85,22 @@ let car = {
       and the manufactory year is ${this.year}`
     );
   },
+  printAll: function () {
+    let keys = Object.keys(this);
+    for (let i = 0; i < keys.length; i++) {
+      if (typeof this[keys[i]] !== "function") console.log(this[keys[i]]);
+    }
+  },
 };
+
 console.log(`The car model's is ${car.model}`);
 //Output:The car model's is Fiesta
 car.year = 2016;
 car.color = "black";
-console.log(car);
-//Output:{make: "Ford", model: "Fiesta", year: 2016, details: function, color: "black"}
 
-car.details();
-//Output:This car make is Ford,
-// the model is Fiesta
-// and the manufactory year is 2016
+car.printAll();
 
 let carKeys = Object.keys(car);
-for (let i = 0; i < carKeys.length; i++) {
+for (let i = 0; i < carKeys.length - 3; i++) {
   console.log(`This car's ${carKeys[i]} is ${Object.values(car)[i]} `);
 }
