@@ -46,8 +46,24 @@ let bankAccount = {
 // 1. Create an object called `circle` with properties: radius (number) and color (string).
 // 2. Add a method called `calculateArea` that returns the area of the circle (π * r^2).
 // 3. Add another method called `calculateCircumference` that returns the circumference of the circle (2 * π * r).
-
 // **Hint:** Use `Math.PI` for the value of π.
+//1
+let circle = {
+  radius: 5,
+  color: "blue",
+  calculateArea: function () {
+    console.log(Math.PI * Math.pow(this.radius, 2));
+  },
+  calculateCircumference: function () {
+    console.log(Math.PI * 2 * this.radius);
+  },
+};
+//2
+circle.calculateArea();
+//Output:78.53981633974483
+//3
+circle.calculateCircumference();
+//Output:31.41592653589793
 
 // ## Exercise 14: Student Grade Calculator
 // 1. Create an object called `student` with properties: name (string) and grades (array of numbers).
@@ -55,6 +71,36 @@ let bankAccount = {
 // 3. Add another method called `getLetterGrade` that returns 'A' for >=90, 'B' for >=80, 'C' for >=70, 'D' for >=60, and 'F' for <60.
 
 // **Hint:** Use array methods like `reduce()` to calculate the average.
+//1
+let student = {
+  name: "Rom",
+  grade: [80, 90, 75, 100],
+  calculateAverage: function () {
+    let sum = 0;
+    for (let i = 0; i < this.grade.length; i++) {
+      sum += this.grade[i];
+    }
+    sum /= this.grade.length;
+    return sum;
+  },
+  getLetterGrade: function () {
+    let sumOfLatterGrade = "";
+    for (let i = 0; i < this.grade.length; i++) {
+      if (this.grade[i] >= 90) sumOfLatterGrade += "A ,";
+      else if (this.grade[i] >= 80) sumOfLatterGrade += "B ,";
+      else if (this.grade[i] >= 70) sumOfLatterGrade += "C ,";
+      else if (this.grade[i] >= 60) sumOfLatterGrade += "D ,";
+      else if (this.grade[i] < 60) sumOfLatterGrade += "F ,";
+    }
+    return sumOfLatterGrade;
+  },
+};
+
+//2
+let average = student.calculateAverage();
+console.log(average); // Output: 86.25
+//3
+console.log(`${student.name} grade's is ${student.getLetterGrade()}`);
 
 // ## Exercise 15: To-Do List
 // 1. Create an object called `todoList` with properties: tasks (array of strings) and completedTasks (array of strings).
@@ -62,6 +108,37 @@ let bankAccount = {
 // 3. `completeTask(task)` should move a task from tasks to completedTasks.
 
 // **Hint:** Use array methods like `push()` and `filter()`.
+
+function isExists(checkArray, value) {
+  let newArray = [];
+  for (let i = 0; i < checkArray.length; i++) {
+    if (checkArray[i] !== value) newArray.push(checkArray[i]);
+  }
+  return newArray;
+}
+//1
+let toDoList = {
+  task: ["Clean home", "Throw the garbege"],
+  completedTaskList: ["Wash the dishes"],
+  addTask: function (newTask) {
+    this.task.push(newTask);
+  },
+  completedTask: function (task1) {
+    let taskIndex = this.task.indexOf(task1);
+    if (taskIndex !== -1) {
+      this.task = isExists(this.task, task1);
+      this.completedTaskList.push(task1);
+    } else console.log("This task are not in the To-Do List");
+  },
+};
+//2
+console.log(toDoList.task); //Output:["Clean home", "Throw the garbege"] (2)
+toDoList.addTask("Make the bad");
+console.log(toDoList.task); //Output:["Clean home", "Throw the garbege", "Make the bad"] (3)
+//3
+toDoList.completedTask("Throw the garbege");
+console.log(toDoList.task); //Output:["Clean home", "Make the bad"] (2)
+console.log(toDoList.completedTaskList); //Output:["Wash the dishes", "Throw the garbege"] (2)
 
 // ## Exercise 16: Library Book
 // 1. Create an object called `book` with properties: title (string), author (string), isbn (string), and isAvailable (boolean).
