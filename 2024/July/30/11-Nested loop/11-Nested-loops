@@ -428,6 +428,20 @@
 // checkPali("haviv");
 //
 //
+
+// function checkPali(string) {
+//   let numOfCheck = Math.floor(string.length / 2);
+//   for (let i = 0; i < 1; i++) {
+//     for (let j = string.length - 1 - i; j > numOfCheck; j--) {
+//       if (string[string.length - j - 1] !== string[j]) {
+//         console.log("Not a palindrome");
+//         break;
+//       } else if (j === numOfCheck + 1) console.log("Palindrome");
+//     }
+//   }
+// }
+// checkPali("rahhar");
+
 // ///////////////Exercise 12: Find Common Elements in Two Arrays
 //
 // Objective: Find common elements between two arrays.
