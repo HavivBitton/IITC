@@ -265,13 +265,18 @@ if (color.includes("blue")) {
 
 // 41. Extract the first three elements from `numbers` using `slice()`.
 //     Hint: `slice()` with one argument extracts from that index to the end.
+console.log(numbers); //[-1, 0, 1, 2, 3, 4] (6)
+let newNumberArray = numbers.slice(0, 3);
+console.log(newNumberArray); //[-1, 0, 1] (3)
 
 // 42. Get the last two elements from `colors` using `slice()`.
 //     Hint: Use negative indices with `slice()`.
+console.log(color); //["red", "green", "blue", "white", "black", "pink", "red"] (7)
+console.log(color.slice(color.length - 3, color.length - 1)); //["black", "pink"] (2)
 
 // 43. Extract elements from index 1 to 3 (exclusive) from `seasons`.
 //     Hint: `slice()` second argument is exclusive.
-
+console.log(seasons.slice(1, 3)); //
 // 44. Use `slice()` to create a copy of an entire array.
 //     Hint: `slice()` without arguments copies the whole array.
 
