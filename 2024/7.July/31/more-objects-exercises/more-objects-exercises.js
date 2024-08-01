@@ -274,18 +274,52 @@ tempConverter.getC(); // Output: 32.22222
 let pet = {
   name: "",
   type: "",
-  hunger: 0,
-  happiness: 0,
+  hunger: 5,
+  happiness: 5,
   //Add methods: `feed()`
-  fees: function () {
-    if (condition) {
-    }
-    this.hunger;
+  feed: function () {
+    if (this.hunger > 0) this.hunger--;
+    if (this.hunger === 0)
+      console.log(`This ${this.type} ate a lot and now is full`);
   },
-  //Add methods:
-  //Add methods:
+  //Add methods: `play()`
+  play: function () {
+    if (this.happiness < 10) this.happiness++;
+    if (this.happiness === 10)
+      console.log(`This ${this.type} played a lot and now is tired`);
+  },
+  //Add methods:`getStatus()`
+  getStatus: function () {
+    //set variable that contain massage with happiness status.
+    let happinessStatus;
+    if (this.happiness >= 8) happinessStatus = "very happy";
+    else if (this.happiness >= 4) happinessStatus = "happy";
+    else happinessStatus = "not happy, play with him!";
+
+    //set variable that contain massage with hunger status.
+    let hungerStatus;
+    if (this.hunger <= 3) hungerStatus = "very full";
+    else if (this.happiness <= 6) hungerStatus = "OK, but can eat more";
+    else if (this.hunger > 0) hungerStatus = "hungry, feed him!";
+    else if (this.hunger === 0) hungerStatus = "sturving! feed him now! ";
+
+    // return the full status massage
+    return `This ${this.type} hunger is ${hungerStatus} and his happiness is ${happinessStatus} `;
+  },
 };
 
+// Test
+pet.name = "Toto";
+pet.type = "dog";
+pet.hunger = 1;
+pet.feed(); // Output : This dog ate a lot and now is full
+console.log(pet.hunger); // Output : 0
+pet.happiness = 9;
+pet.play(); // Output: This dog played a lot and now is tired
+
+console.log(pet.getStatus()); // Output: This dog hunger is very full and his happiness is very happy.
+//
+//
 // ## Exercise 20: Quiz
 // 1. Create an object called `quiz` with properties: questions (array of objects) and score (number).
 // 2. Each question object should have: text (string), options (array), and correctAnswer (number - index of correct option).
