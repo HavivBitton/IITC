@@ -347,8 +347,39 @@
 //   [7, 8],
 // ];
 // sumOf2DArr(arr);
+//// https://docs.google.com/document/d/1yB6ErFdyjXWh7INfikVXyVpZ5sTM-htDnYth5FXK0sM/edit?usp=sharing
 //
-//
+/*
+    Exercise 8: Character Frequency (bonus, require objects)
+    Objective: Write a program to find the frequency of each character in a string.
+    Instructions:
+    Take a string as input.
+    Use nested loops to count the frequency of each character.
+    Print each character and its frequency.
+    Example Output:
+    For input = "hello", output: h: 1, e: 1, l: 2, o: 1
+*/
+
+function countFreq(str) {
+  // create object that contains the letters
+  let freqObject = {};
+  for (let i = 0; i < str.length; i++) {
+    if (!freqObject[str[i]])
+      // check if letter is already exists and checked.
+      for (let j = 0; j < str.length; j++) {
+        if (str[i] === str[j]) {
+          // if the letter no exists i create her key in the object and defined her as 1
+          if (!freqObject[str[i]]) {
+            freqObject[str[i]] = 1;
+            //  if the letter already i increase the counter by 1.
+          } else freqObject[str[i]] += 1;
+        }
+      }
+  }
+  return freqObject;
+}
+console.log(countFreq("heello"));
+
 // Exercise 9: Flatten a 2D Array
 // Objective: Convert a 2D array into a 1D array.
 // Instructions:

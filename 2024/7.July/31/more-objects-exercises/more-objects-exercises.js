@@ -142,7 +142,8 @@ let toDoList = {
     let keys = Object.keys(this);
     let values = Object.values(this);
     for (let i = 0; i < keys.length; i++) {
-      if (typeof keys[i] !== Function) {
+      console.log(keys[i]);
+      if (typeof values[i] !== "function") {
         console.log(`The ${keys[i]} is ${values[i]}`);
       }
     }
@@ -269,6 +270,21 @@ tempConverter.getC(); // Output: 32.22222
 // 3. `feed()` should decrease hunger, `play()` should increase happiness, and `getStatus()` should return a string describing the pet's state.
 
 // **Hint:** Use template literals for `getStatus()` return value.
+// Create the `pet` object
+let pet = {
+  name: "",
+  type: "",
+  hunger: 0,
+  happiness: 0,
+  //Add methods: `feed()`
+  fees: function () {
+    if (condition) {
+    }
+    this.hunger;
+  },
+  //Add methods:
+  //Add methods:
+};
 
 // ## Exercise 20: Quiz
 // 1. Create an object called `quiz` with properties: questions (array of objects) and score (number).
