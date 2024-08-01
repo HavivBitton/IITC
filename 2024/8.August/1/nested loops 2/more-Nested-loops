@@ -63,20 +63,20 @@ function gridOfNum(numOfRow) {
 
 // [Learn about triangular patterns](https://www.programiz.com/javascript/examples/pyramid-pattern)
 
-function pyramidOfAsterisks(numOfRow) {
+function triangleOfAsterisks(numOfRow) {
   // Create a variable that contain the result
-  let pyramid = "";
+  let triangle = "";
   // nested loops that add `*` i times.
   for (let i = 1; i <= numOfRow; i++) {
     for (let j = 1; j <= i; j++) {
-      pyramid += "*   ";
+      triangle += "*   ";
     }
     // Going down a row
-    pyramid += "\n";
+    triangle += "\n";
   }
-  return pyramid;
+  return triangle;
 }
-// console.log(pyramidOfAsterisks(3));
+// console.log(triangleOfAsterisks(3));
 /* Output:
  *
  *   *
@@ -160,7 +160,7 @@ function squareBorderAsterisks(numOfRow) {
   }
   return grid;
 }
-console.log(squareBorderAsterisks(3));
+// console.log(squareBorderAsterisks(3));
 /* Output:
  *   *   *
  *       *
@@ -190,7 +190,7 @@ function gridOfNum(numOfRow) {
   }
   return grid;
 }
-console.log(gridOfNum(3));
+// console.log(gridOfNum(3));
 /* Output:
 1 2 3 
 4 5 6 
@@ -220,7 +220,7 @@ function gridOfEvenNum(numOfRow) {
   }
   return grid;
 }
-console.log(gridOfEvenNum(3));
+// console.log(gridOfEvenNum(3));
 /* Output:
 2 4 6 
 8 10 12 
@@ -234,12 +234,57 @@ console.log(gridOfEvenNum(3));
 
 // [Learn about nested loops for patterns](https://www.programiz.com/javascript/examples/pyramid-pattern)
 
+function triangleOfNumber(numOfRow) {
+  // Create a variable that contain the result
+  let triangle = "";
+  // Create a variable that contain the number that get in to the triangle variable
+  let counter = 0;
+  // nested loops that add the counter to triangle i times.
+  for (let i = 1; i <= numOfRow; i++) {
+    for (let j = 1; j <= i; j++) {
+      counter++;
+      triangle += `${counter} `;
+    }
+    // Going down a row
+    triangle += "\n";
+  }
+  return triangle;
+}
+// console.log(triangleOfNumber(3));
+/* Output:
+1 
+2 3 
+4 5 6
+ */
+
 // ## Exercise 10
 // Print a 3x3 checkerboard pattern of 0s and 1s.
 
 // Hint: Use the sum of indices and the modulo operator to determine whether to print 0 or 1.
 
 // [Learn about the modulo operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Remainder)
+
+function checkerboard_1_0(numOfRow) {
+  // Create a variable that contain the result
+  let border = "";
+  // nested loops that add to border 0 / 1 .
+  for (let i = 1; i <= numOfRow; i++) {
+    for (let j = 1; j <= numOfRow; j++) {
+      //if that decides if add 1 or 0 to the border.
+      if (i % 2 === 0) border += `${j % 2}  `;
+      else border += `${(j + 1) % 2}  `;
+    }
+    // Going down a row
+    border += "\n";
+  }
+  return border;
+}
+// console.log(checkerboard_1_0(3));
+/* Output:
+0  1  0  
+1  0  1  
+0  1  0  
+*/
 
 // ## Exercise 11
 // Print a 3x3 grid where each cell contains its row number.
@@ -248,12 +293,52 @@ console.log(gridOfEvenNum(3));
 
 // [Learn about accessing loop variables](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration#for_statement)
 
+function gridOfRowIndex(numOfRow) {
+  // Create a variable that contain the result
+  let grid = "";
+  // nested loops that add the row's index to the grid.
+  for (let i = 1; i <= numOfRow; i++) {
+    for (let j = 1; j <= numOfRow; j++) {
+      grid += `${i}  `;
+    }
+    // Going down a row
+    grid += "\n";
+  }
+  return grid;
+}
+// console.log(gridOfRowIndex(3));
+/* Output:
+1  1  1  
+2  2  2  
+3  3  3  
+*/
+
 // ## Exercise 12
 // Print a 3x3 grid where each cell contains its column number.
 
 // Hint: Use the inner loop variable as the number to print.
 
 // [Learn about nested loop variables](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration#nested_loops)
+
+function gridOfColumnIndex(numOfRow) {
+  // Create a variable that contain the result
+  let grid = "";
+  // nested loops that add the column's index to the grid.
+  for (let i = 1; i <= numOfRow; i++) {
+    for (let j = 1; j <= numOfRow; j++) {
+      grid += `${j}  `;
+    }
+    // Going down a row
+    grid += "\n";
+  }
+  return grid;
+}
+// console.log(gridOfColumnIndex(3));
+/* Output:
+1  2  3  
+1  2  3  
+1  2  3  
+*/
 
 // ## Exercise 13
 // Print a 4x4 grid of alternating X and O.
@@ -262,12 +347,59 @@ console.log(gridOfEvenNum(3));
 
 // [Learn about conditional operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#conditional_ternary_operator)
 
+function alternatingXO(numOfRow) {
+  // Create a variable that contain the result
+  let border = "";
+  // nested loops that add to border X / O .
+  for (let i = 1; i <= numOfRow; i++) {
+    for (let j = 1; j <= numOfRow; j++) {
+      //if that decides if add X or O to the border.
+      if (i % 2 === j % 2) border += `X  `;
+      else border += `O  `;
+    }
+    // Going down a row
+    border += "\n";
+  }
+  return border;
+}
+// console.log(alternatingXO(4));
+/* Output:
+X  O  X  O  
+O  X  O  X  
+X  O  X  O  
+O  X  O  X
+*/
+
 // ## Exercise 14
 // Print a right-angled triangle of odd numbers with 4 rows.
 
 // Hint: Use a counter that starts at 1 and increments by 2.
 
 // [Learn about incrementing in loops](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration#for_statement)
+
+function triangleOfOddNumber(numOfRow) {
+  // Create a variable that contain the result
+  let triangle = "";
+  // Create a variable that contain the number that get in to the triangle variable
+  let counter = -1;
+  // nested loops that add the counter to triangle i times.
+  for (let i = 1; i <= numOfRow; i++) {
+    for (let j = 1; j <= i; j++) {
+      counter += 2;
+      triangle += `${counter} `;
+    }
+    // Going down a row
+    triangle += "\n";
+  }
+  return triangle;
+}
+// console.log(triangleOfOddNumber(4));
+/* Output:
+1 
+3 5 
+7 9 11 
+13 15 17 19 
+ */
 
 // ## Exercise 15
 // Print a 3x3 grid where each cell contains the absolute difference between its row and column indices.
