@@ -408,12 +408,54 @@ function triangleOfOddNumber(numOfRow) {
 
 // [Learn about Math.abs()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/abs)
 
+function gridOfAbsDiff(numOfRow) {
+  // Create a variable that contain the result
+  let grid = "";
+  // nested loops that add the absolute difference between row's index and column's index.
+  for (let i = 1; i <= numOfRow; i++) {
+    for (let j = 1; j <= numOfRow; j++) {
+      grid += `${Math.abs(i - j)}  `;
+    }
+    // Going down a row
+    grid += "\n";
+  }
+  return grid;
+}
+// console.log(gridOfAbsDiff(3));
+/* Output:
+0  1  2  
+1  0  1  
+2  1  0    
+*/
+
 // ## Exercise 16
 // Print a hollow right-angled triangle of asterisks with 4 rows.
 
 // Hint: Print asterisks only when it's the first or last column, or the last row.
 
 // [Learn about logical operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#logical_operators)
+
+function hollowTriangleOfAsterisks(numOfRow) {
+  // Create a variable that contain the result
+  let triangle = "";
+  // nested loops that add `*` i times.
+  for (let i = 1; i <= numOfRow; i++) {
+    for (let j = 1; j <= i; j++) {
+      if (j === 1 || j === i || i === numOfRow) triangle += "*  ";
+      else triangle += "   ";
+    }
+    // Going down a row
+    triangle += "\n";
+  }
+  return triangle;
+}
+console.log(hollowTriangleOfAsterisks(4));
+// console.log(triangleOfAsterisks(3));
+/* Output:
+ *
+ *   *
+ *   *   *
+ */
 
 // ## Exercise 17
 // Print a 4x4 grid where each cell contains the smaller of its row or column index.
