@@ -7,7 +7,7 @@
 
 // **Hint:** Use the `length` property of the array to get the number of songs.
 
-//1
+//1. Create the playlist object
 let playlist = {
   name: "Hamishtah",
   songs: ["Blinding Lights", "Alien", "Trap Queen"],
@@ -27,7 +27,8 @@ console.log(playlist.duration); // 12
 // 3. Create another method called `withdraw` that takes an amount and subtracts it from the balance, but only if the balance is sufficient.
 
 // **Hint:** Use `this` keyword inside methods to access object properties.
-// 1
+
+//1. Create the bankAccount object
 let bankAccount = {
   accountNumber: "200137",
   balance: 20000,
@@ -47,7 +48,8 @@ let bankAccount = {
 // 2. Add a method called `calculateArea` that returns the area of the circle (π * r^2).
 // 3. Add another method called `calculateCircumference` that returns the circumference of the circle (2 * π * r).
 // **Hint:** Use `Math.PI` for the value of π.
-//1
+//
+//1. Create the  circle object
 let circle = {
   radius: 5,
   color: "blue",
@@ -71,7 +73,8 @@ circle.calculateCircumference();
 // 3. Add another method called `getLetterGrade` that returns 'A' for >=90, 'B' for >=80, 'C' for >=70, 'D' for >=60, and 'F' for <60.
 
 // **Hint:** Use array methods like `reduce()` to calculate the average.
-//1
+//
+//1. Create the student object
 let student = {
   name: "Rom",
   grade: [80, 90, 75, 100],
@@ -109,6 +112,7 @@ console.log(`${student.name} grade's is ${student.getLetterGrade()}`);
 
 // **Hint:** Use array methods like `push()` and `filter()`.
 
+//Create function that get array and value and return the array without the value
 function isExists(checkArray, value) {
   let newArray = [];
   for (let i = 0; i < checkArray.length; i++) {
@@ -116,13 +120,16 @@ function isExists(checkArray, value) {
   }
   return newArray;
 }
-//1
+
+//1. Create the toDoList object
 let toDoList = {
   task: ["Clean home", "Throw the garbege"],
   completedTaskList: ["Wash the dishes"],
+  // Add methods: `addTask(task)`,
   addTask: function (newTask) {
     this.task.push(newTask);
   },
+  // Add methods: `completeTask(task)`
   completedTask: function (task1) {
     let taskIndex = this.task.indexOf(task1);
     if (taskIndex !== -1) {
@@ -130,22 +137,57 @@ let toDoList = {
       this.completedTaskList.push(task1);
     } else console.log("This task are not in the To-Do List");
   },
+  // Add methods:`displayTasks()`.
+  displayTask: function () {
+    let keys = Object.keys(this);
+    let values = Object.values(this);
+    for (let i = 0; i < keys.length; i++) {
+      if (typeof keys[i] !== Function) {
+        console.log(`The ${keys[i]} is ${values[i]}`);
+      }
+    }
+  },
 };
 //2
 console.log(toDoList.task); //Output:["Clean home", "Throw the garbege"] (2)
-toDoList.addTask("Make the bad");
-console.log(toDoList.task); //Output:["Clean home", "Throw the garbege", "Make the bad"] (3)
+toDoList.addTask("Make the bed");
+console.log(toDoList.task); //Output:["Clean home", "Throw the garbege", "Make the bed"] (3)
+toDoList.displayTask();
+
 //3
 toDoList.completedTask("Throw the garbege");
-console.log(toDoList.task); //Output:["Clean home", "Make the bad"] (2)
+console.log(toDoList.task); //Output:["Clean home", "Make the bed"] (2)
 console.log(toDoList.completedTaskList); //Output:["Wash the dishes", "Throw the garbege"] (2)
 
 // ## Exercise 16: Library Book
 // 1. Create an object called `book` with properties: title (string), author (string), isbn (string), and isAvailable (boolean).
 // 2. Add methods: `checkOut()` and `return()`.
 // 3. These methods should change the `isAvailable` status and log a message.
-
 // **Hint:** Use conditional statements in your methods.
+//
+//1. Create the book object
+let book = {
+  title: "",
+  author: "",
+  isbn: "",
+  isAvailable: true,
+  // Add methods: `checkOut()` and `return()`.
+  checkOut: function () {
+    if (this.isAvailable) {
+      this.isAvailable = false;
+    } else console.log("This book is already not available");
+  },
+  return: function () {
+    this.isAvailable = true;
+  },
+};
+//Tests
+console.log(book.isAvailable); // Output: true
+book.checkOut();
+console.log(book.isAvailable); // Output: false
+book.checkOut(); // Output: This book is already not available
+book.return();
+console.log(book.isAvailable); // Output: true
 
 // ## Exercise 17: Color Mixer
 // 1. Create an object called `colorMixer` with properties: color1 (string) and color2 (string).
@@ -153,6 +195,35 @@ console.log(toDoList.completedTaskList); //Output:["Wash the dishes", "Throw the
 // 3. Use predefined combinations like "red" + "blue" = "purple", "yellow" + "blue" = "green", etc.
 
 // **Hint:** Use a switch statement or object lookup for color combinations.
+//1. Create the colorMixer object
+let colorMixer = {
+  color1: "",
+  color2: "",
+  // 2. Add the mix() method
+  mix: function () {
+    // Define color combinations
+    let combinations = {
+      "red-blue": "purple",
+      "blue-red": "purple",
+      "yellow-blue": "green",
+      "blue-yellow": "green",
+      "red-yellow": "orange",
+      "yellow-red": "orange",
+    };
+    // Create a key for the combination
+    let key = `${this.color1}-${this.color2}`;
+    // Return the resulting color based on the combination
+    return combinations[key] || "unknown";
+  },
+};
+//Test 1
+colorMixer.color1 = "yellow";
+colorMixer.color2 = "blue";
+console.log(colorMixer.mix()); // Output: green
+//Test 2
+colorMixer.color1 = "yellow";
+colorMixer.color2 = "red";
+console.log(colorMixer.mix()); // Output : orange
 
 // ## Exercise 18: Temperature Converter
 // 1. Create an object called `tempConverter` with properties: celsius (number) and fahrenheit (number).
@@ -160,6 +231,37 @@ console.log(toDoList.completedTaskList); //Output:["Wash the dishes", "Throw the
 // 3. When setting one temperature, automatically calculate and set the other.
 
 // **Hint:** Use the formulas: C = (F - 32) * 5/9 and F = C * 9/5 + 32
+//
+//Create the tempConverter object
+let tempConverter = {
+  celsius: 0,
+  fahrenheit: 0,
+  // Add methods: `setC(temp)`
+  setC: function (temp) {
+    this.celsius = temp;
+    this.fahrenheit = temp * (9 / 5) + 32;
+  },
+  // Add methods: `setF(temp)`
+  setF: function (temp) {
+    this.fahrenheit = temp;
+    this.celsius = (temp - 32) * (5 / 9);
+  },
+  // Add methods: `getC()`
+  getC: function () {
+    console.log(this.celsius);
+  },
+  // Add methods: `getF()`
+  getF: function () {
+    console.log(this.fahrenheit);
+  },
+};
+//Test
+tempConverter.setC(30);
+tempConverter.getC(); // Output: 30
+tempConverter.getF(); // Output: 86
+tempConverter.setF(90);
+tempConverter.getF(); // Output: 90
+tempConverter.getC(); // Output: 32.22222
 
 // ## Exercise 19: Virtual Pet
 // 1. Create an object called `pet` with properties: name (string), type (string), hunger (number), and happiness (number).
