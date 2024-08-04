@@ -13,7 +13,7 @@ let students = [
   { id: "3", name: "gaga", grade: 80 },
 ];
 
-console.log(getValueFromKey(students, "id")); //["1", "2", "3"] (3)
+// console.log(getValueFromKey(students, "id")); //["1", "2", "3"] (3)
 
 console.log(getValueFromKey(students, "name")); //["omer", "avi", "gaga"] (3)
 
@@ -70,7 +70,7 @@ function groupBy(array, key) {
   return group;
 }
 
-console.log(groupBy(employees, "yearsOfExp"));
+console.log(groupBy(employees, "department"));
 /*
 {
   Engineering: [
