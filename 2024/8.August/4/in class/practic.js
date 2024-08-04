@@ -70,7 +70,7 @@ function groupBy(array, key) {
   return group;
 }
 
-console.log(groupBy(employees, "department"));
+console.log(groupBy(employees, "yearsOfExp"));
 /*
 {
   Engineering: [
