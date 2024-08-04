@@ -150,7 +150,7 @@ function countChar(string, char) {
 
   return `count of ${char}: ${count} in ${string}`;
 }
-// /*
+/*
 console.log(countChar("hello", "l"));
 
 /* Output:
@@ -192,9 +192,9 @@ function countCharInArray(elements, char) {
 }
 
 let names = ["sasha", "omer", "sason", "shai"];
-countCharInArray(names, "s");
-countCharInArray(names, "a");
-countCharInArray(names, "b");
+// countCharInArray(names, "s");
+// countCharInArray(names, "a");
+// countCharInArray(names, "b");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -295,7 +295,12 @@ function sumOf2DArr(array) {
   }
   return sum;
 }
+/*
 console.log(sumOf2DArr(arr));
+/*
+Output:
+36
+*/
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -326,7 +331,7 @@ function countFreq(str) {
   }
   return freqObject;
 }
-// /*
+/*
 console.log(countFreq("heello"));
 /* 
 Output:
@@ -399,7 +404,7 @@ function makeNewMatrix(matrix) {
   }
   return newMatrix;
 }
-// /*
+/*
 console.log(makeNewMatrix(matrix));
 /*
 Output:
@@ -448,7 +453,7 @@ function checkPali(string) {
 }
 
 // /*
-checkPali("rahhar");
+// checkPali("rahhar");
 /*
 Output:
 Palindrome
@@ -463,24 +468,26 @@ Palindrome
 // Example Output:
 // For arr1 = [1, 2, 3, 4] and arr2 = [3, 4, 5, 6], output: Common elements: 3, 4
 //
-// function commonElements(arr1, arr2) {
-//   let commonElem = "";
-//   for (let i = 0; i < arr1.length; i++) {
-//     for (let j = 0; j < arr2.length; j++) {
-//       if (arr1[i] === arr2[j]) {
-//         commonElem += arr1[i].toString() + ", ";
-//         break;
-//       }
-//     }
-//   }
-//   console.log(`Common elements: ${commonElem}`);
-// }
-// let array1 = [1, 2, 3, 4];
-// let array2 = [3, 4, 5, 6];
-// commonElements(array1, array2);
-//
-//
-
+function commonElements(arr1, arr2) {
+  let commonElem = "";
+  for (let i = 0; i < arr1.length; i++) {
+    for (let j = 0; j < arr2.length; j++) {
+      if (arr1[i] === arr2[j]) {
+        commonElem += arr1[i].toString() + ", ";
+        break;
+      }
+    }
+  }
+  return `Common elements: ${commonElem}`;
+}
+array1 = [1, 2, 3, 4];
+let array2 = [3, 4, 5, 6];
+/*
+console.log(commonElements(array1, array2));
+/*
+output:
+Common elements: 3, 4, 
+*/
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Exercise 13: Check for Prime Numbers in a Range
