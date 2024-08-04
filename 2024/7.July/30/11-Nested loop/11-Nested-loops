@@ -419,9 +419,11 @@ Output:
 // For input = "hello", output: Not a palindrome
 
 function checkPali(string) {
+  //crate a variable that contain the number of times that need to check the string
   let numOfCheck = Math.floor(string.length / 2);
   for (let i = 0; i < numOfCheck; i++)
     if (string[i] !== string[string.length - i - 1]) {
+      // if there no match, this is not a palindrome and the loop got break
       console.log("Not a palindrome");
       break;
     } else if (i === numOfCheck - 1) console.log("Palindrome");
