@@ -464,12 +464,58 @@ console.log(hollowTriangleOfAsterisks(4));
 
 // [Learn about Math.min()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min)
 
+function gridOfSmaller(numOfRow) {
+  // Create a variable that contain the result
+  let grid = "";
+  // nested loops that add the the smaller of row or column index.
+  for (let i = 1; i <= numOfRow; i++) {
+    for (let j = 1; j <= numOfRow; j++) {
+      // if that check which index is smaller (row or column)
+      if (i <= j) grid += `${i}  `;
+      else grid += `${j}  `;
+    }
+    // Going down a row
+    grid += "\n";
+  }
+  return grid;
+}
+console.log(gridOfSmaller(4));
+/* Output:
+1  1  1  1  
+1  2  2  2  
+1  2  3  3  
+1  2  3  4  
+*/
+
 // ## Exercise 18
 // Print a 4x4 grid where each cell contains the larger of its row or column index.
 
 // Hint: Use Math.max() to compare row and column indices.
 
 // [Learn about Math.max()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max)
+
+function gridOfLarger(numOfRow) {
+  // Create a variable that contain the result
+  let grid = "";
+  // nested loops that add the the larger of row or column index.
+  for (let i = 1; i <= numOfRow; i++) {
+    for (let j = 1; j <= numOfRow; j++) {
+      // if that check which index is larger (row or column)
+      if (i <= j) grid += `${j}  `;
+      else grid += `${i}  `;
+    }
+    // Going down a row
+    grid += "\n";
+  }
+  return grid;
+}
+console.log(gridOfLarger(4));
+/* Output:
+1  2  3  4  
+2  2  3  4  
+3  3  3  4  
+4  4  4  4  
+*/
 
 // ## Exercise 19
 // Print a right-angled triangle of consecutive letters (A-Z) with 4 rows.
@@ -478,12 +524,57 @@ console.log(hollowTriangleOfAsterisks(4));
 
 // [Learn about String.fromCharCode()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode)
 
+function triangleOfLatter(numOfRow) {
+  // Create a variable that contain the result
+  let triangle = "";
+  // Create a variable that contain the latter that get in to the triangle variable
+  let counter = 0;
+  // nested loops that add the counter to triangle i times.
+  for (let i = 1; i <= numOfRow; i++) {
+    for (let j = 1; j <= i; j++) {
+      counter++;
+      //convert number to charCode and adding to the container variable
+      triangle += `${String.fromCharCode(counter + 64)} `;
+    }
+    // Going down a row
+    triangle += "\n";
+  }
+  return triangle;
+}
+console.log(triangleOfLatter(4));
+/* Output:
+A 
+B C 
+D E F 
+G H I J 
+ */
+
 // ## Exercise 20
 // Print a 3x3 grid where each cell contains the sum of all numbers from 1 to the product of its indices.
 
 // Hint: Use a nested loop to calculate the sum for each cell.
 
 // [Learn about nested loops](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration#nested_loops)
+
+function sumTable(numOfRow) {
+  // Create a variable that contain the result
+  let table = "";
+  // nested loops that add the result of row's index + col's index.
+  for (let i = 1; i <= numOfRow; i++) {
+    for (let j = 1; j <= numOfRow; j++) {
+      table += `${i + j}  `;
+    }
+    // Going down a row
+    table += "\n";
+  }
+  return table;
+}
+console.log(sumTable(3));
+/* Output:
+2  3  4  
+3  4  5  
+4  5  6
+*/
 
 // ## Exercise 21
 // Print a 4x4 grid of ascending numbers in a spiral pattern.

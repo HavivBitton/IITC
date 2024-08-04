@@ -1,101 +1,8 @@
 // // https://docs.google.com/document/d/1yB6ErFdyjXWh7INfikVXyVpZ5sTM-htDnYth5FXK0sM/edit?usp=sharing
 
-// "use strict";
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// // count the char in a string
-// function countChar(string, char) {
-//   let count = 0;
-//   for (let i = 0; i < string.length; i++) {
-//     let currentChar = string[i];
-//     if (char === currentChar) {
-//       count++;
-//     }
-//   }
-
-//   console.log(`count of ${char}: ${count} in ${string}`);
-// }
-
-// // countChar("hello", "l");
-
-// //////////////////////////////////////////////////////////
-
-// // count the char in a strings array (Verbose)
-// function countCharInArrayVerbose(elements, char) {
-//   let count = 0;
-
-//   for (let i = 0; i < elements.length; i++) {
-//     let currentElement = elements[i];
-
-//     for (let j = 0; j < currentElement.length; j++) {
-//       let currentChar = currentElement[j];
-//       if (char === currentChar) {
-//         count++;
-//       }
-//     }
-//   }
-
-//   console.log(`count of ${char}: ${count}`);
-// }
-
-// // count the char in a strings array
-// function countCharInArray(elements, char) {
-//   let count = 0;
-//   for (let i = 0; i < elements.length; i++) {
-//     for (let j = 0; j < elements[i].length; j++) {
-//       if (char === elements[i][j]) {
-//         count++;
-//       }
-//     }
-//   }
-
-//   console.log(`count of ${char}: ${count}`);
-// }
-
-// let names = ["sasha", "omer", "sason", "shai"];
-// // countCharInArray(names, "s");
-// // countCharInArray(names, "a");
-// // countCharInArray(names, "b");
-
-// //////////////////////////////////////////////////////////
-
-// function sumInArray(nums) {
-//   let sum = 0;
-//   for (let i = 0; i < nums.length; i++) {
-//     console.log("i", i);
-//     let currentNumber = nums[i];
-//     console.log("currentNumber", currentNumber);
-//     sum = sum + currentNumber;
-//   }
-
-//   console.log(`sum is: ${sum}`);
-// }
-
-// // sumInArray([10, 4, 5]);
-
-// //////////////////////////////////////////////////////////
-
-// function sumNestedNumbersArray(nestedNumbers) {
-//   let sum = 0;
-
-//   for (let i = 0; i < nestedNumbers.length; i++) {
-//     let currentArray = nestedNumbers[i];
-//     console.log("currentArray", currentArray);
-//     for (let j = 0; j < currentArray.length; j++) {
-//       let currentNumber = currentArray[j];
-//       console.log("currentNumber", currentNumber);
-//       sum = sum + currentNumber;
-//       console.log("sum", sum);
-//     }
-//   }
-
-//   console.log(`sum is: ${sum}`);
-// }
-
-// // sumNestedNumbersArray([[5, 2], [3, 20, 10], [1]]); // 41
-
-// //////////////////////////////////////////////////////////
-
-// /*Exercise 1: Star Pattern
+// Exercise 1: Star Pattern
 // Objective: Create a program that prints a right triangle pattern of stars (*).
 // Instructions:
 // Use two nested loops. The outer loop should iterate through numbers 1 to 5 (representing the row number).
@@ -108,45 +15,31 @@
 // ****
 // *****
 
-// */
+function triangleOfAsterisks(numOfRow) {
+  // Create a variable that contain the result
+  let triangle = "";
+  // nested loops that add `*` i times.
+  for (let i = 1; i <= numOfRow; i++) {
+    for (let j = 1; j <= i; j++) {
+      triangle += "*  ";
+    }
+    // Going down a row
+    triangle += "\n";
+  }
+  return triangle;
+}
+/*
+console.log(triangleOfAsterisks(5));
+/* Output:
+ *
+ *  *
+ *  *  *
+ *  *  *  *
+ *  *  *  *  *
+ */
 
-// function starPattern_1() {
-//   for (let i = 1; i <= 5; i++) {
-//     let stars = "";
-//     for (let j = 1; j <= i; j++) {
-//       stars += "*";
-//     }
-//     console.log(stars);
-//   }
-// }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// function starPattern_2() {
-//   let stars = "";
-//   for (let i = 1; i <= 5; i++) {
-//     for (let j = 1; j <= i; j++) {
-//       stars += "*";
-//     }
-//     stars += " ";
-//   }
-//   console.log(stars);
-// }
-
-// function starPattern_3() {
-//   let stars = "";
-//   for (let i = 1; i <= 5; i++) {
-//     for (let j = 1; j <= i; j++) {
-//       stars += "*";
-//     }
-//     stars += "\n";
-//   }
-//   console.log(stars);
-// }
-
-// // starPattern_1();
-// // starPattern_2();
-// // starPattern_3();
-
-// /*
 // Exercise 2: Multiplication Table
 // Objective: Write a program that prints a multiplication table for numbers 1 through 5.
 // Instructions:
@@ -160,20 +53,34 @@
 // 3 6 9 12 15
 // 4 8 12 16 20
 // 5 10 15 20 25
+
+function multiplyTable(numOfRow) {
+  // create a variable that contain the values
+  let table = "";
+  // create a loop that add to `table` the result of the multiply of the index of the row and column
+  for (let i = 1; i <= numOfRow; i++) {
+    for (let j = 1; j <= numOfRow; j++) {
+      table += `${i * j} `;
+    }
+    //Going down a row
+    table += `\n`;
+  }
+  return table;
+}
+
+/*
+console.log(multiplyTable(5));
+/* Output:
+1 2 3 4 5 
+2 4 6 8 10 
+3 6 9 12 15 
+4 8 12 16 20 
+5 10 15 20 25 
+
 // */
 
-// function makeMultTable() {
-//   for (let i = 1; i <= 10; i++) {
-//     let row = `Mult of ${i} --- `;
-//     for (let j = 1; j <= 10; j++) {
-//       row += i * j + " ";
-//     }
-//     console.log(row);
-//   }
-// }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// // makeMultTable();
-// /*
 // Exercise 3: Array Search
 // Objective: Find a specific number in a 2D array and print its position.
 // Instructions:
@@ -184,97 +91,113 @@
 // Example Output:
 // For target = 5, output: Found 5 at position (1, 1)
 // For target = 7, output: Found 7 at position (2, 0)
-// */
 
-// function searchInArray(array_2D, target) {
-//   let row = null;
-//   let col = null;
+// create a 2D array
+let array = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+];
 
-//   for (let i = 0; i < array_2D.length; i++) {
-//     let currentArray = array_2D[i];
-//     console.log("currentArray", currentArray);
+function findNumInArr(arr, num) {
+  // create a variable that contain the location of the num in the array
+  let numLocation;
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr[i].length; j++) {
+      // compere if the num equal to array's in specific index
+      if (num === arr[i][j]) {
+        numLocation = `${i}, ${j}`;
+        break;
+      }
+    }
+    //  compere if already found the location and break the loop
+    if (numLocation !== undefined) break;
+  }
+  return `Found ${num} at position (${numLocation})`;
+}
 
-//     for (let j = 0; j < currentArray.length; j++) {
-//       let currentNumber = currentArray[j];
-//       console.log("currentNumber", currentNumber);
-//       if (currentNumber === target) {
-//         row = i;
-//         col = j;
-//         break;
-//       }
-//     }
-//     if (row !== null || col !== null) {
-//       break;
-//     }
-//   }
+/*
+console.log(findNumInArr(array, 5)); 
+/* Output:
+Found 5 at position (1, 1)
+*/
 
-//   if (row !== null || col !== null) {
-//     console.log(
-//       `For target = ${target}, output: Found ${target} at position (${row}, ${col})`
-//     );
-//   } else {
-//     console.log(`Target ${target} not found`);
-//   }
-// }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// let arr = [
-//   [1, 2, 3],
-//   [4, 5, 6],
-//   [7, 8, 9],
-// ];
-// searchInArray(arr, 6);
-//
-//
 // Exercise 4: Count Vowels and Consonants
 // Objective: Write a program to count the number of vowels and consonants in a given string.
 // Instructions:
 // Take a string as input.
 // Use a loop to iterate over each character in the string.
 // Use another loop (or a set of conditions) to check if the character is a vowel or consonant.
-// Keep a count of vowels and consonants.
-// for simplicity,string should contain only letters.
+// Keep a count of vowels
+// For simplicity, strings should contain only letters.
+//  let vowels = "aeiouAEIOU";
 // Example Output:
-// For input = "hello", output: Vowels: 2, Consonants: 3
-// For input = "world", output: Vowels: 1, Consonants: 4
+// For input = "hello", output: Vowels: 2
+// For input = "world", output: Vowels: 1
 //
-// Answer 1:
-// let vowels = "aeiouAEIOU";
-// let vowelsCounter = 0;
-// let consonantsCounter = 0;
-// function characterCheck(string) {
-//   for (i = 0; i < string.length; i++) {
-//     if (vowels.includes(string[i])) {
-//       vowelsCounter++;
-//     } else {
-//       consonantsCounter++;
-//     }
-//   }
-//   console.log(
-//     `For input = ${string}, output: Vowels: ${vowelsCounter}, Consonants: ${consonantsCounter}`
-//   );
-// }
-// characterCheck("Haviv");
-//
-// Answer 2:
-// let vowels = "aeiouAEIOU";
-// function characterCheck(string) {
-//   let vowelsCounter = 0;
-//   for (let=i = 0; i < string.length; i++) {
-//     for (let=j = 0; j < vowels.length; j++) {
-//       if (vowels[j] === string[i]) {
-//         vowelsCounter++;
-//       }
-//     }
-//   }
-//   console.log(
-//     `For input = ${string}, output: Vowels: ${vowelsCounter}, Consonants: ${
-//       string.length - vowelsCounter
-//     }`
-//   );
-// }
-// characterCheck("Haviv");
-//
-//
+function countChar(string, char) {
+  // Create a variable that count how many letter exists from some value
+  let count = 0;
+  // loop that Compere every letter in the string to
+  for (let i = 0; i < string.length; i++) {
+    if (char === string[i]) {
+      // adding to the counter if there is a match
+      count++;
+    }
+  }
+
+  return `count of ${char}: ${count} in ${string}`;
+}
+// /*
+console.log(countChar("hello", "l"));
+
+/* Output:
+count of l: 2 in hello
+*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// count the char in a strings array (Verbose)
+function countCharInArrayVerbose(elements, char) {
+  let count = 0;
+
+  for (let i = 0; i < elements.length; i++) {
+    let currentElement = elements[i];
+
+    for (let j = 0; j < currentElement.length; j++) {
+      let currentChar = currentElement[j];
+      if (char === currentChar) {
+        count++;
+      }
+    }
+  }
+
+  console.log(`count of ${char}: ${count}`);
+}
+
+// count the char in a strings array
+function countCharInArray(elements, char) {
+  let count = 0;
+  for (let i = 0; i < elements.length; i++) {
+    for (let j = 0; j < elements[i].length; j++) {
+      if (char === elements[i][j]) {
+        count++;
+      }
+    }
+  }
+
+  console.log(`count of ${char}: ${count}`);
+}
+
+let names = ["sasha", "omer", "sason", "shai"];
+countCharInArray(names, "s");
+countCharInArray(names, "a");
+countCharInArray(names, "b");
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // Exercise 5: Reverse a String
 // Objective: Write a program that reverses a given string using nested loops.
 // Instructions:
@@ -285,15 +208,23 @@
 // For input = "hello", output: olleh
 // For input = "world", output: dlrow
 //
-// function reverseString(string) {
-//   let reverseStr = " ";
-//   for (let i = string.length - 1; i >= 0; i--) {
-//     reverseStr += string[i];
-//   }
-//   console.log(reverseStr);
-// }
-// reverseString("Haviv");
+function reverseString(string) {
+  // create a variable that contain the result
+  let reverseStr = " ";
+  for (let i = string.length - 1; i >= 0; i--) {
+    // add to the variable the value un the i index of string
+    reverseStr += string[i];
+  }
+  return reverseStr;
+}
+/*
+console.log(reverseString("Haviv"));
+/*
+ Output:
+vivaH
+ */
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // Exercise 6: Number Pyramid
 // Objective: Create a program that prints a number pyramid.
@@ -308,20 +239,33 @@
 // 1234
 // 12345
 
-// function numberPyramid(numberOfRow) {
-//   let currentNumber = " ";
-//   for (let i = 1; i <= numberOfRow; i++) {
-//     for (let j = 1; j <= i; j++) {
-//       if (j === 1) {
-//         currentNumber += i.toString();
-//         console.log(currentNumber);
-//       }
-//     }
-//   }
-// }
-// numberPyramid(7);
-//
-//
+function numberPyramid(numberOfRow) {
+  let currentNumber = " ";
+  for (let i = 1; i <= numberOfRow; i++) {
+    for (let j = 1; j <= i; j++) {
+      currentNumber += j.toString();
+      if (j === i) {
+        currentNumber += "\n";
+      }
+    }
+  }
+  return currentNumber;
+}
+/*
+console.log(numberPyramid(7));
+/*
+Output:
+1
+12
+123
+1234
+12345
+123456
+1234567
+// */
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // Exercise 7: Sum of 2D Array Elements
 // Objective: Calculate the sum of all elements in a 2D array.
 // Instructions:
@@ -473,8 +417,9 @@ console.log(countFreq("heello"));
 // }
 // checkPali("rahhar");
 
-// ///////////////Exercise 12: Find Common Elements in Two Arrays
-//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Exercise 12: Find Common Elements in Two Arrays
 // Objective: Find common elements between two arrays.
 // Instructions:
 // Create two arrays with numbers.
@@ -499,9 +444,10 @@ console.log(countFreq("heello"));
 // commonElements(array1, array2);
 //
 //
-//
-/////////////////Exercise 13: Check for Prime Numbers in a Range
-//
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Exercise 13: Check for Prime Numbers in a Range
 //  Objective: Write a program to find all prime numbers in a given range.
 // Instructions:
 // Take a range (start and end) as input.
@@ -510,31 +456,36 @@ console.log(countFreq("heello"));
 // Example Output:
 // For range = (10, 20), output: Prime numbers: 11, 13, 17, 19
 //
+/*
+function isPrime(num) {
+  if (num <= 1) return false;
+  if (num <= 3) return true;
+  if (num % 2 === 0 || num % 3 === 0) return false;
+  for (let i = 5; i * i <= num; i += 6) {
+    if (num % i === 0 || num % (i + 2) === 0) return false;
+  }
+  return true;
+}
+function allPrimeNum(startNum, endNum) {
+  let counter;
+  for (let i = startNum; i <= endNum; i++) {
+    if (isPrime(i)) {
+      counter += i.toString() + ", ";
+    }
+  }
+  console.log(`Prime numbers: ${counter}`);
+}
+allPrimeNum(1, 20);
+
+/* Output:
+Prime numbers: undefined2, 3, 5, 7, 11, 13, 17, 19, 
+
+// */
 //
-// function isPrime(num) {
-//   if (num <= 1) return false;
-//   if (num <= 3) return true;
-//   if (num % 2 === 0 || num % 3 === 0) return false;
-//   for (let i = 5; i * i <= num; i += 6) {
-//     if (num % i === 0 || num % (i + 2) === 0) return false;
-//   }
-//   return true;
-// }
-// function allPrimeNum(startNum, endNum) {
-//   let counter;
-//   for (let i = startNum; i <= endNum; i++) {
-//     if (isPrime(i)) {
-//       counter += i.toString() + ", ";
-//     }
-//   }
-//   console.log(`Prime numbers: ${counter}`);
-// }
-// allPrimeNum(1, 20);
-//
-//
-//
-// /////////////Exercise 14: Sort a 2D Array by Row Sum
-//
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Exercise 14: Sort a 2D Array by Row Sum
 // Objective: Sort the rows of a 2D array based on the sum of their elements.
 // Instructions:
 // Create a 2D array with numbers.
@@ -543,9 +494,11 @@ console.log(countFreq("heello"));
 // Example Output:
 // For arr = [[3, 1, 2], [1, 4, 5], [2, 3, 1]], output: [[2, 3, 1], [3, 1, 2], [1, 4, 5]]
 
-// function sortArray(arr1) {
-//   let arraySum;
-//   for (let i = 0; i < arr1.length; i++) {
-//     arraySum += arr1[i];
-//   }}
-// // }
+/*
+function sortArray(arr1) {
+  let arraySum;
+  for (let i = 0; i < arr1.length; i++) {
+    arraySum += arr1[i];
+  }}
+}
+*/
