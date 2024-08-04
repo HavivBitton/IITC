@@ -273,36 +273,40 @@ Output:
 // Use nested loops to iterate over each element.
 // Sum all the elements and print the total.
 //
-// function sumOf2DArr(array) {
-//   let sum = null;
-//   let currentArray;
-//   for (let i = 0; i < array.length; i++) {
-//     currentArray = array[i];
-//     for (let j = 0; j < currentArray.length; j++) {
-//       sum += currentArray[j];
-//     }
-//   }
-//   console.log(sum);
-// }
-// let arr = [
-//   [1, 2],
-//   [3, 4],
-//   [5, 6],
-//   [7, 8],
-// ];
-// sumOf2DArr(arr);
-//// https://docs.google.com/document/d/1yB6ErFdyjXWh7INfikVXyVpZ5sTM-htDnYth5FXK0sM/edit?usp=sharing
 //
-/*
-    Exercise 8: Character Frequency (bonus, require objects)
-    Objective: Write a program to find the frequency of each character in a string.
-    Instructions:
-    Take a string as input.
-    Use nested loops to count the frequency of each character.
-    Print each character and its frequency.
-    Example Output:
-    For input = "hello", output: h: 1, e: 1, l: 2, o: 1
-*/
+// Create a 2D array with numbers.
+let arr = [
+  [1, 2],
+  [3, 4],
+  [5, 6],
+  [7, 8],
+];
+function sumOf2DArr(array) {
+  // variable that contain the sum
+  let sum = null;
+  // variable that contain the current array that check
+  let currentArray;
+  for (let i = 0; i < array.length; i++) {
+    currentArray = array[i];
+    for (let j = 0; j < currentArray.length; j++) {
+      // adding the specific value to the sum variable
+      sum += currentArray[j];
+    }
+  }
+  return sum;
+}
+console.log(sumOf2DArr(arr));
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Exercise 8: Character Frequency (bonus, require objects)
+// Objective: Write a program to find the frequency of each character in a string.
+// Instructions:
+// Take a string as input.
+// Use nested loops to count the frequency of each character.
+// Print each character and its frequency.
+// Example Output:
+// For input = "hello", output: h: 1, e: 1, l: 2, o: 1
 
 function countFreq(str) {
   // create object that contains the letters
@@ -322,7 +326,14 @@ function countFreq(str) {
   }
   return freqObject;
 }
+// /*
 console.log(countFreq("heello"));
+/* 
+Output:
+{h: 1, e: 2, l: 2, o: 1}
+*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Exercise 9: Flatten a 2D Array
 // Objective: Convert a 2D array into a 1D array.
@@ -332,26 +343,33 @@ console.log(countFreq("heello"));
 // Store all elements in a new 1D array and print the result.
 // Example Output:
 // For arr = [[1, 2], [3, 4], [5, 6]], output: [1, 2, 3, 4, 5, 6]
-// function new1DArr(array) {
-//   let newArray = [];
-//   let currentArray;
-//   for (let i = 0; i < array.length; i++) {
-//     currentArray = array[i];
-//     for (let j = 0; j < currentArray.length; j++) {
-//       newArray.push(currentArray[j]);
-//     }
-//   }
-//   console.log(newArray);
-// }
-// let arr = [
-//   [1, 2],
-//   [3, 4],
-//   [5, 6],
-//   [7, 8],
-// ];
-// new1DArr(arr);
-//
-//
+
+function new1DArr(array) {
+  let newArray = [];
+  let currentArray;
+  for (let i = 0; i < array.length; i++) {
+    currentArray = array[i];
+    for (let j = 0; j < currentArray.length; j++) {
+      newArray.push(currentArray[j]);
+    }
+  }
+  return newArray;
+}
+let array1 = [
+  [1, 2],
+  [3, 4],
+  [5, 6],
+  [7, 8],
+];
+/*
+console.log(new1DArr(array1));
+/*
+Output:
+[1, 2, 3, 4, 5, 6, 7, 8] (8)
+*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // Exercise 10: Matrix Transpose
 // Objective: Transpose a given matrix.
 // Instructions:
@@ -361,28 +379,36 @@ console.log(countFreq("heello"));
 // Example Output:
 // For matrix = [[1, 2, 3], [4, 5, 6]], output: [[1, 4], [2, 5], [3, 6]]
 
-// let matrix = [
-//   [1, 2, 3],
-//   [4, 5, 6],
-// ];
+let matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+];
 
-// function makeNewMatrix(matrix) {
-//   let rows = matrix.length;
-//   let cols = matrix[0].length;
-//   let newMatrix = [];
+function makeNewMatrix(matrix) {
+  // create a variables that contain the lengths of the arrays.
+  let rows = matrix.length;
+  let cols = matrix[0].length;
+  // create a variables that contain the result arrays.
+  let newMatrix = [];
 
-//   for (let i = 0; i < cols; i++) {
-//     newMatrix[i] = [];
-//     for (let j = 0; j < rows; j++) {
-//       newMatrix[i][j] = matrix[j][i];
-//     }
-//   }
-//   console.log(newMatrix);
-// }
-// makeNewMatrix(matrix);
-//
-// ////////////////////Exercise 11: Palindrome Check
-//
+  for (let i = 0; i < cols; i++) {
+    newMatrix[i] = [];
+    for (let j = 0; j < rows; j++) {
+      newMatrix[i][j] = matrix[j][i];
+    }
+  }
+  return newMatrix;
+}
+// /*
+console.log(makeNewMatrix(matrix));
+/*
+Output:
+[[1, 4], [2, 5], [3, 6]] (3)
+*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Exercise 11: Palindrome Check
 //  Objective: Check if a given string is a palindrome.
 // Instructions:
 // Take a string as input.
@@ -392,17 +418,22 @@ console.log(countFreq("heello"));
 // For input = "radar", output: Palindrome
 // For input = "hello", output: Not a palindrome
 
-// function checkPali(string) {
-//   let numOfCheck = Math.floor(string.length / 2);
-//   for (let i = 0; i < numOfCheck; i++)
-//     if (string[i] !== string[string.length - i - 1]) {
-//       console.log("Not a palindrome");
-//       break;
-//     } else if (i === numOfCheck - 1) console.log("Palindrome");
-// }
-// checkPali("haviv");
-//
-//
+function checkPali(string) {
+  let numOfCheck = Math.floor(string.length / 2);
+  for (let i = 0; i < numOfCheck; i++)
+    if (string[i] !== string[string.length - i - 1]) {
+      console.log("Not a palindrome");
+      break;
+    } else if (i === numOfCheck - 1) console.log("Palindrome");
+}
+/*
+checkPali("haviv");
+/*
+Output:
+Not a palindrome
+*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // function checkPali(string) {
 //   let numOfCheck = Math.floor(string.length / 2);
