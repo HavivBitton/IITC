@@ -277,26 +277,48 @@ console.log(color.slice(color.length - 3, color.length - 1)); //["black", "pink"
 // 43. Extract elements from index 1 to 3 (exclusive) from `seasons`.
 //     Hint: `slice()` second argument is exclusive.
 console.log(seasons.slice(1, 3)); //
+
 // 44. Use `slice()` to create a copy of an entire array.
 //     Hint: `slice()` without arguments copies the whole array.
+let seasonsCopy = seasons.slice();
+console.log(seasonsCopy); //["Autumn", "Winter", "Spring", "Summer"] (4)
 
 // 45. Extract elements from the middle of an array using `slice()`.
 //     Hint: Calculate start and end indices based on array length.
+console.log(seasons.slice(1, seasons.length - 1)); //["Winter", "Spring"] (2)
 
 // ## Array Methods: splice()
 // [W3Schools Array splice()](https://www.w3schools.com/jsref/jsref_splice.asp)
 
+// Create an Array
+let fruits1 = ["Banana", "Orange", "Apple", "Mango", "kiwi"];
+
 // 46. Remove two elements from the middle of `fruits` using `splice()`.
 //     Hint: `splice()` can remove elements from any position.
 
+fruits1.splice(2, 2);
+console.log(fruits1); //["Banana", "Orange", "kiwi"]
+
 // 47. Replace an element in `numbers` with two new elements using `splice()`.
 //     Hint: Use `splice()` with 3 or more arguments to replace elements.
+console.log(numbers); //[-1, 0, 1, 2, 3, 4]
+numbers.splice(2, 2, 10, 12);
+console.log(numbers); //[-1, 0, 10, 12, 3, 4] (6)
 
 // 48. Insert three new elements between existing elements in `colors` without removing any.
 //     Hint: Set the delete count to 0 when using `splice()` to insert.
+console.log(color); //["red", "green", "blue", "white", "black", "pink", "red"](7);
+color.splice(2, 0, "yellow", "grey", "silver");
+console.log(color);
+//["red", "green", "yellow", "grey", "silver", "blue", "white", "black", "pink", "red"] (10)
 
 // 49. Remove the first element and add two new elements at the beginning using a single `splice()` call.
 //     Hint: `splice()` can remove and add elements simultaneously.
+console.log(fruits1); //["Banana", "Orange", "kiwi"]
+fruits1.splice(0, 1, "apple", "mango");
+console.log(fruits1); //["apple", "mango", "Orange", "kiwi"] (4)
 
 // 50. Use `splice()` to empty an array by removing all elements.
 //     Hint: Remove elements from index 0 to the array's length.
+color.splice(0, color.length);
+console.log(color); //[] (0)
