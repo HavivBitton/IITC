@@ -322,3 +322,288 @@ console.log(fruits1); //["apple", "mango", "Orange", "kiwi"] (4)
 //     Hint: Remove elements from index 0 to the array's length.
 color.splice(0, color.length);
 console.log(color); //[] (0)
+
+// ## Array Methods: concat()
+// [W3Schools Array concat()](https://www.w3schools.com/jsref/jsref_concat_array.asp)
+
+// 51. Concatenate `fruits` and `colors` into a new array.
+//     Hint: `concat()` returns a new array without modifying the original arrays.
+fruits = ["Banana", "Orange", "Apple"];
+color = ["red", "green", "blue"];
+let colorFruits = color.concat(fruits);
+console.log(colorFruits);
+
+// 52. Join three different arrays using `concat()`.
+//     Hint: Chain multiple `concat()` calls or pass multiple arguments.
+numbers = [1, 2, 3];
+let colorFruitsNum = color.concat(fruits.concat(numbers));
+console.log(colorFruitsNum);
+//["red", "green", "blue", "Banana", "Orange", "Apple", 1, 2, 3] (9)
+
+// 53. Use `concat()` to add new elements to the end of an array without modifying the original.
+//     Hint: `concat()` can take both arrays and individual elements as arguments.
+console.log(numbers.concat(5)); //[1, 2, 3, 5] (4)
+
+// 54. Combine an array with itself to create a doubled array.
+//     Hint: Use an array as an argument to `concat()`.
+console.log(numbers); //[1, 2, 3] (3)
+console.log(numbers.concat(numbers)); //[1, 2, 3, 1, 2, 3] (6)
+
+// 55. Concatenate an array with multiple individual elements.
+//     Hint: Pass individual elements as separate arguments to `concat()`.
+console.log(numbers.concat(5, 6)); //[1, 2, 3, 5, 6] (5)
+
+// ## Array Methods: join()
+// [W3Schools Array join()](https://www.w3schools.com/jsref/jsref_join.asp)
+
+// 56. Convert `fruits` into a comma-separated string using `join()`.
+//     Hint: Default separator for `join()` is a comma.
+fruits = ["Banana", "Orange", "Apple", "Mango"];
+let fruitsText = fruits.join(", ");
+console.log(fruitsText); //Banana, Orange, Apple, Mango
+
+// 57. Join elements of `numbers` with a dash between them.
+//     Hint: Pass the desired separator as an argument to `join()`.
+console.log(numbers); //[1, 2, 3] (3)
+let dashNum = numbers.join("-");
+console.log(dashNum); // 1-2-3
+
+// 58. Create a function that takes an array and a separator, then returns the joined string.
+//     Hint: Use the separator parameter in the `join()` method.
+function arraySeparator(array, separator) {
+  let result = array.join(separator);
+  return result;
+}
+numbers = [1, 2, 3];
+let dash = "-/-";
+console.log(arraySeparator(numbers, dash)); //  1-/-2-/-3
+
+// 59. Join array elements with an empty string to create a single word.
+//     Hint: Pass an empty string as the separator.
+let name1 = ["h", "a", "v", "i", "v"];
+console.log(name1.join("")); // haviv
+
+// 60. Use `join()` and `split()` to reverse the order of words in a sentence.
+//     Hint: Split the sentence into words, reverse the array, then join.
+
+// ## Array Methods: reverse()
+// [W3Schools Array reverse()](https://www.w3schools.com/jsref/jsref_reverse.asp)
+
+// 61. Reverse the order of elements in `seasons`.
+//     Hint: `reverse()` modifies the original array.
+console.log(seasons); // ["Autumn", "Winter", "Spring", "Summer"] (4)
+console.log(seasons.reverse()); // ["Summer", "Spring", "Winter", "Autumn"] (4)
+
+// 62. Create a function to check if a word is a palindrome using `split()`, `reverse()`, and `join()`.
+//     Hint: Compare the original word with its reversed version.
+
+function isPalindrome(word) {
+  let splitWord = word.split("");
+  let reversedWord = splitWord.reverse();
+  if (reversedWord.join("") === word) return "Palindrome";
+  else return "not a Palindrome";
+}
+console.log(isPalindrome("haviv"));
+
+// 63. Reverse `numbers` and then map each element to its square.
+//     Hint: Chain `reverse()` and `map()` methods.
+numbers = [4, 9, 16, 25];
+numbers = numbers.reverse();
+let squareNum = numbers.map(Math.sqrt);
+console.log(squareNum); //[5, 4, 3, 2] (4)
+
+// 64. Use `reverse()` to reverse the order of characters in a string (Hint: use `split()` first).
+//     Hint: Convert the string to an array, reverse it, then join back to a string.
+name1 = "haviv";
+name1 = name1.split("");
+console.log(name1); //["h", "a", "v", "i", "v"]
+reverseName = name1.reverse();
+console.log(reverseName.join("")); // vivah
+
+// 65. Implement a function that reverses an array without using the `reverse()` method.
+//     Hint: Use a loop to swap elements from the start and end of the array.
+function reverseString(string) {
+  let stringArray = string.split("");
+  let reverseStr = [];
+  for (let i = stringArray.length - 1; i >= 0; i--) {
+    reverseStr.push(stringArray[i]);
+  }
+  return reverseStr.join("");
+}
+console.log(reverseString("bitton")); //nottib
+
+// ## Array Methods: sort()
+// [W3Schools Array sort()](https://www.w3schools.com/jsref/jsref_sort.asp)
+
+// 66. Sort the `fruits` array in alphabetical order.
+//     Hint: Default `sort()` works alphabetically for strings.
+
+console.log(fruits); //["Banana", "Orange", "Apple", "Mango"] (4)
+console.log(fruits.sort()); //["Apple", "Banana", "Mango", "Orange"] (4)
+
+// 67. Sort `numbers` in ascending order.
+//     Hint: Use a compare function for numerical sort.
+numbers = [25, 9, 16, 4];
+numbers.sort(function (a, b) {
+  return a - b;
+});
+console.log(numbers); //[4, 9, 16, 25] (4)
+
+// 68. Sort `numbers` in descending order.
+//     Hint: Modify the compare function to sort in reverse order.
+numbers = [25, 9, 16, 4];
+numbers.sort(function (a, b) {
+  return b - a;
+});
+console.log(numbers); //[25, 16, 9, 4] (4)
+
+// 69. Create an array of words and sort them by length.
+//     Hint: Use a compare function that compares string lengths.
+
+// let words = ["aaaa", "aaa", "aa", "aaaaa"];
+// words.sort((a, b) => a.length - b.length);
+// console.log(words);
+
+let words = ["aaaa", "aaa", "aa", "aaaaa"];
+words.sort(function (a, b) {
+  return a.length - b.length;
+});
+console.log(words); //["aa", "aaa", "aaaa", "aaaaa"] (4)
+
+// 70. Implement a custom sort to order an array of numbers based on their remainder when divided by 3.
+//     Hint: Use the modulo operator (%) in the compare function.
+
+numbers = [25, 9, 17, 4];
+numbers.sort(function (a, b) {
+  return (a % 3) - (b % 3);
+});
+console.log(numbers); //[9, 25, 4, 17] (4)
+
+// SKIP IT:
+// ## Array Iteration: forEach()
+// [W3Schools Array forEach()](https://www.w3schools.com/jsref/jsref_foreach.asp)
+
+// 71. Use `forEach()` to print each element in `colors`.
+//     Hint: The callback function in `forEach()` receives each element as an argument.
+
+// 72. Double each number in `numbers` using `forEach()`.
+//     Hint: Modify the original array within the `forEach()` callback.
+
+// 73. Use `forEach()` to create an HTML list from an array of strings.
+//     Hint: Concatenate HTML tags within the `forEach()` callback.
+
+// 74. Implement a simple search function using `forEach()`.
+//     Hint: Use a condition inside the `forEach()` callback to find matching elements.
+
+// 75. Use `forEach()` to count how many elements in an array meet a certain condition.
+//     Hint: Increment a counter variable in the `forEach()` callback when the condition is met.
+
+// SKIP IT:
+// ## Array Iteration: map()
+// [W3Schools Array map()](https://www.w3schools.com/jsref/jsref_map.asp)
+
+// 76. Use `map()` to create a new array with the lengths of each string in `fruits`.
+//     Hint: Return the length of each string in the `map()` callback.
+
+// 77. Square all numbers in `numbers` using `map()`.
+//     Hint: Return the square of each number in the `map()` callback.
+
+// 78. Create a new array where each element is a boolean indicating if the original element is even.
+//     Hint: Use the modulo operator (%) to check for even numbers.
+
+// 79. Use `map()` to format an array of names into a new array of greetings.
+//     Hint: Return a greeting string that includes the name in the `map()` callback.
+
+// 80. Implement a function that uses `map()` to convert an array of Celsius temperatures to Fahrenheit.
+//     Hint: Use the formula (C * 9/5) + 32 in the `map()` callback.
+
+// ## Array Iteration: filter()
+// [W3Schools Array filter()](https://www.w3schools.com/jsref/jsref_filter.asp)
+
+// 81. Use `filter()` to create a new array with only the even numbers from `numbers`.
+//     Hint: Use the modulo operator (%) to check for even numbers in the `filter()` callback.
+
+// 82. Filter `fruits` to only include fruits with more than 5 characters.
+//     Hint: Check the length of each string in the `filter()` callback.
+
+// 83. Create a function that filters an array to only include unique values.
+//     Hint: Use `indexOf()` in the `filter()` callback to check for duplicates.
+
+// 84. Use `filter()` to remove all falsy values from an array.
+//     Hint: The callback can simply return the element itself, as falsy values will be filtered out.
+
+// 85. Implement a search function using `filter()` that returns all elements containing a specific substring.
+//     Hint: Use the `includes()` method on each element in the `filter()` callback.
+
+// ## Array Iteration: find() and findIndex()
+// [W3Schools Array find()](https://www.w3schools.com/jsref/jsref_find.asp)
+// [W3Schools Array findIndex()](https://www.w3schools.com/jsref/jsref_findindex.asp)
+
+// 86. Use `find()` to get the first element in `numbers` that's greater than 3.
+//     Hint: Return true in the callback when the condition is met.
+
+// 87. Find the index of the first color in `colors` that starts with the letter 'b'.
+//     Hint: Use `startsWith()` method in the `findIndex()` callback.
+
+// 88. Implement a function that finds the first prime number in an array.
+//     Hint: Create a helper function to check if a number is prime, then use it in the `find()` callback.
+
+// 89. Use `findIndex()` to locate the position of a specific season in `seasons`.
+//     Hint: Compare each element to the target season in the `findIndex()` callback.
+
+// 90. Create a function that uses `find()` to get the first element that satisfies a custom condition.
+//     Hint: Pass the custom condition as a callback function to `find()`.
+
+// ## Array Iteration: some() and every()
+// [W3Schools Array some()](https://www.w3schools.com/jsref/jsref_some.asp)
+// [W3Schools Array every()](https://www.w3schools.com/jsref/jsref_every.asp)
+
+// 91. Check if `numbers` contains any even numbers using `some()`.
+//     Hint: Use the modulo operator (%) to check for even numbers in the callback.
+
+// 92. Verify if all elements in `fruits` have more than 3 characters using `every()`.
+//     Hint: Check the length of each string in the `every()` callback.
+
+// 93. Use `some()` to check if an array contains any negative numbers.
+//     Hint: Compare each number to zero in the `some()` callback.
+
+// 94. Implement a function using `every()` to check if all elements in an array are unique.
+//     Hint: Use `indexOf()` and the current index in the `every()` callback to check for duplicates.
+
+// 95. Use `some()` and `every()` together to check various conditions on an array.
+//     Hint: Combine `some()` and `every()` checks using logical operators.
+
+// SKIP IT:
+// ## Array Iteration: reduce()
+// [W3Schools Array reduce()](https://www.w3schools.com/jsref/jsref_reduce.asp)
+
+// 96. Sum all numbers in `numbers` using `reduce()`.
+//     Hint: The accumulator in `reduce()` should be updated with each element.
+
+// 97. Find the longest word in `fruits` using `reduce()`.
+//     Hint: Compare the length of the current element with the accumulator in each iteration.
+
+// 98. Use `reduce()` to count the occurrences of each element in an array.
+//     Hint: Use an object as the accumulator to store counts.
+
+// 99. Implement a `flatten()` function for nested arrays using `reduce()`.
+//     Hint: Use `concat()` within the `reduce()` callback to merge nested arrays.
+
+// 100. Use `reduce()` to group an array of objects by a specific property.
+//      Hint: The accumulator should be an object with keys based on the grouping property.
+
+// ## Advanced Exercises - for PROS
+// 101. Implement a function that removes duplicate elements from an array without using Set.
+//      Hint: Use `reduce()` or `filter()` with `indexOf()`.
+
+// 102. Create a function that rotates an array by a given number of positions.
+//      Hint: Use `slice()` and spread operator to rearrange elements.
+
+// 103. Implement a simple version of `map()` using `reduce()`.
+//      Hint: Build a new array within the `reduce()` callback.
+
+// 104. Write a function that finds the intersection of two arrays.
+//      Hint: Use `filter()` and `includes()` methods.
+
+// 105. Create a function that generates an array of specified length containing random numbers.
+//      Hint: Use a loop or `Array.from()` with a mapping function.
