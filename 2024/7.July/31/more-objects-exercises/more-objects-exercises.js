@@ -403,16 +403,34 @@ const inventory = {
 inventory.addItem("apple", 3);
 console.log(inventory.items); //[{name: "mango", quantity: 5}, {name: "banana", quantity: 2}, {name: "apple", quantity: 3}] (3)
 
+inventory.removeItem("mango", 10); // There not enough quantity for this
 inventory.removeItem("mango", 3); // The quantity of mango is 2
 
 inventory.checkStock("banana"); //The item "banana" is out of stock
 inventory.checkStock("kiwi"); //There is no item call "kiwi"
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 // ## Exercise 22: Dice Roller
 // 1. Create an object called `dice` with properties: sides (number) and lastRoll (number).
 // 2. Add a method called `roll()` that generates a random number between 1 and `sides`, sets `lastRoll`, and returns the result.
 
 // **Hint:** Use `Math.random()` and `Math.floor()`.
+
+// create an object called 'dice'
+const dice = {
+  sides: 6,
+  lastRoll: 0,
+  // add
+  roll: function () {
+    this.lastRoll = Math.floor(Math.random() * this.sides + 1);
+    return this.lastRoll;
+  },
+};
+
+console.log(dice.roll()); // 4
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 // ## Exercise 23: Word Counter
 // 1. Create an object called `wordCounter` with a property text (string).
@@ -421,6 +439,14 @@ inventory.checkStock("kiwi"); //There is no item call "kiwi"
 
 // **Hint:** Use string methods like `split()` and object to store word frequencies.
 
+// Create an object called `wordCounter`
+const wordCounter = {
+  text: "",
+  //Add methods: `countWords()`
+  // countWords :
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 // ## Exercise 24: Simple Calculator
 // 1. Create an object called `calculator` with properties: result (number).
 // 2. Add methods: `add(n)`, `subtract(n)`, `multiply(n)`, `divide(n)`, and `clear()`.
