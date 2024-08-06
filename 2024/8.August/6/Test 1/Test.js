@@ -350,17 +350,44 @@ Grouped Strings By Length:
 // TODO: Write a function to capitalize the first letter of each string in the array (You should return a new array)
 // Bonus: Capitalize the first letter of each word in the string (split by space)
 
+// answer 1
+// function capitalizeStrings(strings) {
+//   let capitalizeSrt = [];
+//   for (let i = 0; i < strings.length; i++) {
+//     let currentStr = strings[i].split("");
+//     currentStr[0] = currentStr[0].toUpperCase();
+//     capitalizeSrt.push(currentStr.join(""));
+//   }
+//   return capitalizeSrt;
+// }
+
+//answer 2
+// function capitalizeStrings(strings) {
+//   let capitalizeSrtArr = [];
+//   let capitalizeSrt = "";
+//   for (let i = 0; i < strings.length; i++) {
+//     capitalizeSrt = strings[i][0].toUpperCase() + strings[i].slice(1);
+//     capitalizeSrtArr.push(capitalizeSrt);
+//   }
+//   return capitalizeSrtArr;
+// }
+
+// answer bonus
 function capitalizeStrings(strings) {
-  let capitalizeSrt = [];
+  let capitalizeSrtArr = [];
+  let strArr = [];
   for (let i = 0; i < strings.length; i++) {
-    let currentStr = strings[i].split("");
-    currentStr[0] = currentStr[0].toUpperCase();
-    capitalizeSrt.push(currentStr.join(""));
+    strArr = strings[i].split(" ");
+    for (let j = 0; j < strArr.length; j++) {
+      strArr[j] = strArr[j][0].toUpperCase() + strArr[j].slice(1);
+    }
+    capitalizeSrtArr.push(strArr.join(" "));
   }
-  return capitalizeSrt;
+  return capitalizeSrtArr;
 }
 
 const capitalizedStrings = capitalizeStrings(strings);
+
 // console.log("Capitalized Strings:", capitalizedStrings);
 // Output :
 // Capitalized Strings:
@@ -371,17 +398,11 @@ const capitalizedStrings = capitalizeStrings(strings);
 // 3 "And of session"
 // 4 "Good discussion"
 
-// try of bonus
-// function capitalizeStrings(strings) {
-//   let capitalizeSrt = [];
-//   for (let i = 0; i < strings.length; i++) {
-//     let currentStr = strings[i].split(" ");
-//     for (let j = 0; j < currentStr.length; j++) {
-//       let currentStr1 = currentStr[j].split("");
-//       currentStr1[0] = currentStr1[0].toUpperCase();
-//       currentStr.push(currentStr1.join(""));
-//     }
-//     capitalizeSrt.push(currentStr);
-//   }
-//   return capitalizeSrt;
-// }
+// Bonus Output :
+// Capitalized Strings:
+// Array (5)
+// 0 "Baba"
+// 1 "My Success"
+// 2 "No More Lives"
+// 3 "And Of Session"
+// 4 "Good Discussion"
