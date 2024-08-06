@@ -326,12 +326,87 @@ console.log(pet.getStatus()); // Output: This dog hunger is very full and his ha
 // 3. Add methods: `askQuestion(index)` and `checkAnswer(index, answer)`.
 
 // **Hint:** Use `console.log()` to display questions and options.
+//create the object
+const quiz = {
+  questions: [
+    { text: " 10 * 10 =", option: [10, 50, 100], correctAnswer: 2 },
+    { text: " 10 / 10 =", option: [1, 5, 11], correctAnswer: 0 },
+    { text: " 10 + 10 =", option: [10, 20, 30], correctAnswer: 1 },
+  ],
+  score: 0,
+  // add methods `askQuestion(index)`
+  askQuestions: function (index) {
+    console.log(this.questions[index].text);
+  },
+  //Add methods: `checkAnswer(index, answer)`
+  checkAnswer: function (index, answer) {
+    if (this.questions[index].correctAnswer === answer) {
+      console.log("That is the correct answer ! ");
+    } else console.log("This is an incorrect answer, try again!");
+  },
+};
+
+quiz.askQuestions(1); // 10 / 10 =
+quiz.checkAnswer(0, 1); //This is an incorrect answer, try again!
+quiz.checkAnswer(0, 2); //That is the correct answer !
 
 // ## Exercise 21: Inventory Manager
 // 1. Create an object called `inventory` with properties: items (array of objects) where each item has name (string) and quantity (number).
 // 2. Add methods: `addItem(name, quantity)`, `removeItem(name, quantity)`, and `checkStock(name)`.
 
 // **Hint:** Use array `find()` method to locate items.
+// create the object
+const inventory = {
+  items: [
+    { name: "mango", quantity: 5 },
+    { name: "banana", quantity: 0 },
+  ],
+  // Add methods: `addItem(name, quantity)`
+  addItem: function (name, quantity) {
+    this.items.push({ name: name, quantity: quantity });
+  },
+  // Add methods: `removeItem(name, quantity)`,
+  removeItem: function (name, quantity) {
+    // function findItem(array, name) {
+    //   return array.name === name;
+    // }
+    // console.log(this.items.find(findItem(this.items, name)));
+    for (let i = 0; i < this.items.length; i++) {
+      if (this.items[i].name === name) {
+        if (this.items[i].quantity - quantity >= 0) {
+          this.items[i].quantity -= quantity;
+          console.log(
+            `The quantity of ${this.items[i].name} is ${this.items[i].quantity} `
+          );
+        } else console.log("There not enough quantity for this");
+      }
+    }
+  },
+  // Add methods: `checkStock(name,)`
+  checkStock: function (name) {
+    let counter = 0;
+    for (i = 0; i < this.items.length; i++) {
+      if (this.items[i].name === name) {
+        if (this.items[i].quantity === 0) {
+          console.log(`The item "${name}" is out of stock `);
+          counter++;
+        } else {
+          console.log(`The quantity of ${name} is ${this.items[i].quantity} `);
+          counter++;
+        }
+      }
+    }
+    if (counter === 0) console.log(`There is no item call "${name}"`);
+  },
+};
+
+inventory.addItem("apple", 3);
+console.log(inventory.items); //[{name: "mango", quantity: 5}, {name: "banana", quantity: 2}, {name: "apple", quantity: 3}] (3)
+
+inventory.removeItem("mango", 3); // The quantity of mango is 2
+
+inventory.checkStock("banana"); //The item "banana" is out of stock
+inventory.checkStock("kiwi"); //There is no item call "kiwi"
 
 // ## Exercise 22: Dice Roller
 // 1. Create an object called `dice` with properties: sides (number) and lastRoll (number).

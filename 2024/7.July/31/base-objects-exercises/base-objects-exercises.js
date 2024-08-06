@@ -10,19 +10,23 @@
 
 // **Learn more:** [MDN Web Docs - Working with Objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects)
 
-//////answer
+////// create object
 let person = {
   name: "Haviv",
   age: 24,
   isStudent: true,
 };
+// ACcess ang log his name and age
 console.log(
   `The man's name is ${person.name} and his age is ${person.age} years old`
 );
 // Output: The man's name is Haviv and the age is 24 years old
+// Modify the isStudent property and log the updated object.
 person.isStudent = false;
 console.log(`Its ${person.isStudent} that this person is student`);
-// Output: Its false that this person is student
+// Output: Its false that this person is student.
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 // ## Exercise 2: Car
 
@@ -34,18 +38,21 @@ console.log(`Its ${person.isStudent} that this person is student`);
 
 // **Learn more:** [JavaScript.info - Objects](https://javascript.info/object)
 
-//////answer
-
+//create a object
 let car = {
   make: "Ford",
   model: "Fiesta",
   year: 2002,
 };
+// Access an log the name and model
 console.log(`The car make is ${car.make} and the model is ${car.model}`);
 // Output:The car make is Ford and the model is Fiesta
+//update and log the year
 car.year = 2012;
 console.log(`The manufacture year is ${car.year} `);
 // Output:The manufacture year is 2012
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 // ## Exercise 3: Fruit
 

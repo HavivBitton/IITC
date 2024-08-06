@@ -486,14 +486,33 @@ console.log(numbers); //[9, 25, 4, 17] (4)
 // 71. Use `forEach()` to print each element in `colors`.
 //     Hint: The callback function in `forEach()` receives each element as an argument.
 
+color.forEach((a) => console.log(a));
+
 // 72. Double each number in `numbers` using `forEach()`.
 //     Hint: Modify the original array within the `forEach()` callback.
+console.log(numbers); //[9, 25, 4, 17](4);
+numbers.forEach((a) => console.log(a * a)); // 81 , 625 , 16 , 289
 
 // 73. Use `forEach()` to create an HTML list from an array of strings.
 //     Hint: Concatenate HTML tags within the `forEach()` callback.
 
 // 74. Implement a simple search function using `forEach()`.
 //     Hint: Use a condition inside the `forEach()` callback to find matching elements.
+function searchArray(array, target) {
+  let resultIndex = -1;
+  array.forEach((element, index) => {
+    if (element === target) {
+      resultIndex = index;
+      return;
+    }
+  });
+  return resultIndex;
+}
+numbers = [5, 3, 8, 1, 2];
+let target = 8;
+let index = searchArray(numbers, target);
+
+console.log(index); // Output: 2
 
 // 75. Use `forEach()` to count how many elements in an array meet a certain condition.
 //     Hint: Increment a counter variable in the `forEach()` callback when the condition is met.
@@ -505,8 +524,15 @@ console.log(numbers); //[9, 25, 4, 17] (4)
 // 76. Use `map()` to create a new array with the lengths of each string in `fruits`.
 //     Hint: Return the length of each string in the `map()` callback.
 
+console.log(words); //["aa", "aaa", "aaaa", "aaaaa"] (4)
+let length = words.map((words) => words.length);
+console.log(length); //[2, 3, 4, 5] (4)
+
 // 77. Square all numbers in `numbers` using `map()`.
 //     Hint: Return the square of each number in the `map()` callback.
+
+numbers = [25, 9, 16, 4];
+console.log(numbers.map(Math.sqrt)); //[5, 3, 4, 2] (4)
 
 // 78. Create a new array where each element is a boolean indicating if the original element is even.
 //     Hint: Use the modulo operator (%) to check for even numbers.
