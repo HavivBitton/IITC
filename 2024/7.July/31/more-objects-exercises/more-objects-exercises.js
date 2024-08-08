@@ -441,7 +441,7 @@ console.log(dice.roll()); // 4
 
 // Create an object called `wordCounter`
 const wordCounter = {
-  text: "hello world!",
+  text: "hello world ! hello",
   //Add methods: `countWords()`
   countWords: function () {
     let counterArray = this.text.split(" ");
@@ -451,7 +451,7 @@ const wordCounter = {
     let counterArray = this.text.split("");
     return counterArray.length;
   },
-  getFrequentWords: function () {
+  getFrequentWords: function (n) {
     let freqObject = {};
     let wordsArray = this.text.split(" ");
     for (let i = 0; i < wordsArray.length; i++) {
@@ -459,14 +459,14 @@ const wordCounter = {
         freqObject[wordsArray[i]] = 1;
       } else freqObject[wordsArray[i]] += 1;
     }
-    return freqObject;
+    const freqArray = Object.entries(freqObject);
+    return freqArray.slice(0, n);
   },
 };
 
 console.log(wordCounter.countWords()); // Output: 2
 console.log(wordCounter.countChar()); // Output: 12
-console.log(wordCounter.getFrequentWords()); // Output: 12
-
+console.log(wordCounter.getFrequentWords(2)); // Output: 12
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // ## Exercise 24: Simple Calculator
 // 1. Create an object called `calculator` with properties: result (number).
