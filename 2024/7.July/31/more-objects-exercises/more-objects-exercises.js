@@ -466,8 +466,10 @@ const wordCounter = {
 
 console.log(wordCounter.countWords()); // Output: 2
 console.log(wordCounter.countChar()); // Output: 12
-console.log(wordCounter.getFrequentWords(2)); // Output: 12
+console.log(wordCounter.getFrequentWords(2)); // Output: [["hello", 2], ["world", 1]] (2)
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
+
 // ## Exercise 24: Simple Calculator
 // 1. Create an object called `calculator` with properties: result (number).
 // 2. Add methods: `add(n)`, `subtract(n)`, `multiply(n)`, `divide(n)`, and `clear()`.
@@ -475,11 +477,58 @@ console.log(wordCounter.getFrequentWords(2)); // Output: 12
 
 // **Hint:** Use method chaining to allow operations like `calculator.add(5).multiply(2)`.
 
+const calculator = {
+  result: 0,
+  add: function (n) {
+    this.result += n;
+    return this.result;
+  },
+  subtract: function (n) {
+    this.result -= n;
+    return this.result;
+  },
+  multiyply: function (n) {
+    this.result *= n;
+    return this.result;
+  },
+  divide: function (n) {
+    this.result /= n;
+    return this.result;
+  },
+  clear: function () {
+    this.result = 0;
+    return this.result;
+  },
+};
+
+console.log(calculator.add(200)); // 200
+console.log(calculator.subtract(100)); // 100
+console.log(calculator.multiyply(10)); // 1000
+console.log(calculator.divide(2)); //500
+console.log(calculator.clear()); //00
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
 // ## Exercise 25: Rock Paper Scissors Game
 // 1. Create an object called `game` with properties: playerScore (number) and computerScore (number).
 // 2. Add methods: `play(playerChoice)`, `getComputerChoice()`, and `determineWinner(player, computer)`.
 
 // **Hint:** Use Math.random() for computer choice and nested if statements for winner logic.
+
+const game = {
+  playerScore: 0,
+  computerScore: 0,
+  play: function () {
+    let playerChoice = prompt("Rock, Paper or Scissors ?");
+    return playerChoice;
+  },
+  getComputerChoice: function () {
+    let ComputerChoice = Math.floor(Math.random() * 3 + 1);
+    // return ComputerChoice;
+    if (ComputerChoice)
+  },
+};
+
 
 // ## Exercise 26: BMI Calculator
 // 1. Create an object called `bmiCalculator` with properties: weight (number) and height (number).
