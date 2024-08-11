@@ -518,17 +518,45 @@ console.log(calculator.clear()); //00
 const game = {
   playerScore: 0,
   computerScore: 0,
+  // play: function (playerChoice) {
   play: function () {
     let playerChoice = prompt("Rock, Paper or Scissors ?");
-    return playerChoice;
+    return playerChoice.toLowerCase();
   },
   getComputerChoice: function () {
     let ComputerChoice = Math.floor(Math.random() * 3 + 1);
     // return ComputerChoice;
-    if (ComputerChoice)
+    if (ComputerChoice === 1) return "rock";
+    else if (ComputerChoice === 2) return "paper";
+    else if (ComputerChoice === 3) return "scissors";
+  },
+  determineWinner: function (player, computer) {
+    if (player === computer) return "There is a tie !";
+    else if (
+      (player === "rock" && computer === "scissors") ||
+      (player === "paper" && computer === "rock") ||
+      (player === "scissors" && computer === "paper")
+    ) {
+      this.playerScore += 1;
+      return `player won the match! 
+      player choice was ${player},
+      and computer choice was ${computer}.
+      the score now is ${this.playerScore} points for player and ${this.computerScore} points for computer`;
+    } else if (
+      (computer === "rock" && player === "scissors") ||
+      (computer === "paper" && player === "rock") ||
+      (computer === "scissors" && player === "paper")
+    ) {
+      this.computerScore += 1;
+      return `Computer won the match! 
+      player choice was ${player},
+      and computer choice was ${computer}.
+      the score now is ${this.playerScore} points for player and ${this.computerScore} points for computer`;
+    }
   },
 };
 
+console.log(game.determineWinner(game.play("paper"), game.getComputerChoice()));
 
 // ## Exercise 26: BMI Calculator
 // 1. Create an object called `bmiCalculator` with properties: weight (number) and height (number).
