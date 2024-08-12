@@ -518,9 +518,9 @@ console.log(calculator.clear()); //00
 const game = {
   playerScore: 0,
   computerScore: 0,
-  // play: function (playerChoice) {
-  play: function () {
-    let playerChoice = prompt("Rock, Paper or Scissors ?");
+  play: function (playerChoice) {
+    // play: function () {
+    // let playerChoice = prompt("Rock, Paper or Scissors ?");
     return playerChoice.toLowerCase();
   },
   getComputerChoice: function () {
@@ -539,9 +539,9 @@ const game = {
     ) {
       this.playerScore += 1;
       return `player won the match! 
-      player choice was ${player},
-      and computer choice was ${computer}.
-      the score now is ${this.playerScore} points for player and ${this.computerScore} points for computer`;
+        player choice was ${player},
+        and computer choice was ${computer}.
+        the score now is ${this.playerScore} points for player and ${this.computerScore} points for computer`;
     } else if (
       (computer === "rock" && player === "scissors") ||
       (computer === "paper" && player === "rock") ||
@@ -549,14 +549,16 @@ const game = {
     ) {
       this.computerScore += 1;
       return `Computer won the match! 
-      player choice was ${player},
-      and computer choice was ${computer}.
-      the score now is ${this.playerScore} points for player and ${this.computerScore} points for computer`;
+        player choice was ${player},
+        and computer choice was ${computer}.
+        the score now is ${this.playerScore} points for player and ${this.computerScore} points for computer`;
     }
   },
 };
 
 console.log(game.determineWinner(game.play("paper"), game.getComputerChoice()));
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 // ## Exercise 26: BMI Calculator
 // 1. Create an object called `bmiCalculator` with properties: weight (number) and height (number).
@@ -564,6 +566,23 @@ console.log(game.determineWinner(game.play("paper"), game.getComputerChoice()));
 // 3. `calculate()` should return the BMI and a description (e.g., "Normal weight", "Overweight").
 
 // **Hint:** BMI = weight(kg) / (height(m))^2 or BMI = 703 * weight(lbs) / (height(inches))^2
+
+const bmiCalculator = {
+  weight: 0,
+  height: 0,
+  isMetric: true,
+  setMetricUnits: function (weight, height) {
+    this.weight = weight;
+    this.height = height;
+  },
+  setImperialUnits: function (weight, height) {
+    this.weight = weight;
+    this.height = height;
+  },
+  calculate: function () {},
+};
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 // ## Exercise 27: Time Converter
 // 1. Create an object called `timeConverter` with a property seconds (number).

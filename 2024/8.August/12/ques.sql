@@ -1,0 +1,146 @@
+
+-- Q1 
+-- SELECT 
+-- FirstName,
+-- LastName
+-- FROM Employees
+-- WHERE EmployeeID = 3
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- -- Q2
+-- SELECT
+-- ProductName,
+-- UnitPrice
+-- from Products
+-- WHERE ProductID = 4
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q3
+-- SELECT 
+-- ProductID,
+-- ProductName,
+-- UnitPrice
+-- from Products 
+-- WHERE UnitPrice > 20
+-- order by UnitPrice ASC
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+--Q4
+-- SELECT 
+-- FirstName + ' ' + LastName fullName,
+-- BirthDate,
+-- ReportsTo
+-- from Employees 
+-- WHERE EmployeeID = 8
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q5
+-- SELECT
+-- EmployeeID,
+-- FirstName + ' ' + LastName fullName,
+-- BirthDate
+-- from Employees
+-- WHERE City = 'london'
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q6
+-- SELECT *
+-- from Products
+-- where UnitPrice not BETWEEN 50 and 100
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q7
+-- SELECT 
+-- ProductName,
+-- UnitPrice
+-- from Products
+-- WHERE UnitPrice BETWEEN 21.35 and 43.9 
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q8
+-- SELECT
+-- EmployeeID,
+-- LastName,
+-- HireDate
+-- from Employees
+-- WHERE City = 'london' or City =  'tacoma'
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q9
+-- SELECT
+-- EmployeeID,
+-- FirstName + ' ' + LastName fullName 
+-- from Employees
+-- WHERE EmployeeID IN (1,2,5)
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q10
+-- SELECT 
+-- FirstName + ' ' + LastName fullName,
+--  BirthDate
+-- from Employees
+-- WHERE EmployeeID not in (4,5,7)
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q11
+SELECT 
+ProductID,
+ProductName,
+CategoryID
+from Products
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q12
+-- SELECT distinct Country + ' '  + city   
+-- from Employees
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q13
+-- SELECT
+-- FirstName,
+-- BirthDate ,
+-- BirthDate + 5
+-- from Employees
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q14
+-- SELECT
+-- ProductName ,
+-- UnitPrice,
+-- UnitPrice +12
+-- from Products
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q15
+-- SELECT
+-- ProductID,
+-- ProductName,
+-- UnitPrice,
+-- UnitPrice + (UnitPrice * 1.65) as newPrice,
+-- UnitsInStock,
+-- UnitsOnOrder,
+-- UnitsInStock - UnitsOnOrder 
+-- from Products
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q16
+-- SELECT 
+-- ProductID,
+-- ProductName,
+-- (UnitsInStock - UnitsOnOrder) * UnitPrice as notOrderProductPrice
+-- from Products
