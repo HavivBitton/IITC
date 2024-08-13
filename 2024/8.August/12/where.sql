@@ -61,6 +61,7 @@
 -- UnitPrice
 -- from Products
 -- WHERE UnitPrice BETWEEN 21.35 and 43.9 
+-- order by UnitPrice DESC
 
 -- ////////////////////////////////////////////////////////////////////////////////////
 
@@ -92,55 +93,142 @@
 
 -- ////////////////////////////////////////////////////////////////////////////////////
 
--- Q11
-SELECT 
-ProductID,
-ProductName,
-CategoryID
-from Products
+-- -- Q11
+-- SELECT 
+-- ProductID,
+-- ProductName,
+-- CategoryID
+-- from Products
+-- WHERE CategoryID not in (1,2,7)
+-- order by CategoryID ASC
 
 -- ////////////////////////////////////////////////////////////////////////////////////
 
 -- Q12
--- SELECT distinct Country + ' '  + city   
+-- SELECT 
+-- FirstName,
+-- Region
 -- from Employees
+-- WHERE Region is NULL
 
 -- ////////////////////////////////////////////////////////////////////////////////////
 
 -- Q13
--- SELECT
--- FirstName,
--- BirthDate ,
--- BirthDate + 5
--- from Employees
+-- SELECT top 3
+-- ProductName,
+-- UnitPrice
+-- from Products
 
 -- ////////////////////////////////////////////////////////////////////////////////////
 
 -- Q14
 -- SELECT
--- ProductName ,
--- UnitPrice,
--- UnitPrice +12
--- from Products
+-- OrderID,
+-- OrderDate,
+-- RequiredDate
+-- from Orders
+-- WHERE RequiredDate > '1996-10-31'
 
 -- ////////////////////////////////////////////////////////////////////////////////////
 
 -- Q15
 -- SELECT
--- ProductID,
--- ProductName,
--- UnitPrice,
--- UnitPrice + (UnitPrice * 1.65) as newPrice,
--- UnitsInStock,
--- UnitsOnOrder,
--- UnitsInStock - UnitsOnOrder 
--- from Products
+-- EmployeeID,
+-- LastName,
+-- ReportsTo
+-- from Employees
+-- WHERE ReportsTo is not NULL
+-- order by EmployeeID ASC
 
 -- ////////////////////////////////////////////////////////////////////////////////////
 
 -- Q16
+-- SELECT *
+-- from Categories
+-- WHERE CategoryName LIKE '%c%'
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q17
+-- SELECT
+-- CompanyName,
+-- Country
+-- from Customers
+-- WHERE CompanyName like '%a'
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q18
 -- SELECT 
--- ProductID,
 -- ProductName,
--- (UnitsInStock - UnitsOnOrder) * UnitPrice as notOrderProductPrice
+-- CategoryID
 -- from Products
+-- WHERE ProductName like '%a_'
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q19
+-- SELECT 
+-- OrderID,
+-- CustomerID,
+-- EmployeeID
+-- from Orders
+-- WHERE OrderDate BETWEEN '1997-4-1' and '1997-5-31'
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q20
+-- SELECT 
+-- CustomerID,
+-- CompanyName,
+-- Country,
+-- Phone,
+-- Region
+-- from Customers
+-- WHERE Country LIKE '[MFG]%' and Region is null
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q21
+-- SELECT 
+-- EmployeeID,
+-- FirstName + ' ' + LastName fullname,
+-- BirthDate,
+-- Country
+-- from Employees
+-- WHERE LastName LIKE '%[kd]%' or BirthDate like '1996'
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q22
+-- SELECT
+-- ProductName,
+-- UnitPrice,
+-- SupplierID
+-- from Products
+-- WHERE UnitPrice > 30 and SupplierID in (1,3)
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q23
+-- SELECT
+-- OrderID,
+-- EmployeeID,
+-- OrderID,
+-- RequiredDate,
+-- ShipName
+-- from Orders
+-- WHERE EmployeeID =7 
+-- and (ShipName in  ('QUICK-Stop' ,'Du mond entire ','Eastern ','Connection'))
+-- and OrderDate+20 < RequiredDate
+
+-- ////////////////////////////////////////////////////////////////////////////////////
+
+-- Q24
+-- SELECT
+-- ProductID,
+-- ProductName
+-- from Products
+-- WHERE (SupplierID in (16,8,21) OR UnitPrice <10) 
+-- and UnitsInStock not BETWEEN 10 and 100 
+-- order by UnitPrice ASC

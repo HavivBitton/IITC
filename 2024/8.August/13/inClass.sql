@@ -1,0 +1,11 @@
+-- SELECT ShipCountry,
+-- AVG(Freight) avgFreight,
+-- MAX(Freight) maxFrieght
+-- from Orders
+-- GROUP by ShipCountry
+
+-- SELECT ProductID, 
+-- MAX(UnitPrice) 
+-- from Products
+-- GROUP by ProductID
+-- HAVING MAX(UnitPrice) >30
