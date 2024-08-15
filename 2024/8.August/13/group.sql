@@ -154,3 +154,27 @@
 -- GROUP by cat.CategoryName ,UnitsOnOrder, UnitsInStock
 -- HAVING SUM(UnitsOnOrder) >20
 -- ORDER by CategoryName ASC
+
+-- //////////////////////////////////////////////////////////
+
+-- Q20
+-- SELECT
+-- Region,
+-- City,
+-- COUNT(CustomerID)
+-- from Customers
+-- WHERE (City like '%l%' or city like '%m%') and Region is not NULL
+-- GROUP by City, Region
+-- HAVING COUNT(CustomerID) >= 2
+
+-- //////////////////////////////////////////////////////////
+
+-- Q21 
+-- SELECT
+-- LastName 'Employee',
+-- count(o.EmployeeID) 'total orders' ,
+-- MAX(OrderDate) 'Last order'
+-- from Employees e JOIN Orders o
+-- on e.EmployeeID = o.EmployeeID
+-- GROUP by  LastName
+-- HAVING count(o.EmployeeID) > 100
