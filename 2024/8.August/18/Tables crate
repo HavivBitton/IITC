@@ -115,3 +115,9 @@ CREATE TABLE Users (
     FOREIGN KEY ([Profile]) REFERENCES Profiles([Profile])
 );
 
+CREATE TABLE OrdersDeils (
+    OrderNo INT,
+    Code int 
+    FOREIGN KEY (Code) REFERENCES Items(Code),
+    FOREIGN KEY (OrderNo) REFERENCES ExOrders(OrderNo)
+)
