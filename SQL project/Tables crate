@@ -1,0 +1,123 @@
+CREATE TABLE Items (
+    Code int PRIMARY KEY,
+    [Desc] VARCHAR(255),
+    UnitPrice int,
+    Available INT,
+    Saved INT,
+    Waiting INT,
+    Subscript INT,
+    Freq INT,
+    SuppDate DATE,
+    OrderPercnt DECIMAL
+);
+
+CREATE TABLE ExOrders (
+    OrderNo int PRIMARY KEY,
+    [Date] DATE NOT NULL,
+    CustID INT NOT NULL,
+    Code INT ,
+    Quant INT,
+    Delivery VARCHAR(100),
+    [Address] VARCHAR(255),
+    [Status] VARCHAR(50),
+    SuppDate DATE,
+    FOREIGN KEY (Code) REFERENCES Items(Code),
+    FOREIGN KEY (CustID) REFERENCES Customers(CustID)
+);
+
+CREATE TABLE Invoices (
+    InvNo INT PRIMARY KEY,
+    [Date] DATE NOT NULL,
+    OrderNo INT NOT NULL,
+    UnitDesc VARCHAR(255),
+    NoUnits INT,
+    UnitPrice DECIMAL(10, 2),
+    TotAmount DECIMAL(15, 2),
+    FOREIGN KEY (OrderNo) REFERENCES ExOrders(OrderNo)
+);
+CREATE TABLE Customers (
+    CustID int PRIMARY KEY,
+    CustType int,
+    CustStatus INT ,
+    FreezCode INT,
+    OverCount INT,
+    CustName VARCHAR(255),
+    DelivAddress VARCHAR(255),
+    MailAddrss VARCHAR(255),
+    CreditCard INT
+);
+CREATE TABLE Subscription (
+    OrderNo INT ,
+    [Status] INT,
+    CustID int,
+    Code int,
+    Quant INT,
+    Freq INT,
+    Delivery INT,
+    NextOrder DATE,
+    Expiration DATE,
+    FOREIGN KEY (OrderNo) REFERENCES ExOrders(OrderNo),
+    FOREIGN KEY (CustID) REFERENCES Customers(CustID),
+    FOREIGN KEY (Code) REFERENCES Items(Code)
+);
+CREATE TABLE Receipt (
+    RecNo INT PRIMARY KEY,
+    PymtDate DATE NOT NULL,
+    InvNo INT,
+    OrderNo INT,
+    PaidAmt INT,
+    FOREIGN KEY (InvNo) REFERENCES Invoices(InvNo),
+    FOREIGN KEY (OrderNo) REFERENCES ExOrders(OrderNo)
+);
+CREATE TABLE Accounting (
+    [Date] DATE NOT NULL,
+    Amount INT,
+    CrdtDebt INT,
+    InvNo INT,
+    OrderNo INT,
+    ReceiptNo INT,
+    FOREIGN KEY (InvNo) REFERENCES Invoices(InvNo),
+    FOREIGN KEY (ReceiptNo) REFERENCES Receipt(RecNo),
+    FOREIGN KEY (OrderNo) REFERENCES ExOrders(OrderNo)
+);
+CREATE TABLE StockOrder (
+    OrderNo INT,
+    StockDate DATE NOT NULL,
+    Code INT,
+    Descr VARCHAR(255),
+    Quant INT,
+    FOREIGN KEY (OrderNo) REFERENCES ExOrders(OrderNo),
+    FOREIGN KEY (Code) REFERENCES Items(Code)
+);
+CREATE TABLE DeliveryFees (
+    Delivery INT,
+    [Desc] VARCHAR(255),
+    DelFee INT
+);
+CREATE TABLE Discounts (
+    CustType VARCHAR(50),
+    Discnt DECIMAL(10, 2)
+);
+CREATE TABLE Numbers (
+    LastOrder INT,
+    LastSubsc INT,
+    LastStock INT,
+    LastReceipt INT,
+    LastInvoice INT
+);
+CREATE TABLE Profiles (
+    [Profile] VARCHAR(50) PRIMARY KEY,
+    Act VARCHAR(255)
+);
+CREATE TABLE Users (
+    UserName VARCHAR(50),
+    [Profile] VARCHAR(50)
+    FOREIGN KEY ([Profile]) REFERENCES Profiles([Profile])
+);
+
+CREATE TABLE OrdersDeils (
+    OrderNo INT,
+    Code int 
+    FOREIGN KEY (Code) REFERENCES Items(Code),
+    FOREIGN KEY (OrderNo) REFERENCES ExOrders(OrderNo)
+)

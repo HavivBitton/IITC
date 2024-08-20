@@ -1,0 +1,100 @@
+
+INSERT INTO Items (Code, [Desc], UnitPrice, Available, Saved, Waiting, Subscript, Freq, SuppDate, OrderPercnt)
+VALUES 
+(001, 'Item A', 10.50, 100, 10, 5, 15, 30, '2024-08-20', 0.15),
+(002, 'Item B', 20.75, 200, 20, 10, 25, 60, '2024-09-01', 0.25),
+(003, 'Item C', 15.30, 150, 15, 7, 30, 45, '2024-08-25', 0.20),
+(004, 'Item D', 35.90, 80, 8, 3, 10, 90, '2024-09-10', 0.10);
+
+INSERT INTO ExOrders ([Date], OrderNo, CustID, Code, Quant, Delivery, [Address], [Status], SuppDate)
+VALUES
+('2024-08-01', 12345, 121212001, 001, 10, 01, '123 Main St, City A', 'Shipped', '2024-08-10'),
+('2024-08-02', 12346, 121212002, 002, 15, 02, '456 Maple Ave, City B', 'Processing', '2024-08-12'),
+('2024-08-03', 12347, 121212003, 003, 20, 03, '789 Oak Dr, City C', 'Delivered', '2024-08-15'),
+('2024-08-04', 12348, 121212004, 004, 25, 04, '321 Pine Rd, City D', 'Cancelled', '2024-08-18');
+
+INSERT INTO Invoices ([Date], OrderNo, UnitDesc, NoUnits, UnitPrice, InvNo, TotAmount)
+VALUES
+('2024-08-11', 12345, 'Item A', 10, 10.50, 0001, 105.00),
+('2024-08-12', 12346, 'Item B', 15, 20.75, 0002, 311.25),
+('2024-08-13', 12347, 'Item C', 20, 15.30, 0003, 306.00),
+('2024-08-14', 12348, 'Item D', 25, 35.90, 0004, 897.50);
+
+INSERT INTO Subscription (OrderNo, [Status], CustID, Code, Quant, Freq, Delivery, NextOrder, Expiration)
+VALUES
+(12345, 'Active', 121212001, 001, 10, 30, 01, '2024-09-01', '2024-12-31'),
+(12346, 'Paused', 121212002, 002, 15, 60, 02, '2024-10-01', '2024-12-31'),
+(12347, 'Cancelled', 121212003, 003, 20, 45, 03, '2024-09-15', '2024-12-31'),
+(12348, 'Active', 121212004, 004, 25, 90, 04, '2024-11-01', '2024-12-31');
+
+INSERT INTO Customers (CustID, CustType, CustStatus, FreezCode, OverCount, CustName, DelivAddress, MailAddrss, CreditCard)
+VALUES
+(121212001, 'Regular', 'Active', NULL, 0, 'John Doe', '123 Main St, City A', 'john@example.com', '4111 1111 1111 1111'),
+(121212002, 'Premium', 'Inactive', 001, 2, 'Jane Smith', '456 Maple Ave, City B', 'jane@example.com', '4111 2222 2222 2222'),
+(121212003, 'Regular', 'Active', NULL, 0, 'Robert Brown', '789 Oak Dr, City C', 'robert@example.com', '4111 3333 3333 3333'),
+(121212004, 'Premium', 'Active', NULL, 1, 'Emily Davis', '321 Pine Rd, City D', 'emily@example.com', '4111 4444 4444 4444');
+
+INSERT INTO Receipt (PymtDate, RecNo, InvNo, OrderNo, PaidAmt)
+VALUES
+('2024-08-15', 123045, 0001, 12345, 105.00),
+('2024-08-16', 123046, 0002, 12346, 311.25),
+('2024-08-17', 123047, 0003, 12347, 306.00),
+('2024-08-18', 123048, 0004, 12348, 897.50);
+
+INSERT INTO Accounting ([Date], Amount, CrdtDebt, InvNo, OrderNo, ReceiptNo)
+VALUES
+('2024-08-15', 105.00, 'Debt', 0001, 12345, 123045),
+('2024-08-16', 311.25, 'Debt', 0002, 12346, 123046),
+('2024-08-17', 306.00, 'Debt', 0003, 12347, 123047),
+('2024-08-18', 897.50, 'Debt', 0004, 12348, 123048);
+
+INSERT INTO StockOrder (OrderNo, StockDate, Code, Descr, Quant)
+VALUES
+(12345,'2024-08-19', 001, 'Item A', 50),
+(12346,'2024-08-20', 002, 'Item B', 30),
+(12347,'2024-08-21', 003, 'Item C', 40),
+(12348,'2024-08-22', 004, 'Item D', 25);
+
+INSERT INTO DeliveryFees (delivery, [Desc] , DelFee)
+VALUES
+('Regular', 'Standard Delivery Fee', 5.00),
+('Premium', 'Express Delivery Fee', 10.00),
+('Regular', 'Discounted Delivery Fee', 3.00),
+('Premium', 'No Delivery Fee', 0.00);
+
+INSERT INTO Discounts (CustType, Discnt)
+VALUES
+('Regular', 0.10),
+('Premium', 0.15),
+('Regular', 0.05),
+('Premium', 0.20);
+
+INSERT INTO Numbers (LastOrder, LastSubsc, LastStock, LastReceipt, LastInvoice)
+VALUES
+(12345, 12345, 12345, 12345, 0001),
+(12346, 12346, 12346, 12346, 0002),
+(12347, 12347, 12347, 12347, 0003),
+(12348, 12348, 12348, 12348, 0004);
+
+INSERT INTO Profiles ([Profile], Act)
+VALUES
+('Admin', 'Full Access'),
+('Manager', 'Manage Orders'),
+('Customer Service', 'Handle Customer Queries'),
+('Logistics', 'Manage Deliveries');
+
+INSERT INTO Users (UserName, [Profile])
+VALUES
+('John Doe','Admin'),
+('Jane Smith','Manager'),
+('robert_brown','Customer Service'),
+('Emily Davis','Logistics');
+
+INSERT INTO OrdersDeils (OrderNo, code)
+VALUES
+(12345,001),
+(12346,002),
+(12347,003),
+(12348,004);
+
+
