@@ -7,6 +7,16 @@ ALTER TABLE Accounting ALTER COLUMN crdtDebt VARCHAR(255);
 ALTER TABLE DeliveryFees ALTER COLUMN delivery VARCHAR(255);
 ALTER TABLE DeliveryFees ALTER COLUMN delfee DECIMAL(10, 5);
 ALTER TABLE Subscription ALTER COLUMN [Status] VARCHAR(255);
+ALTER TABLE Accounting ALTER COLUMN crdtDebt int;
 
-SELECT *
-FROM Users
+update Accounting set CrdtDebt= 1
+WHERE InvNo = 1
+update Accounting set CrdtDebt= -1
+WHERE InvNo = 2
+update Accounting set CrdtDebt= -1
+WHERE InvNo = 3
+update Accounting set CrdtDebt= 1
+WHERE InvNo = 4
+
+
+
