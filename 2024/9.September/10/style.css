@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 150vh;
+}
+header {
+  position: sticky;
+  top: 0px;
+  padding: 5px;
+  text-align: center;
+  background-color: gray;
+}
+main {
+  position: relative;
+  margin: 5px;
+}
+
+.side-bar {
+  position: absolute;
+  left: 0px;
+  max-width: 100px;
+
+  /* background-color: yellow; */
+}
+
+.main-area {
+  margin-left: 120px;
+  /* left: 120px; */
+  font-size: 80px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  background-color: gray;
+  text-align: center;
+  width: 100%;
+}
