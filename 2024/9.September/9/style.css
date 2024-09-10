@@ -1,0 +1,184 @@
+.main {
+  margin: 0;
+  margin-bottom: 1rem;
+  border: solid 2px;
+  border-color: blue;
+  background-color: yellow;
+  padding: 1rem;
+}
+
+.firstP {
+  color: red;
+}
+.secondP {
+  color: red;
+}
+
+.thirdP {
+  color: white;
+  border: solid 0.8rem;
+  border-color: gray;
+  background-color: gray;
+  border-radius: 0.6rem;
+}
+.main__circles {
+  margin: 0;
+  margin-bottom: 1rem;
+  border: solid 2px;
+  border-color: blue;
+  background-color: yellow;
+  padding: 1rem;
+}
+.main__circleContent {
+  display: inline-flex;
+  margin: 0;
+}
+.main__circle1 {
+  margin: 0.1rem;
+  height: 80px;
+  width: 80px;
+  background-color: red;
+  border-radius: 50%;
+}
+.main__circle2 {
+  margin: 0.1rem;
+  height: 80px;
+  width: 80px;
+  background-color: blue;
+  border-radius: 50%;
+}
+.main__circle3 {
+  margin: 0.1rem;
+  height: 80px;
+  width: 80px;
+  background-color: green;
+  border-radius: 50%;
+}
+
+.main__rectangle {
+  border: solid 2px;
+  border-color: blue;
+  background-color: yellow;
+}
+
+/* 
+.main__rectangle {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  border: solid 2px;
+  border-width: 0.15rem;
+  border-color: blue;
+  background-color: yellow;
+  padding: 1rem;
+} */
+
+.rectangle__within {
+  position: relative;
+  margin: auto;
+  height: 10rem;
+  width: 20rem;
+  background-color: red;
+}
+
+.rectangle__left {
+  background-color: black;
+  height: 2rem;
+  width: 2.5rem;
+  text-align: center;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.rectangle__right {
+  position: absolute;
+  top: 2rem;
+  display: flex;
+  background-color: black;
+  height: 2rem;
+  right: 0;
+  width: 2.5rem;
+  text-align: center;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+/* .rectangle__left {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  height: 2rem;
+  width: 2.5rem;
+  background-color: black;
+}  */
+
+.rectangle__middle {
+  position: absolute; /* Position it relative to .rectangle__within */
+  top: 50%; /* Move to the middle of the container */
+  left: 50%; /* Move to the middle of the container */
+  transform: translate(-50%, -50%);
+  /* Adjusts the position to truly center the element */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  height: 2rem;
+  width: 4rem;
+  border-radius: 50%;
+  background-color: black;
+  /* box-shadow: 0.5em 0.6rem 0.6rem 0.1rem rgb(255, 255, 255);   */
+  box-shadow: 3px 5px 10px;
+}
+
+/* 
+.rectangle__right {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  height: 2rem;
+  width: 2.8rem;
+  background-color: black;
+} */
+
+/* .buttons {
+  margin: 0;
+  padding-top: 1rem;
+} */
+/* 
+ .explore__btn { 
+  font-size: 1rem;
+  font-weight: bold;
+  border: solid 0.4rem;
+  border-color: blueviolet;
+  background-color: blueviolet;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.1rem;
+  border-radius: 0.1rem;
+ }  */
+/* .join__btn {
+  font-size: 1rem;
+  font-weight: bold;
+  border: solid 0.4rem;
+  border-radius: 1rem;
+  border-color: blueviolet;
+  background-color: blueviolet;
+  letter-spacing: 0.1rem;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+}  */
