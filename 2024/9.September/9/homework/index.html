@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+    .main-box{
+        background-color: yellow;
+        border: solid 2px;
+        border-color: blue;
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+    p{
+        color: red;
+    }
+
+    span {
+        color: black;
+    }
+
+    .selcted{
+        color: white;
+        background-color: gray;
+        width: fit-content;
+        border-radius: 6px;
+        padding: 5px;
+    }
+    .ball {
+        background-color: white;
+        height: 50px;
+        width: 50px;
+        display: inline-block;
+        border-radius: 50%;
+    }
+    .ball1{
+        background-color: red;
+    }
+    .ball2{
+        background-color: blue
+    }
+    .ball3{
+        background-color: green;
+    }
+    .inner-box{
+        width: 75%;
+        height: 150px;
+        background-color: red;
+        margin: auto;
+    }
+    .item{
+        background-color: black;
+        color: white;
+        width: fit-content;
+        padding: 5px;
+    }
+    .item2{
+        margin-left: auto;
+    }
+    .item3{
+        margin-inline: auto;
+        border-radius: 50%;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="main-box">
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum <span>dolor</span> sit amet.</p>
+        <p class="selcted">Lorem ipsum dolor sit amet.</p>
+    </div>
+
+    <div class="main-box">
+        <div class="ball ball1"></div>
+        <div class="ball ball2"></div>
+        <div class="ball ball3"></div>
+
+    </div>
+
+    <div class="main-box">
+        <div class="inner-box">
+            <div class="item item1"> left</div>
+            <div class="item item2"> right </div>
+            <div class="item item3"> middele</div>
+
+        </div>
+    </div>
+
+    </div>
+  </body>
+</html>
