@@ -25,3 +25,6 @@ main {
   background-color: blueviolet;
   flex-basis: 100rem;
 }
+.box {
+  justify-self: center;
+}
