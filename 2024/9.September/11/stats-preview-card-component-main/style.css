@@ -1,0 +1,99 @@
+:root {
+  --page-padding: 20px;
+}
+
+* {
+  box-sizing: border-box;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+img {
+  display: block;
+  /* width: fit-content; */
+  max-width: 100%; /* */
+}
+a,
+button,
+input,
+textarea {
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+body {
+  width: 375px;
+  height: 975px;
+  background-color: hsl(233, 47%, 7%);
+}
+main {
+  background-color: hsl(244, 38%, 16%);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-block: 80px;
+  margin-inline: 20px;
+}
+img {
+  /* opacity: 0.5; */
+  filter: drop-shadow(hsl(277, 64%, 61%));
+  /* background-color: hsl(277, 64%, 61%); */
+  margin-bottom: var(--page-padding);
+}
+.title {
+  color: white;
+  font-size: 15px;
+  line-height: 33px;
+  margin-inline: var(--page-padding);
+  margin-top: var(--page-padding);
+}
+span {
+  color: hsl(277, 64%, 61%);
+}
+.decription {
+  color: white;
+  font-size: 17px;
+
+  margin: var(--page-padding);
+}
+
+.num {
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+}
+.word {
+  color: white;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+.data {
+  padding-top: 5px;
+  margin-bottom: var(--page-padding);
+}
