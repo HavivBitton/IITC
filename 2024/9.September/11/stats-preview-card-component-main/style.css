@@ -65,6 +65,7 @@ img {
   filter: drop-shadow(hsl(277, 64%, 61%));
   /* background-color: hsl(277, 64%, 61%); */
   margin-bottom: var(--page-padding);
+  border-radius: 15px 15px 0 0;
 }
 .title {
   color: white;
