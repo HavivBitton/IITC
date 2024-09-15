@@ -1,5 +1,14 @@
+@font-face {
+  font-family: "outfit";
+  src: url(./assets/fonts/outfit/Outfit-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: young-serif;
+  src: url(./assets/fonts/young-serif/YoungSerif-Regular.ttf);
+}
+
 :root {
-  --page-padding: 20px;
+  --page-padding: 30px;
   --color-White: hsl(0, 0%, 100%);
   --color-Stone-100: hsl(30, 54%, 90%);
   --color-Stone-150: hsl(30, 18%, 87%);
@@ -18,6 +27,7 @@
   padding: 0;
   margin: 0;
   font-size: 16px;
+  color: var(--color-Stone-600);
 }
 
 html {
@@ -50,10 +60,47 @@ a {
 }
 main {
   margin: var(--page-padding);
+  font-family: "outfit";
 }
 .title {
   font-size: 35px;
+  font-family: "young-serif";
+  line-height: 1;
+  color: var(--color-Stone-900);
 }
 .para1 {
   margin-block: var(--page-padding);
+}
+.box li::marker {
+  color: var(--color-Rose-800);
+}
+.box {
+  background-color: var(--color-Rose-50);
+  /* padding: var(--page-padding); */
+  border-radius: 1rem;
+  padding: 0.8rem 2rem;
+}
+.box h3 {
+  font-size: 21px;
+  color: var(--color-Rose-800);
+  font-weight: 600;
+}
+.box ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem 1.5rem;
+  border-radius: 1rem;
+  gap: 0.8rem;
+}
+.box span {
+  font-weight: bold;
+}
+.para2 {
+}
+
+.para2 h2 {
+  font-family: "young-serif";
+  color: var(--color-Brown-800);
+  font-size: 25px;
+  font-weight: 400;
 }
