@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="content">
+      <p class="text">hello1</p>
+      <p class="text">hello2</p>
+      <p class="text">hello3</p>
+    </div>
+    <ul id="list">
+      <li>li1</li>
+      <li>li2</li>
+      <li>li3</li>
+      <li>li4</li>
+      <li>li5</li>
+    </ul>
+    <button>Highlight List Items</button>
+
+    <script>
+      const divContent = document.getElementById("content");
+      divContent.style.backgroundColor = "LightBlue";
+
+      const nodeList = document.querySelectorAll(".text");
+      for (let i = 0; i < nodeList.length; i++) {
+        nodeList[i].style.color = "Red";
+        console.log(nodeList[i].textContent);
+      }
+
+      const listId = document.getElementById("list");
+    </script>
+  </body>
+</html>
