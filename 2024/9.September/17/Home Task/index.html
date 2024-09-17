@@ -2,23 +2,35 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <style>
+      .selected {
+        font-weight: bold;
+      }
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
-    <div id="content">
-      <p class="text">hello1</p>
-      <p class="text">hello2</p>
-      <p class="text">hello3</p>
+    <div class="task1">
+      <div id="content">
+        <p class="text">hello1</p>
+        <p class="text">hello2</p>
+        <p class="text">hello3</p>
+      </div>
+      <ul id="list">
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+        <li>li4</li>
+        <li>li5</li>
+      </ul>
+      <button id="myBtn">Highlight List Items</button>
     </div>
-    <ul id="list">
-      <li>li1</li>
-      <li>li2</li>
-      <li>li3</li>
-      <li>li4</li>
-      <li>li5</li>
-    </ul>
-    <button>Highlight List Items</button>
+
+    <div class="task2">
+      <ul id="ul2"></ul>
+      <button id="myBtn2">Add Item</button>
+    </div>
 
     <script>
       const divContent = document.getElementById("content");
@@ -30,7 +42,31 @@
         console.log(nodeList[i].textContent);
       }
 
+      // function changeBC() {
+      //   listId.style.backgroundColor = "Yellow";
+      // }
+
       const listId = document.getElementById("list");
+
+      const button1 = document.getElementById("myBtn");
+      button1.addEventListener("click", () => {
+        listId.style.backgroundColor = "Yellow";
+      });
+
+      const ul2 = document.getElementById("ul2");
+      function addItem() {
+        const newItem = document.createElement("li");
+        newItem.textContent = "New Item";
+        ul2.appendChild(newItem);
+      }
+      const button2 = document.getElementById("myBtn2");
+      button2.addEventListener("click", () => {
+        addItem();
+      });
+
+      function makeBold() {
+        ul2.classList.toggle("selected");
+      }
     </script>
   </body>
 </html>
