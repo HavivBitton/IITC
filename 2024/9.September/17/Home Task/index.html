@@ -17,7 +17,7 @@
         <p class="text">hello2</p>
         <p class="text">hello3</p>
       </div>
-      <ul id="list">
+      <ul id="ul1">
         <li>li1</li>
         <li>li2</li>
         <li>li3</li>
@@ -36,37 +36,34 @@
       const divContent = document.getElementById("content");
       divContent.style.backgroundColor = "LightBlue";
 
-      const nodeList = document.querySelectorAll(".text");
-      for (let i = 0; i < nodeList.length; i++) {
-        nodeList[i].style.color = "Red";
-        console.log(nodeList[i].textContent);
+      const nodeListText = document.querySelectorAll(".text");
+      for (let i = 0; i < nodeListText.length; i++) {
+        nodeListText[i].style.color = "Red";
+        console.log(nodeListText[i].textContent);
       }
 
-      // function changeBC() {
-      //   listId.style.backgroundColor = "Yellow";
-      // }
-
-      const listId = document.getElementById("list");
-
+      const ul1 = document.getElementById("ul1");
       const button1 = document.getElementById("myBtn");
+
+      //add event click on button 1 that make list id ul1 background color to yellow
       button1.addEventListener("click", () => {
-        listId.style.backgroundColor = "Yellow";
+        ul1.style.backgroundColor = "Yellow";
       });
 
-      const ul2 = document.getElementById("ul2");
-      function addItem() {
-        const newItem = document.createElement("li");
-        newItem.textContent = "New Item";
-        ul2.appendChild(newItem);
-      }
       const button2 = document.getElementById("myBtn2");
-      button2.addEventListener("click", () => {
-        addItem();
-      });
 
-      function makeBold() {
-        ul2.classList.toggle("selected");
-      }
+      const addOnPress = () => {
+        const addedLi = document.createElement("li");
+        addedLi.textContent = "New Text";
+        ul2.appendChild(addedLi);
+
+        // Add click event to toggle 'selected' class and make text bold
+        addedLi.addEventListener("click", () => {
+          addedLi.classList.toggle("selected");
+        });
+      };
+
+      button2.addEventListener("click", addOnPress);
     </script>
   </body>
 </html>
