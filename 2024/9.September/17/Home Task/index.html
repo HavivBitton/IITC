@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="style.css" />
     <meta charset="UTF-8" />
-    <style>
-      .selected {
-        font-weight: bold;
-      }
-    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
@@ -31,39 +27,6 @@
       <ul id="ul2"></ul>
       <button id="myBtn2">Add Item</button>
     </div>
-
-    <script>
-      const divContent = document.getElementById("content");
-      divContent.style.backgroundColor = "LightBlue";
-
-      const nodeListText = document.querySelectorAll(".text");
-      for (let i = 0; i < nodeListText.length; i++) {
-        nodeListText[i].style.color = "Red";
-        console.log(nodeListText[i].textContent);
-      }
-
-      const ul1 = document.getElementById("ul1");
-      const button1 = document.getElementById("myBtn");
-
-      //add event click on button 1 that make list id ul1 background color to yellow
-      button1.addEventListener("click", () => {
-        ul1.style.backgroundColor = "Yellow";
-      });
-
-      const button2 = document.getElementById("myBtn2");
-
-      const addOnPress = () => {
-        const addedLi = document.createElement("li");
-        addedLi.textContent = "New Text";
-        ul2.appendChild(addedLi);
-
-        // Add click event to toggle 'selected' class and make text bold
-        addedLi.addEventListener("click", () => {
-          addedLi.classList.toggle("selected");
-        });
-      };
-
-      button2.addEventListener("click", addOnPress);
-    </script>
+    <script src="./script.js"></script>
   </body>
 </html>

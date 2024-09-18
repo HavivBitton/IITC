@@ -1,0 +1,9 @@
+.selected {
+  font-weight: bold;
+  font-size: 35px;
+  color: red;
+}
+
+li {
+  transition: 0.6s;
+}
