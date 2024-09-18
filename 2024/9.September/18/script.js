@@ -27,6 +27,31 @@ function makeId() {
   return id;
 }
 
+const elForm = document.querySelector("form");
+elForm.addEventListener("submit", function (ev) {
+  ev.preventDefault();
+  const nameValue = elForm.querySelector("#name").value;
+  const gradeValue = parseInt(elForm.querySelector("#grade").value);
+  console.log(nameValue, gradeValue);
+
+  createStudent(nameValue, gradeValue);
+});
+
+// CREATE
+
+function createStudent(name, grade) {
+  const newStudents = {
+    id: makeId(),
+    fullName: name,
+    avgGrade: grade,
+  };
+
+  gStudents.push(newStudents);
+  const elStudentList = document.getElementById("studentList");
+  elStudentList.innerHTML = "";
+  renderStudentList();
+}
+
 // READ
 function renderStudentList() {
   const elStudentList = document.getElementById("studentList");
@@ -34,7 +59,7 @@ function renderStudentList() {
   for (let i = 0; i < gStudents.length; i++) {
     const student = gStudents[i];
     const elStudent = document.createElement("li");
-    elStudent.setAttribute("id", student.id + "-el");
+    elStudent.setAttribute("id", "el" + student.id);
 
     elStudent.innerHTML = `
         <div>${student.fullName}</div>
@@ -62,7 +87,7 @@ function deleteStudent(studentId) {
 
   const elStudentList = document.getElementById("studentList");
 
-  const elStudentToDelete = elStudentList.querySelector(`#${studentId}-el`);
+  const elStudentToDelete = elStudentList.querySelector(`#el${studentId}`);
   elStudentList.removeChild(elStudentToDelete);
 }
 

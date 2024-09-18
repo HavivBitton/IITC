@@ -1,0 +1,11 @@
+.is-done {
+  color: gray;
+  text-decoration: line-through;
+}
+.is-done button {
+  color: black;
+}
+
+.task {
+  display: flex;
+}
