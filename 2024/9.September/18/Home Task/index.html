@@ -6,19 +6,30 @@
     <title>CRUD</title>
   </head>
   <link rel="stylesheet" href="style.css" />
+
   <body>
-    <h2>Create Task</h2>
-    <form>
-      <div>
-        <label for="taskName">Task Name:</label>
-        <input id="taskName" type="text" placeholder="Enter new Task" />
-      </div>
+    <div class="create">
+      <h2>Create Task</h2>
+      <form>
+        <div>
+          <label for="taskName">Task Name:</label>
+          <input id="taskName" type="text" placeholder="Enter new Task" />
+          <button>Add</button>
+        </div>
+      </form>
+    </div>
 
-      <button>Add</button>
-    </form>
+    <div class="list">
+      <h2>My To-Do List:</h2>
 
-    <h2>My To-Do List:</h2>
-    <ol id="toDoList"></ol>
+      <select name="filter" id="filter">
+        <option value="all">All</option>
+        <option value="completed">completed</option>
+        <option value="uncompleted">uncompleted</option>
+      </select>
+
+      <ol id="toDoList"></ol>
+    </div>
 
     <script src="./script.js"></script>
   </body>

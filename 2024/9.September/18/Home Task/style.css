@@ -10,3 +10,14 @@
 .task {
   display: flex;
 }
+
+.list {
+  background-color: aquamarine;
+}
+.hide {
+  display: none;
+}
+.list h2,
+.filter {
+  display: flex;
+}
