@@ -53,20 +53,27 @@ function renderTaskList() {
 
     elTaskList.appendChild(elTask);
 
-    // elTask.addEventListener("click", () => {
-    //   for (let i = 0; i < gToDoList.length; i++) {
-    //     if (task.id === gToDoList[i].id) gToDoList[i].isDone = true;
-    //     elTask.classList.add("is-done");
-    //   }
-    // });
+    // elTask.addEventListener("click", doneTask);
+    elTask.addEventListener("click", () => {
+      for (let i = 0; i < gToDoList.length; i++) {
+        if (task.id === gToDoList[i].id) {
+          if (gToDoList[i].isDone === false) {
+            gToDoList[i].isDone = true;
+            elTask.classList.add("is-done");
+          } else {
+            gToDoList[i].isDone = false;
+            elTask.classList.remove("is-done");
+          }
+        }
+      }
+    });
   }
-}
-
-function doneTask() {
-  for (let i = 0; i < gToDoList.length; i++) {
-    if (task.id === gToDoList[i].id) gToDoList[i].isDone = true;
-    elTask.classList.add("is-done");
-  }
+  //   function doneTask() {
+  //     for (let i = 0; i < gToDoList.length; i++) {
+  //       if (task.id === gToDoList[i].id) gToDoList[i].isDone = true;
+  //       elTask.classList.add("is-done");
+  //     }
+  //   }
 }
 
 // let className = "";

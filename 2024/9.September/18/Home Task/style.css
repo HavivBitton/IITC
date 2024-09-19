@@ -1,9 +1,10 @@
-.is-done {
+.is-done div {
   color: gray;
   text-decoration: line-through;
 }
-.is-done button {
-  color: black;
+#toDoList li {
+  margin-bottom: 10px;
+  gap: 1rem;
 }
 
 .task {
