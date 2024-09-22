@@ -13,10 +13,10 @@ function makeId() {
 
 // CREATE
 
-const elForm = document.querySelector("form");
-elForm.addEventListener("submit", function (ev) {
+const Form = document.querySelector("form");
+Form.addEventListener("submit", function (ev) {
   ev.preventDefault();
-  const taskNameValue = elForm.querySelector("#taskName").value;
+  const taskNameValue = Form.querySelector("#taskName").value;
 
   createTask(taskNameValue);
 });
@@ -32,8 +32,6 @@ function createTask(taskName) {
 
   renderTaskList();
 }
-const filterBy = document.getElementById("filter");
-filterBy.addEventListener("change", renderTaskList);
 
 // READ
 function renderTaskList() {
@@ -48,35 +46,47 @@ function renderTaskList() {
     ) {
       continue;
     }
+
     const elTask = document.createElement("li");
     elTask.classList.add("task");
     elTask.setAttribute("id", "el" + task.id);
 
     elTask.innerHTML = `
-
-    <div onclick="doneTask()">${task.taskName}</div>
-    <button onclick="deleteTask('${task.id}')">Delete</button>
-    `;
+        
+        <div onclick="doneTask()">${task.taskName}</div>
+        <button onclick="deleteTask('${task.id}')">Delete</button>
+        `;
     elTaskList.appendChild(elTask);
 
     elTask.addEventListener("click", () => {
       for (let i = 0; i < gToDoList.length; i++) {
-        if (task.id === gToDoList[i].id) {
-          if (gToDoList[i].isDone === false) {
-            gToDoList[i].isDone = true;
-            elTask.classList.add("is-done");
-          } else {
-            gToDoList[i].isDone = false;
-            elTask.classList.remove("is-done");
-          }
+        if (gToDoList[i].isDone === false) {
+          gToDoList[i].isDone = true;
+          elTask.classList.add("is-done");
+        } else {
+          gToDoList[i].isDone = false;
+          elTask.classList.remove("is-done");
         }
       }
     });
   }
 }
+// const filterBy = document.getElementById("filter");
+// filterBy.addEventListener("change", () => {
+//   for (let i = 0; i < gToDoList.length; i++) {
+//     if (
+//       (gToDoList[i].isDone === false && filterBy.value === "completed") ||
+//       (gToDoList[i].isDone === false && filterBy.value === "uncompleted")
+//     ) {
+//       elTask.classList.add("hide");
+//     } else {
+//       elTask.classList.remove("hide");
+//     }
+//   }
+// });
 
-// let className = "";
-// if (isDone) className = "is-done";
+const filterBy = document.getElementById("filter");
+filterBy.addEventListener("change", renderTaskList);
 
 // DELETE
 
