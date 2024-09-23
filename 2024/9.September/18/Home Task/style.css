@@ -1,4 +1,4 @@
-.is-done div {
+.is-done {
   color: gray;
   text-decoration: line-through;
 }

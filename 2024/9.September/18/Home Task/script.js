@@ -13,15 +13,74 @@ function makeId() {
 
 // CREATE
 
-const Form = document.querySelector("form");
-Form.addEventListener("submit", function (ev) {
-  ev.preventDefault();
-  const taskNameValue = Form.querySelector("#taskName").value;
+// Create a DOM element
+const elTaskList = document.getElementById("toDoList");
+const elForm = document.getElementById("form");
+const elInput = document.getElementById("taskInput");
 
-  createTask(taskNameValue);
+elForm.addEventListener("submit", function (ev) {
+  ev.preventDefault();
+
+  // Call to the Add task function
+  const taskNameValue = elInput.value;
+  addTask(taskNameValue);
 });
 
-function createTask(taskName) {
+// Clear the input
+elInput.value = "";
+
+// READ
+function renderTaskList() {
+  // Clear the html
+  elTaskList.innerHTML = "";
+
+  for (let i = 0; i < gToDoList.length; i++) {
+    const task = gToDoList[i];
+
+    //Create a task element
+    const elTask = document.createElement("li");
+    elTask.textContent = task.taskName;
+    elTask.classList.toggle("is-done", task.isDone);
+
+    // Create delete button
+    const elDeleteBtn = document.createElement("button");
+    elDeleteBtn.textContent = "Delete";
+
+    // Add event listener to toggle
+    elTask.addEventListener("click", function () {
+      toggleTask(task.id);
+    });
+
+    // Add event listener to toggle
+    elDeleteBtn.addEventListener("click", function () {
+      deleteTask(task.id);
+    });
+
+    const filter = document.getElementById("filter");
+    filter.addEventListener("change", function () {
+      filterTask(filter, task.id);
+    });
+    function filterTask(filter, id) {
+      const task = gToDoList.find((currentTask) => currentTask.id === id);
+      if (
+        (filter.value === completed && task.isDone)(
+          filter.value === uncompleted && !task.isDone
+        )
+      )
+        elTask.classList.add("hide");
+      else elTask.classList.remove("hide");
+
+      renderTaskList();
+    }
+
+    elTask.appendChild(elDeleteBtn);
+    elTaskList.appendChild(elTask);
+  }
+}
+// Add take function
+function addTask(taskName) {
+  if (!taskName) return;
+
   const newTask = {
     id: makeId(),
     taskName: taskName,
@@ -33,82 +92,15 @@ function createTask(taskName) {
   renderTaskList();
 }
 
-// READ
-function renderTaskList() {
-  const elTaskList = document.getElementById("toDoList");
-  elTaskList.innerHTML = "";
-  const filter = document.getElementById("filter");
-  for (let i = 0; i < gToDoList.length; i++) {
-    const task = gToDoList[i];
-    if (
-      (filter.value === "completed" && task.isDone === false) ||
-      (filter.value === "uncompleted" && task.isDone === true)
-    ) {
-      continue;
-    }
-
-    const elTask = document.createElement("li");
-    elTask.classList.add("task");
-    elTask.setAttribute("id", "el" + task.id);
-
-    elTask.innerHTML = `
-        
-        <div onclick="doneTask()">${task.taskName}</div>
-        <button onclick="deleteTask('${task.id}')">Delete</button>
-        `;
-    elTaskList.appendChild(elTask);
-
-    elTask.addEventListener("click", () => {
-      for (let i = 0; i < gToDoList.length; i++) {
-        if (gToDoList[i].isDone === false) {
-          gToDoList[i].isDone = true;
-          elTask.classList.add("is-done");
-        } else {
-          gToDoList[i].isDone = false;
-          elTask.classList.remove("is-done");
-        }
-      }
-    });
-  }
-}
-// const filterBy = document.getElementById("filter");
-// filterBy.addEventListener("change", () => {
-//   for (let i = 0; i < gToDoList.length; i++) {
-//     if (
-//       (gToDoList[i].isDone === false && filterBy.value === "completed") ||
-//       (gToDoList[i].isDone === false && filterBy.value === "uncompleted")
-//     ) {
-//       elTask.classList.add("hide");
-//     } else {
-//       elTask.classList.remove("hide");
-//     }
-//   }
-// });
-
-const filterBy = document.getElementById("filter");
-filterBy.addEventListener("change", renderTaskList);
-
-// DELETE
-
+// Delete task function
 function deleteTask(taskId) {
-  for (let i = 0; i < gToDoList.length; i++) {
-    const task = gToDoList[i];
+  gToDoList = gToDoList.filter((currentTask) => currentTask.id !== taskId);
 
-    if (task.id !== taskId) {
-      gToDoList.splice(i, 1);
-    }
-  }
-
-  const elTaskList = document.getElementById("toDoList");
-  const elTaskToDelete = elTaskList.querySelector(`#el${taskId}`);
-  elTaskList.removeChild(elTaskToDelete);
+  renderTaskList();
 }
-//UPDATE
-
-// const filterDoneTask = document.getElementById("completed task");
-// filterDoneTask.addEventListener("click", () => {
-//   const task = gToDoList[i];
-//   for (let i = 0; i < gToDoList.length; i++) {
-//     if (gToDoList[i].isDone === false) gToDoList[i].classList.add("completed");
-//   }
-// });
+// Toggle task function
+function toggleTask(taskId) {
+  const task = gToDoList.find((currentTask) => currentTask.id === taskId);
+  task.isDone = !task.isDone;
+  renderTaskList();
+}
