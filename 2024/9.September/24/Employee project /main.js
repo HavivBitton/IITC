@@ -97,14 +97,12 @@ function renderEmployee() {
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
     deleteButton.onclick = function () {
-      // Add your delete logic here
-      console.log(`Deleting employee: ${currentEmployee.firstName}`);
       gEmployeeList.splice(i, 1); // Remove the employee from the array
       renderEmployee(); // Re-render the employee list
     };
     cell7.appendChild(deleteButton);
 
-    // Append the seventh cell to the row
+    // Append the cells to the row
     elEmployee.appendChild(cell7);
 
     employeeTable.appendChild(elEmployee);
