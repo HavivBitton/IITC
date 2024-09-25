@@ -13,17 +13,52 @@
 
     <form id="Employee-form">
       <input
-        id="Employee-input"
+        id="Emp-input-firstName"
         type="text"
-        placeholder="Enter Employee name"
+        placeholder="Enter Employee First Name"
       />
       <input
-        id="Employee-input"
+        id="Emp-input-lastName"
         type="text"
-        placeholder="Enter Employee name"
+        placeholder="Enter Employee Last Name"
+      />
+      <input
+        id="Emp-input-age"
+        type="number"
+        placeholder="Enter employee age"
+      />
+      <input
+        id="Emp-input-startDate"
+        type="date"
+        placeholder="Enter employee age"
+      />
+      <input
+        id="Emp-input-department"
+        type="text"
+        placeholder="Enter Employee department"
+      />
+      <input
+        id="Emp-input-salary"
+        type="number"
+        placeholder="Enter employee salary"
       />
 
-      <button>Add Employee</button>
+      <button type="submit">Add Employee</button>
     </form>
+    <table id="employeeTable">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Age</th>
+          <th>Start Date</th>
+          <th>department</th>
+          <th>Salary</th>
+          <th>Option</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
