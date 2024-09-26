@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Management Application Project</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Employee list</h1>
+    </div>
+
+    <form id="Employee-form">
+      <input
+        id="Emp-input-firstName"
+        type="text"
+        placeholder="Enter Employee First Name"
+      />
+      <input
+        id="Emp-input-lastName"
+        type="text"
+        placeholder="Enter Employee Last Name"
+      />
+      <input
+        id="Emp-input-age"
+        type="number"
+        placeholder="Enter employee age"
+      />
+      <input
+        id="Emp-input-startDate"
+        type="date"
+        placeholder="Enter employee age"
+      />
+      <select name="departmentSelect" id="departmentSelect">
+        <option value="Marketing">Marketing</option>
+        <option value="Develop">Develop</option>
+        <option value="QA">QA</option>
+      </select>
+
+      <input
+        id="Emp-input-salary"
+        type="number"
+        placeholder="Enter employee salary"
+      />
+
+      <button type="submit">Add Employee</button>
+    </form>
+
+    <select name="departmentFilter" id="departmentFilter">
+      <option value="All">All</option>
+      <option value="Marketing">Marketing</option>
+      <option value="Develop">Develop</option>
+      <option value="QA">QA</option>
+    </select>
+
+    <ul id="employeeTableHeader" class="responsive-table">
+      <li class="table-header">
+        <div class="col col-1">First Name</div>
+        <div class="col col-2">Last Name</div>
+        <div class="col col-3">Age</div>
+        <div class="col col-4">Start Date</div>
+        <div class="col col-5">Department</div>
+        <div class="col col-6">Salary</div>
+        <div class="col col-7">Options</div>
+      </li>
+    </ul>
+
+    <ul id="employeeTable" class="responsive-table"></ul>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

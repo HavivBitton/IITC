@@ -1,0 +1,122 @@
+/* Container styling */
+
+h1 {
+  text-align: center;
+}
+
+.responsive-table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+}
+
+.employee {
+  display: flex;
+}
+.table-header {
+  display: flex;
+  background-color: rgb(222, 218, 218);
+  padding: 10px;
+}
+
+.table-row {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+/* .col {
+  display: flex;
+} */
+
+.table-header > div,
+.table-row > div {
+  flex: 1;
+  padding: 8px;
+  text-align: left;
+}
+.employee > div {
+  flex: 1;
+  padding: 8px;
+  text-align: center;
+}
+
+.table-header > div {
+  font-weight: bold;
+}
+
+/* Make columns smaller on smaller screens */
+@media (max-width: 767px) {
+  /* .table-header {
+    display: none;
+  } */
+
+  .table-row {
+    /* display: block; */
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+  }
+}
+
+/* Input Form Styling */
+#Employee-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+#Employee-form input,
+#Employee-form select {
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#Employee-form button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#Employee-form button:hover {
+  background-color: #45a049;
+}
+
+/* Department filter styling */
+#departmentFilter {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Buttons for edit and delete actions */
+button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button.edit {
+  background-color: #2196f3;
+  color: white;
+}
+
+button.delete {
+  background-color: #f44336;
+  color: white;
+}
