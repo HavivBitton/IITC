@@ -34,7 +34,7 @@ elCodeForm.addEventListener("submit", function (ev) {
 // Shoe balance button
 //
 // Define balance
-const demoBalance = 10000;
+let demoBalance = 10000;
 
 // Get elements from the DOM
 const elBalance = document.querySelector("#balance");
@@ -47,10 +47,46 @@ elBalanceBtn.addEventListener("click", function () {
 
 // Function to display balance
 function ShowBalance() {
-  elBalance.textContent = `Your balance is ${demoBalance}`;
+  elBalance.textContent = `Your balance is ${demoBalance}$`;
   elBalance.classList.remove("hide");
 }
 
 //
 // Get elements from the DOM
 const elDepositBtn = document.querySelector("#DepositButton");
+const elDepositForm = document.querySelector("#depositForm");
+const elDepositInput = document.querySelector("#depositInput");
+const elDepositMsn = document.querySelector("#depositMessage");
+const elDepositAgainBtn = document.querySelector("#depositAgainMessage");
+
+// Add event listener to the deposit button
+elDepositBtn.addEventListener("click", function () {
+  // show the deposit form
+  elDepositForm.classList.remove("hide");
+});
+
+// Add event listener to the deposit submit button
+elDepositForm.addEventListener("submit", function (ev) {
+  ev.preventDefault();
+  // Hide the deposit form
+  elDepositForm.classList.add("hide");
+  // Add the input to the balance variable
+  demoBalance += parseInt(elDepositInput.value);
+  //Display the deposit message and the current balance
+  elDepositMsn.textContent = `You entered: ${elDepositInput.value}$`;
+  elDepositMsn.classList.remove("hide");
+  elDepositInput.value = "";
+  ShowBalance();
+  // Display the `deposit again` button
+  elDepositAgainBtn.classList.remove("hide");
+});
+
+elDepositAgainBtn.addEventListener("click", function () {
+  // Display the deposit form again
+  elDepositForm.classList.remove("hide");
+  //Hide the deposit message and the current balance
+  elDepositMsn.classList.add("hide");
+  elBalance.classList.add("hide");
+  // Hide the `deposit again` button
+  elDepositAgainBtn.classList.add("hide");
+});

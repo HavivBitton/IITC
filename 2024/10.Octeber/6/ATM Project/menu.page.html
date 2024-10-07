@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <form id="codeForm"></form>
@@ -11,8 +12,21 @@
     <button id="balanceButton" type="button">Show balance</button>
     <button id="DepositButton" type="button">Deposit</button>
 
-    <p id="balance" class="hide"></p>
+    <form id="depositForm" class="hide">
+      <input
+        type="text"
+        id="depositInput"
+        placeholder="What is the amount you would like to deposit? "
+        required
+      />
+      <button type="submit">submit</button>
+    </form>
 
+    <p id="depositMessage" class="hide"></p>
+    <p id="balance" class="hide"></p>
+    <button id="depositAgainMessage" type="submit" class="hide">
+      Deposit again
+    </button>
     <nav id="nav-menu">
       <ul>
         <li><a href="welcome.page.html"> Exit</a></li>
