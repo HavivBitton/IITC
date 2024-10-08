@@ -45,40 +45,62 @@ elBalanceBtn.addEventListener("click", function () {
   ShowBalance();
 });
 
-// Function to display balance
-function ShowBalance() {
-  elBalance.textContent = `Your balance is ${demoBalance}$`;
-  elBalance.classList.remove("hide");
-}
-
 //
 // Get elements from the DOM
 const elActionBtn = document.querySelector("#actionButton");
 const elActionForm = document.querySelector("#actionForm");
 const elActionInput = document.querySelector("#actionInput");
-const elDepositMsn = document.querySelector("#depositMessage");
+const elActionMsg = document.querySelector("#depositMessage");
 const elDepositBtn = document.querySelector("#depositBtn");
 const elWithdrawalBtn = document.querySelector("#withdrawalBtn");
 const elDepositAgainBtn = document.querySelector("#depositAgainButton");
 
-// Add event listener to the deposit button
+// Add event listener to the action button
 elActionBtn.addEventListener("click", function () {
   // show the deposit form
   elActionForm.classList.remove("hide");
+  //Hide the balance message
+  elBalance.classList.add("hide");
 });
 
 // Add event listener to the deposit submit button
 elActionForm.addEventListener("submit", function (ev) {
   ev.preventDefault();
+});
+
+// Add event listener to the deposit button
+elDepositBtn.addEventListener("click", function () {
   // Hide the deposit form
   elActionForm.classList.add("hide");
   // Add the input to the balance variable
   demoBalance += parseInt(elActionInput.value);
   //Display the deposit message and the current balance
-  elDepositMsn.textContent = `You entered: ${elActionInput.value}$`;
-  elDepositMsn.classList.remove("hide");
+  elActionMsg.textContent = `You entered: ${elActionInput.value}$`;
+  elActionMsg.classList.remove("hide");
   elActionInput.value = "";
   ShowBalance();
+  // Display the `deposit again` button
+  elDepositAgainBtn.classList.remove("hide");
+});
+
+// Add event listener to the withdrawal button
+elWithdrawalBtn.addEventListener("click", function () {
+  // Hide the action form
+  elActionForm.classList.add("hide");
+
+  if (demoBalance >= parseInt(elActionInput.value)) {
+    // Add the input to the balance variable
+    demoBalance -= parseInt(elActionInput.value);
+    //Display the deposit message and the current balance
+    elActionMsg.textContent = `The amount you withdrew from the account ${elActionInput.value}$`;
+    elActionMsg.classList.remove("hide");
+    ShowBalance();
+  } else {
+    elActionMsg.textContent = `Your balance does not allow withdrawal ${elActionInput.value}$`;
+    elActionMsg.classList.remove("hide");
+    ShowBalance();
+  }
+  elActionInput.value = "";
   // Display the `deposit again` button
   elDepositAgainBtn.classList.remove("hide");
 });
@@ -87,8 +109,16 @@ elDepositAgainBtn.addEventListener("click", function () {
   // Display the deposit form again
   elActionForm.classList.remove("hide");
   //Hide the deposit message and the current balance
-  elDepositMsn.classList.add("hide");
+  elActionMsg.classList.add("hide");
   elBalance.classList.add("hide");
   // Hide the `deposit again` button
   elDepositAgainBtn.classList.add("hide");
 });
+
+// Function to display balance
+function ShowBalance() {
+  elBalance.textContent = `Your balance is ${demoBalance}$`;
+  elBalance.classList.remove("hide");
+  // Hide the action form
+  elActionForm.classList.add("hide");
+}
