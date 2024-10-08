@@ -10,21 +10,22 @@
     <form id="codeForm"></form>
 
     <button id="balanceButton" type="button">Show balance</button>
-    <button id="DepositButton" type="button">Deposit</button>
+    <button id="actionButton" type="button">Deposit / Withdrawal</button>
 
-    <form id="depositForm" class="hide">
+    <form id="actionForm" class="hide">
       <input
         type="text"
-        id="depositInput"
-        placeholder="What is the amount you would like to deposit? "
+        id="actionInput"
+        placeholder="What is the amount you would like to deposit or withdrawal ?"
         required
       />
-      <button type="submit">submit</button>
+      <button id="depositBtn" type="button">Deposit</button>
+      <button id="WithdrawalBtn" type="button">Withdrawal</button>
     </form>
 
     <p id="depositMessage" class="hide"></p>
     <p id="balance" class="hide"></p>
-    <button id="depositAgainMessage" type="submit" class="hide">
+    <button id="depositAgainButton" type="submit" class="hide">
       Deposit again
     </button>
     <nav id="nav-menu">

@@ -53,29 +53,31 @@ function ShowBalance() {
 
 //
 // Get elements from the DOM
-const elDepositBtn = document.querySelector("#DepositButton");
-const elDepositForm = document.querySelector("#depositForm");
-const elDepositInput = document.querySelector("#depositInput");
+const elActionBtn = document.querySelector("#actionButton");
+const elActionForm = document.querySelector("#actionForm");
+const elActionInput = document.querySelector("#actionInput");
 const elDepositMsn = document.querySelector("#depositMessage");
-const elDepositAgainBtn = document.querySelector("#depositAgainMessage");
+const elDepositBtn = document.querySelector("#depositBtn");
+const elWithdrawalBtn = document.querySelector("#withdrawalBtn");
+const elDepositAgainBtn = document.querySelector("#depositAgainButton");
 
 // Add event listener to the deposit button
-elDepositBtn.addEventListener("click", function () {
+elActionBtn.addEventListener("click", function () {
   // show the deposit form
-  elDepositForm.classList.remove("hide");
+  elActionForm.classList.remove("hide");
 });
 
 // Add event listener to the deposit submit button
-elDepositForm.addEventListener("submit", function (ev) {
+elActionForm.addEventListener("submit", function (ev) {
   ev.preventDefault();
   // Hide the deposit form
-  elDepositForm.classList.add("hide");
+  elActionForm.classList.add("hide");
   // Add the input to the balance variable
-  demoBalance += parseInt(elDepositInput.value);
+  demoBalance += parseInt(elActionInput.value);
   //Display the deposit message and the current balance
-  elDepositMsn.textContent = `You entered: ${elDepositInput.value}$`;
+  elDepositMsn.textContent = `You entered: ${elActionInput.value}$`;
   elDepositMsn.classList.remove("hide");
-  elDepositInput.value = "";
+  elActionInput.value = "";
   ShowBalance();
   // Display the `deposit again` button
   elDepositAgainBtn.classList.remove("hide");
@@ -83,7 +85,7 @@ elDepositForm.addEventListener("submit", function (ev) {
 
 elDepositAgainBtn.addEventListener("click", function () {
   // Display the deposit form again
-  elDepositForm.classList.remove("hide");
+  elActionForm.classList.remove("hide");
   //Hide the deposit message and the current balance
   elDepositMsn.classList.add("hide");
   elBalance.classList.add("hide");
