@@ -1,19 +1,35 @@
-// Define code
+// Define demo variable
 const demoCode = 1234;
+let demoBalance = 10000;
 
 // Get elements from the DOM
+// for the code page
 const elCodeForm = document.querySelector("#codeForm");
 const elCodeMessage = document.querySelector("#codeMessage");
 const elNavMenu = document.querySelector("#nav-menu");
 const elExit = document.querySelector("#exit");
+const elInputCode = document.querySelector("#pinCode");
+// for the menu page
+const elBalance = document.querySelector("#balance");
+const elBalanceBtn = document.querySelector("#balanceButton");
+const elActionBtn = document.querySelector("#actionButton");
+const elActionForm = document.querySelector("#actionForm");
+const elActionInput = document.querySelector("#actionInput");
+const elActionMsg = document.querySelector("#depositMessage");
+const elDepositBtn = document.querySelector("#depositBtn");
+const elWithdrawalBtn = document.querySelector("#withdrawalBtn");
+const elBackBtn = document.querySelector("#backButton");
+
+// Set a counter variable
 let wrongAttempts = 0;
 
 // Add event listener to the form
 elCodeForm.addEventListener("submit", function (ev) {
+  // Provide the page refresh
   ev.preventDefault();
+  // Clean the message class list
   elCodeMessage.classList.remove("correct", "incorrect");
 
-  const elInputCode = document.querySelector("#pinCode");
   const value = elInputCode.value;
   //Validates the entered code and displays an appropriate message
   CodeVerification(value);
@@ -22,15 +38,21 @@ elCodeForm.addEventListener("submit", function (ev) {
 });
 
 function CodeVerification(value) {
+  // Comparing the input to the demo code
   if (value == demoCode) {
+    // Display a correct message
     elCodeMessage.textContent = "Correct code!";
     elCodeMessage.classList.add("correct");
+    // Display an option menu
     elNavMenu.classList.remove("hide");
     elCodeForm.classList.add("hide");
   } else {
+    // Display a incorrect message
     elCodeMessage.classList.add("incorrect");
     elNavMenu.classList.add("hide");
+    //  Adding to counter variable
     wrongAttempts++;
+    // Checks how many wrong attempts the user has made and reacts accordingly
     if (wrongAttempts === 1) {
       elCodeMessage.textContent = "Incorrect code, Try again";
     } else if (wrongAttempts === 2) {
@@ -39,46 +61,29 @@ function CodeVerification(value) {
     } else if (wrongAttempts === 3) {
       elCodeMessage.textContent =
         "Incorrect code for the third time, your user is blocked";
+      // Prevents the user from trying again and redirects him back to the welcome page
       elCodeForm.classList.add("hide");
       elExit.classList.remove("hide");
     }
   }
 }
 
-// Shoe balance button
-//
-// Define balance
-let demoBalance = 10000;
-
-// Get elements from the DOM
-const elBalance = document.querySelector("#balance");
-const elBalanceBtn = document.querySelector("#balanceButton");
-
-// Add event listener to the button
+// Add event listener to the `Shoe balance` button
 elBalanceBtn.addEventListener("click", function () {
   ShowBalance();
 });
 
-//
-// Get elements from the DOM
-const elActionBtn = document.querySelector("#actionButton");
-const elActionForm = document.querySelector("#actionForm");
-const elActionInput = document.querySelector("#actionInput");
-const elActionMsg = document.querySelector("#depositMessage");
-const elDepositBtn = document.querySelector("#depositBtn");
-const elWithdrawalBtn = document.querySelector("#withdrawalBtn");
-const elDepositAgainBtn = document.querySelector("#depositAgainButton");
-
-// Add event listener to the action button
+// Add event listener to the actions button
 elActionBtn.addEventListener("click", function () {
-  // show the deposit form
+  // Show the deposit form
   elActionForm.classList.remove("hide");
   //Hide the balance message
   elBalance.classList.add("hide");
 });
 
-// Add event listener to the deposit submit button
+// Add event listener to the action form
 elActionForm.addEventListener("submit", function (ev) {
+  // Provide the page refresh
   ev.preventDefault();
 });
 
@@ -93,8 +98,8 @@ elDepositBtn.addEventListener("click", function () {
   elActionMsg.classList.remove("hide");
   elActionInput.value = "";
   ShowBalance();
-  // Display the `deposit again` button
-  elDepositAgainBtn.classList.remove("hide");
+  // Display the `back menu` button
+  elBackBtn.classList.remove("hide");
 });
 
 // Add event listener to the withdrawal button
@@ -102,31 +107,42 @@ elWithdrawalBtn.addEventListener("click", function () {
   // Hide the action form
   elActionForm.classList.add("hide");
 
-  if (demoBalance >= parseInt(elActionInput.value)) {
-    // Add the input to the balance variable
-    demoBalance -= parseInt(elActionInput.value);
-    //Display the deposit message and the current balance
-    elActionMsg.textContent = `The amount you withdrew from the account ${elActionInput.value}$`;
-    elActionMsg.classList.remove("hide");
-    ShowBalance();
+  // Check if The withdrawal amount is multiple of 50
+  if (parseInt(elActionInput.value) % 50 === 0) {
+    // Check if The withdrawal amount is bigger then balance
+    if (demoBalance >= parseInt(elActionInput.value)) {
+      // Remove the input to the balance variable
+      demoBalance -= parseInt(elActionInput.value);
+      //Display the withdrawal message and the current balance
+      elActionMsg.textContent = `The amount you withdrew from the account is ${elActionInput.value}$`;
+      elActionMsg.classList.remove("hide");
+      ShowBalance();
+    } else {
+      //Display `no enough balance` message and the current balance
+      elActionMsg.textContent = `Your balance does not allow withdrawal ${elActionInput.value}$`;
+      elActionMsg.classList.remove("hide");
+      ShowBalance();
+    }
   } else {
-    elActionMsg.textContent = `Your balance does not allow withdrawal ${elActionInput.value}$`;
+    //Display `must be a multiple of 50` message
+    elActionMsg.textContent = `The withdrawal amount must be a multiple of 50`;
     elActionMsg.classList.remove("hide");
-    ShowBalance();
   }
+  // Clear the input to the next try
   elActionInput.value = "";
   // Display the `deposit again` button
-  elDepositAgainBtn.classList.remove("hide");
+  elBackBtn.classList.remove("hide");
 });
 
-elDepositAgainBtn.addEventListener("click", function () {
+// // Add event listener to the `Back` button
+elBackBtn.addEventListener("click", function () {
   // Display the deposit form again
   elActionForm.classList.remove("hide");
   //Hide the deposit message and the current balance
   elActionMsg.classList.add("hide");
   elBalance.classList.add("hide");
   // Hide the `deposit again` button
-  elDepositAgainBtn.classList.add("hide");
+  elBackBtn.classList.add("hide");
 });
 
 // Function to display balance
