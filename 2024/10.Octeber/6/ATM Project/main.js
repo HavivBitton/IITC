@@ -1,9 +1,3 @@
-// import { utils } from "./utils.js";
-
-// const COSTUMER_STOREGE_KEY = "costumer";
-
-// let gCostumerList = utils.getFromStorage(COSTUMER_STOREGE_KEY);
-
 // Define code
 const demoCode = 1234;
 
@@ -11,6 +5,8 @@ const demoCode = 1234;
 const elCodeForm = document.querySelector("#codeForm");
 const elCodeMessage = document.querySelector("#codeMessage");
 const elNavMenu = document.querySelector("#nav-menu");
+const elExit = document.querySelector("#exit");
+let wrongAttempts = 0;
 
 // Add event listener to the form
 elCodeForm.addEventListener("submit", function (ev) {
@@ -18,18 +14,36 @@ elCodeForm.addEventListener("submit", function (ev) {
   elCodeMessage.classList.remove("correct", "incorrect");
 
   const elInputCode = document.querySelector("#pinCode");
-
+  const value = elInputCode.value;
   //Validates the entered code and displays an appropriate message
-  if (elInputCode.value == demoCode) {
-    elCodeMessage.textContent = "correct code";
+  CodeVerification(value);
+
+  elInputCode.value = "";
+});
+
+function CodeVerification(value) {
+  if (value == demoCode) {
+    elCodeMessage.textContent = "Correct code!";
     elCodeMessage.classList.add("correct");
     elNavMenu.classList.remove("hide");
+    elCodeForm.classList.add("hide");
   } else {
-    elCodeMessage.textContent = "incorrect code";
     elCodeMessage.classList.add("incorrect");
     elNavMenu.classList.add("hide");
+    wrongAttempts++;
+    if (wrongAttempts === 1) {
+      elCodeMessage.textContent = "Incorrect code, Try again";
+    } else if (wrongAttempts === 2) {
+      elCodeMessage.textContent =
+        "Incorrect code again,You have one more try before you block";
+    } else if (wrongAttempts === 3) {
+      elCodeMessage.textContent =
+        "Incorrect code for the third time, your user is blocked";
+      elCodeForm.classList.add("hide");
+      elExit.classList.remove("hide");
+    }
   }
-});
+}
 
 // Shoe balance button
 //
