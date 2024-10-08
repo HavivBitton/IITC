@@ -26,7 +26,6 @@ h2 {
   margin-bottom: 2rem;
 }
 
-/* Centering the card-like structure */
 div#container {
   background-color: #2a2d3b;
   padding: 2rem;
@@ -37,7 +36,7 @@ div#container {
   text-align: center;
 }
 
-form input[type="text"],
+form input,
 button {
   max-width: 400px;
   width: 100%;
@@ -49,20 +48,18 @@ button {
   box-sizing: border-box;
 }
 
-/* Styling the input */
-form input[type="text"] {
+form input {
   background-color: #1d1f27;
   color: #ffffff;
   border: 1px solid #444;
   text-align: center;
 }
 
-form input[type="text"]::placeholder {
+form input::placeholder {
   color: #aaaaaa;
   font-size: small;
 }
 
-/* Submit Button */
 nav ul li a,
 button[type="submit"] {
   background-color: #f27d2d;
@@ -91,7 +88,6 @@ button[type="button"]:hover {
   background-color: #56586d;
 }
 
-/* Hidden messages */
 .hide {
   display: none;
 }
@@ -109,7 +105,6 @@ p.incorrect {
   color: #e74c3c;
 }
 
-/* Menu Styles */
 nav ul {
   list-style: none;
   padding: 0;
@@ -124,7 +119,6 @@ nav ul li a {
   font-weight: bold;
 }
 
-/* Button styling for Balance / Action Buttons */
 button#balanceButton,
 button#actionButton {
   padding: 0.75rem;
@@ -137,7 +131,6 @@ button#actionButton:hover {
   background-color: #56586d;
 }
 
-/* Style action form */
 form#actionForm {
   margin-top: 1.5rem;
 }
@@ -149,31 +142,8 @@ form#actionForm {
   border: 1px solid #444;
 }
 
-/* Display balance and deposit messages */
 p#balance,
 p#depositMessage {
   color: #f27d2d;
   font-weight: bold;
-}
-
-/* Styling for smaller devices */
-@media (max-width: 600px) {
-  nav,
-  form {
-    width: 90%;
-    padding: 1.5rem;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  h2 {
-    font-size: 1.2rem;
-  }
-
-  form input[type="text"],
-  form button {
-    padding: 0.75rem;
-  }
 }
