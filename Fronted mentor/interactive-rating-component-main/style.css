@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --color-White: hsl(0, 0%, 100%);
+  --color-Light-Grey: hsl(217, 12%, 63%);
+  --color-Dark-Blue: hsl(213, 19%, 18%);
+  --color-Very-Dark-Blue: hsl(216, 12%, 8%);
+  --color-Orange: hsl(25, 97%, 53%);
+}
+
+body {
+  background-color: var(--color-Very-Dark-Blue);
+  color: var(--color-White);
+  font-family: "Overpass";
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+div#ratePage,
+div#tnxPage {
+  background-color: #1c232d;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+#container {
+  max-width: 329px;
+}
+
+h1 {
+  margin-top: 23px;
+  font-weight: 500;
+  font-size: 25px;
+}
+
+div#text {
+  color: var(--color-Light-Grey);
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+div#raiting {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+div#rateMsg {
+  color: var(--color-Orange);
+  background-color: #272e38;
+  border-radius: 25px;
+  padding: 0.8rem;
+  text-align: center;
+  margin-block: 25px;
+}
+
+button#submitBtn {
+  border-style: none;
+  background-color: var(--color-Orange);
+  color: var(--color-Very-Dark-Blue);
+  cursor: pointer;
+  border-radius: 25px;
+  padding: 0.8rem;
+  width: 100%;
+  font-weight: 700;
+  letter-spacing: 2px;
+  transition: background-color 0.3s ease;
+}
+button#submitBtn:hover {
+  background-color: hsl(25, 83%, 61%);
+}
+
+#tnxPicture,
+#star {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.tnxPage #text,
+.tnxPage h1 {
+  text-align: center;
+}
+
+.circle {
+  background-color: #272e38;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+button.circle {
+  border-style: none;
+  color: var(--color-Light-Grey);
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  padding: 5px;
+  padding-left: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button.circle:hover {
+  background-color: #56586d;
+}
+
+.hide {
+  display: none;
+}
