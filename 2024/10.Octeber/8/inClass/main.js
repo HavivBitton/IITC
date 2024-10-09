@@ -9,6 +9,7 @@ function insertText(src) {
 }
 
 fetch("https://dog.ceo/api/breeds/image/random")
+  // fetch("https://cataas.com/cat")
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
