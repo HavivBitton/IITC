@@ -16,6 +16,16 @@ fetch("https://dog.ceo/api/breeds/image/random")
     insertImage(data.message);
   });
 
+fetch("https://waifu.pics/api/sfw/waifu")
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+    const elNewImg = document.createElement("img");
+    elNewImg.src = data.url;
+    imgDiv.append(elNewImg);
+  });
+// .catch((error) => console.error("Error:", error));
+
 fetch("https://cat-fact.herokuapp.com/facts")
   .then((response) => response.json())
   .then((data) => {
