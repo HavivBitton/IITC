@@ -61,9 +61,10 @@ div#rateMsg {
   color: var(--color-Orange);
   background-color: #272e38;
   border-radius: 25px;
-  padding: 0.8rem;
+  padding: 0.5rem;
   text-align: center;
-  margin-block: 25px;
+  margin-top: 25px;
+  width: fit-content;
 }
 
 button#submitBtn {
@@ -82,6 +83,7 @@ button#submitBtn:hover {
   background-color: hsl(25, 83%, 61%);
 }
 
+.rateMsg,
 #tnxPicture,
 #star {
   display: flex;
