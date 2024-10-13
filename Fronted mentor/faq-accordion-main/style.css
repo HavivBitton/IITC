@@ -13,8 +13,19 @@
   box-sizing: border-box;
 }
 
+#container {
+  padding: 20px;
+}
+
 .title {
   display: flex;
+}
+
+.qBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 20px;
 }
 
 h1,
@@ -24,4 +35,10 @@ h1,
 
 #starIcon {
   width: 25px;
+}
+hr {
+  height: 2px;
+  border-width: 0;
+  color: gray;
+  background-color: gray;
 }
