@@ -1,31 +1,33 @@
-// Get element from thee DOM
-const elSubmitBtn = document.querySelector("#submitBtn");
-const elRatePageDiv = document.querySelector("#ratePage");
-const elTnxPageDiv = document.querySelector("#tnxPage");
-const elNumButton = document.querySelectorAll(".circle");
-const elRateMsgDiv = document.querySelector("#rateMsg");
-let rateNum = 0;
+const elIconBtn = document.querySelectorAll(".qIcon");
+const test = document.querySelectorAll(".test");
 
-elSubmitBtn.addEventListener("click", function () {
-  const active = document.querySelector(".selected");
-  if (active) {
-    // Show the tnx page
-    elRatePageDiv.classList.add("hide");
-    //Hide the rate page
-    elTnxPageDiv.classList.remove("hide");
-    // Add the rate number to the message
-    elRateMsgDiv.innerHTML = `You selected ${rateNum} out of 5`;
-  }
-});
+let qNum = 0;
 
-elNumButton.forEach((button) => {
+elIconBtn.forEach((button) => {
   button.addEventListener("click", function (e) {
     const active = document.querySelector(".selected");
+    // qNum = e.target.innerText;
+    qNum = e.currentTarget.innerText.trim();
+
+    const currentAnswer = document.querySelector(`.answer${qNum}`);
+    const currentIcon = document.querySelector(`.qIcon${qNum}`);
     if (active) {
       active.classList.remove("selected");
-    }
-    button.classList.add("selected");
+      currentAnswer.classList.add("hide");
+      currentIcon.innerHTML = ` ${qNum}
+                    <img
+                      src="./assets/images/icon-plus.svg"
+                      alt="plus/minus icon"
+                    />`;
+    } else {
+      currentAnswer.classList.add("selected");
+      currentAnswer.classList.remove("hide");
 
-    rateNum = e.target.innerText;
+      currentIcon.innerHTML = `${qNum}
+        <img
+        src="./assets/images/icon-minus.svg"
+        alt="plus/minus icon"
+        />`;
+    }
   });
 });

@@ -1,4 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@font-face {
+  font-family: "WorkSans";
+  src: url("./assets/fonts/WorkSans-VariableFont_wght.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "WorkSans";
+}
 
 :root {
   --color-White: hsl(0, 0%, 100%);
@@ -21,11 +31,23 @@
   display: flex;
 }
 
+.answer {
+  color: var(--Grayish-purple);
+  padding-right: 17px;
+}
 .qBox {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-block: 20px;
+}
+
+.qText {
+  font-weight: bold;
+}
+
+.qIcon {
+  color: var(--color-White);
 }
 
 h1,
@@ -39,6 +61,9 @@ h1,
 hr {
   height: 2px;
   border-width: 0;
-  color: gray;
-  background-color: gray;
+  background-color: var(--Light-pink);
+  margin-top: 25px;
+}
+.hide {
+  display: none;
 }
