@@ -1,20 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
-@font-face {
-  font-family: "WorkSans";
-  src: url("./assets/fonts/WorkSans-VariableFont_wght.ttf");
-  font-weight: normal;
-  font-style: normal;
-}
-
-body {
-  font-family: "WorkSans";
-}
 
 :root {
   --color-White: hsl(0, 0%, 100%);
   --Light-pink: hsl(275, 100%, 97%);
   --Grayish-purple: hsl(292, 16%, 49%);
   --Dark-purple: hsl(292, 42%, 14%);
+}
+body {
+  font-family: "WorkSans";
+  background-image: url(./assets/images/background-pattern-mobile.svg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--Light-pink);
+  font-size: 16px;
+  font-family: "Work Sans";
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 * {
@@ -25,6 +30,9 @@ body {
 
 #container {
   padding: 20px;
+  background-color: var(--color-White);
+  border-radius: 7px;
+  width: 325px;
 }
 
 .title {
@@ -45,10 +53,12 @@ body {
 
 .qText {
   font-weight: bold;
+  width: 230px;
 }
 
 .qIcon {
   color: var(--color-White);
+  font-size: 0px;
 }
 
 h1,
@@ -68,4 +78,23 @@ hr {
 }
 .hide {
   display: none;
+}
+@media screen and (min-width: 1445px) {
+  body {
+    background-image: url(./assets/images/background-pattern-desktop.svg);
+  }
+  #container {
+    width: 550px;
+    padding: 40px;
+  }
+  .qText {
+    width: 440px;
+  }
+  #starIcon {
+    width: 40px;
+    margin-right: 20px;
+  }
+  h1 {
+    font-size: 50px;
+  }
 }
