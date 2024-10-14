@@ -34,6 +34,7 @@ body {
 .answer {
   color: var(--Grayish-purple);
   padding-right: 17px;
+  margin-bottom: 20px;
 }
 .qBox {
   display: flex;
@@ -57,12 +58,13 @@ h1,
 
 #starIcon {
   width: 25px;
+  margin-right: 20px;
 }
 hr {
   height: 2px;
   border-width: 0;
   background-color: var(--Light-pink);
-  margin-top: 25px;
+  margin-top: 10px;
 }
 .hide {
   display: none;

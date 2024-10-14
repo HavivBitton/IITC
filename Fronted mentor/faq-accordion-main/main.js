@@ -1,33 +1,52 @@
+// Create a variable that keep the questions numbers
+let qNum = 1;
+// Get the element from the DOM
 const elIconBtn = document.querySelectorAll(".qIcon");
-const test = document.querySelectorAll(".test");
+let currentAnswer = document.querySelector(`.answer${qNum}`);
+let currentIcon = document.querySelector(`.qIcon${qNum}`);
 
-let qNum = 0;
+function closeQuestion(question) {
+  // Get this specific question DOM element
+  question.classList.remove("selected");
+  currentAnswer.classList.add("hide");
+  // Change the icon from plus to minus
+  currentIcon.innerHTML = ` ${qNum}
+                    <img
+                    src="./assets/images/icon-plus.svg"
+                    alt="plus/minus icon"
+                    />`;
+}
+function openQuestion() {
+  // Get this specific question DOM element
+  currentAnswer.classList.add("selected");
+  currentAnswer.classList.remove("hide");
+  // Change the icon from minus to plus
+  currentIcon.innerHTML = `${qNum}
+                    <img
+                    src="./assets/images/icon-minus.svg"
+                    alt="plus/minus icon"
+                    />`;
+}
 
+// Create a event listener for every questions
 elIconBtn.forEach((button) => {
   button.addEventListener("click", function (e) {
     const active = document.querySelector(".selected");
-    // qNum = e.target.innerText;
-    qNum = e.currentTarget.innerText.trim();
-
-    const currentAnswer = document.querySelector(`.answer${qNum}`);
-    const currentIcon = document.querySelector(`.qIcon${qNum}`);
-    if (active) {
-      active.classList.remove("selected");
-      currentAnswer.classList.add("hide");
-      currentIcon.innerHTML = ` ${qNum}
-                    <img
-                      src="./assets/images/icon-plus.svg"
-                      alt="plus/minus icon"
-                    />`;
+    // Check if the selected question is opened ,if true its closed and end the event.
+    if (active && qNum === e.currentTarget.innerText.trim()) {
+      closeQuestion(active);
+      return;
     } else {
-      currentAnswer.classList.add("selected");
-      currentAnswer.classList.remove("hide");
-
-      currentIcon.innerHTML = `${qNum}
-        <img
-        src="./assets/images/icon-minus.svg"
-        alt="plus/minus icon"
-        />`;
+      // Check if there some else opened question and close him
+      if (active) closeQuestion(active);
+      // Insert to the variable the current questions numbers
+      qNum = e.currentTarget.innerText.trim();
+      console.log(qNum);
+      // redefines the DOM to the current element
+      currentAnswer = document.querySelector(`.answer${qNum}`);
+      currentIcon = document.querySelector(`.qIcon${qNum}`);
+      // Open the selected question
+      openQuestion();
     }
   });
 });
