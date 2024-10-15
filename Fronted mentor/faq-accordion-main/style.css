@@ -6,26 +6,25 @@
   --Grayish-purple: hsl(292, 16%, 49%);
   --Dark-purple: hsl(292, 42%, 14%);
 }
-body {
-  font-family: "WorkSans";
-  background-image: url(./assets/images/background-pattern-mobile.svg);
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--Light-pink);
-  font-size: 16px;
-  font-family: "Work Sans";
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  background-image: url(./assets/images/background-pattern-mobile.svg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  background-color: var(--Light-pink);
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-family: "Work Sans";
+  height: 100vh;
 }
 
 #container {
@@ -44,19 +43,19 @@ body {
   padding-right: 17px;
   margin-bottom: 20px;
 }
-.qBox {
+.quesBox {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-block: 20px;
 }
 
-.qText {
+.quesText {
   font-weight: bold;
   width: 230px;
 }
 
-.qIcon {
+.quesIcon {
   color: var(--color-White);
   font-size: 0px;
 }
@@ -87,7 +86,7 @@ hr {
     width: 550px;
     padding: 40px;
   }
-  .qText {
+  .quesText {
     width: 440px;
   }
   #starIcon {

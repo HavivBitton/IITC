@@ -1,9 +1,9 @@
 // Create a variable that keep the questions numbers
 let qNum = 1;
 // Get the element from the DOM
-const elIconBtn = document.querySelectorAll(".qIcon");
+const elIconBtn = document.querySelectorAll(".quesIcon");
 let currentAnswer = document.querySelector(`.answer${qNum}`);
-let currentIcon = document.querySelector(`.qIcon${qNum}`);
+let currentIcon = document.querySelector(`.quesIcon${qNum}`);
 
 function closeQuestion(question) {
   // Get this specific question DOM element
@@ -44,7 +44,7 @@ elIconBtn.forEach((button) => {
       console.log(qNum);
       // redefines the DOM to the current element
       currentAnswer = document.querySelector(`.answer${qNum}`);
-      currentIcon = document.querySelector(`.qIcon${qNum}`);
+      currentIcon = document.querySelector(`.quesIcon${qNum}`);
       // Open the selected question
       openQuestion();
     }
