@@ -94,6 +94,11 @@ button[type="button"]:hover {
   background-color: #56586d;
 }
 
+#depositBtn,
+#withdrawalBtn {
+  width: 20vh;
+}
+
 .hide {
   display: none;
 }
