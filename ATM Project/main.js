@@ -89,6 +89,11 @@ elActionForm.addEventListener("submit", function (ev) {
 
 // Add event listener to the deposit button
 elDepositBtn.addEventListener("click", function () {
+  //Check if the user do not enter value and display the ` No amount enter` message
+  if (!elActionInput.value) {
+    noAmountMessage();
+    return;
+  }
   // Hide the deposit form
   elActionForm.classList.add("hide");
   // Add the input to the balance variable
@@ -104,6 +109,11 @@ elDepositBtn.addEventListener("click", function () {
 
 // Add event listener to the withdrawal button
 elWithdrawalBtn.addEventListener("click", function () {
+  //Check if the user do not enter value and display the ` No amount enter` message
+  if (!elActionInput.value) {
+    noAmountMessage();
+    return;
+  }
   // Hide the action form
   elActionForm.classList.add("hide");
 
@@ -151,4 +161,9 @@ function ShowBalance() {
   elBalance.classList.remove("hide");
   // Hide the action form
   elActionForm.classList.add("hide");
+}
+
+function noAmountMessage() {
+  elActionMsg.textContent = `You must enter an amount to perform account operations `;
+  elActionMsg.classList.remove("hide");
 }

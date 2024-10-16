@@ -1,6 +1,19 @@
+:root {
+  --color-White: hsl(0, 0%, 100%);
+  --color-Light-Grey: hsl(217, 12%, 63%);
+  --color-Dark-Blue: hsl(213, 16%, 25%);
+  --color-Very-Dark-Blue: hsl(215, 24%, 14%);
+  --color-Orange: hsl(25, 97%, 53%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  background-color: #1d1f27;
-  color: #fff;
+  background-color: var(--color-Very-Dark-Blue);
+  color: var(--color-White);
   font-family: "Arial", sans-serif;
   display: flex;
   flex-direction: column;
@@ -18,7 +31,7 @@ body {
 
 h1,
 h2 {
-  color: #ffffff;
+  color: var(--color-White);
   text-align: center;
 }
 
@@ -56,7 +69,8 @@ button {
 
 form input {
   background-color: #1d1f27;
-  color: #ffffff;
+  background-color: var(--color-Very-Dark-Blue);
+  color: var(--color-White);
   border: 1px solid #444;
   text-align: center;
 }
