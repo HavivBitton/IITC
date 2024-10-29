@@ -32,7 +32,7 @@ router.post(`/`, validateJoke, (req, res) => {
     joke: req.body.joke,
   };
   jokes.push(newJoke);
-  updateDB();
+  updateJokeDB();
   res.send(`The joke ${newJoke.joke} is in id ${newJoke.id}`);
 });
 
@@ -43,7 +43,7 @@ router.patch(`/:id`, (req, res) => {
 
   if (jokeIndex !== -1) {
     jokes[jokeIndex].joke = req.body.joke;
-    updateDB();
+    updateJokeDB();
   } else {
     res.send({ error: "Joke not found" });
   }
@@ -56,13 +56,13 @@ router.delete(`/:id`, (req, res) => {
 
   if (jokeIndex !== -1) {
     jokes.splice(jokeIndex, 1);
-    updateDB();
+    updateJokeDB();
   } else {
     res.send({ error: "Joke not found" });
   }
 });
 
-function updateDB() {
+function updateJokeDB() {
   fs.writeFile("../db/jokes.json", JSON.stringify(jokes, null, 2), (err) => {
     if (err) {
       console.error("Error writing to file");

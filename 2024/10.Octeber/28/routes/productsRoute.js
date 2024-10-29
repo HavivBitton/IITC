@@ -35,7 +35,7 @@ router.post(`/`, validateProduct, (req, res) => {
     price: req.body.price,
   };
   products.push(newProduct);
-
+  updateProductDB();
   res.send(
     `The product " ${newProduct.name} " is in new in id ${newProduct.id}, and his price is "${newProduct.price}"`
   );
@@ -49,24 +49,40 @@ router.patch(`/:id`, (req, res) => {
   if (productIndex !== -1) {
     products[productIndex].name = req.body.name;
     products[productIndex].price = req.body.price;
-
-    fs.writeFile(
-      "./db/product.json",
-      JSON.stringify(products, null, 2),
-      (err) => {
-        if (err) {
-          console.error("Error writing to file");
-          res.send({ error: "Failed to update the product" });
-        } else {
-          res.send(
-            `The product with id ${id} names is now updated to: ${req.body.name} and his price is ${req.body.price}`
-          );
-        }
-      }
-    );
+    updateProductDB();
   } else {
     res.send({ error: "product not found" });
   }
 });
+
+//Delete product by id
+router.delete(`/:id`, (req, res) => {
+  const id = +req.params.id;
+  const productIndex = products.findIndex((product) => product.id === id);
+
+  if (productIndex !== -1) {
+    products.splice(productIndex, 1);
+    updateProductDB();
+  } else {
+    res.send({ error: "Product not found" });
+  }
+});
+
+function updateProductDB() {
+  fs.writeFile(
+    "./db/product.json",
+    JSON.stringify(products, null, 2),
+    (err) => {
+      if (err) {
+        console.error("Error writing to file");
+        res.send({ error: "Failed to update the product" });
+      } else {
+        res.send(
+          `The product with id ${id} names is now updated to: ${req.body.name} and his price is ${req.body.price}`
+        );
+      }
+    }
+  );
+}
 
 export default router;

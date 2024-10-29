@@ -32,7 +32,7 @@ router.post(`/`, validateUser, (req, res) => {
     name: req.body.name,
   };
   users.push(newUser);
-
+  updateUserDB();
   res.send(`The user " ${newUser.name} " is in new in id ${newUser.id}`);
 });
 
@@ -43,20 +43,35 @@ router.patch(`/:id`, (req, res) => {
 
   if (userIndex !== -1) {
     users[userIndex].name = req.body.name;
-
-    fs.writeFile("./db/users.json", JSON.stringify(users, null, 2), (err) => {
-      if (err) {
-        console.error("Error writing to file");
-        res.send({ error: "Failed to update the user" });
-      } else {
-        res.send(
-          `The user with id ${id} names is now updated to: ${req.body.name}`
-        );
-      }
-    });
+    updateUserDB();
   } else {
     res.send({ error: "user not found" });
   }
 });
 
+//Delete user by id
+router.delete(`/:id`, (req, res) => {
+  const id = +req.params.id;
+  const userIndex = users.findIndex((user) => user.id === id);
+
+  if (userIndex !== -1) {
+    users.splice(userIndex, 1);
+    updateUserDB();
+  } else {
+    res.send({ error: "User not found" });
+  }
+});
+
+function updateUserDB() {
+  fs.writeFile("./db/users.json", JSON.stringify(users, null, 2), (err) => {
+    if (err) {
+      console.error("Error writing to file");
+      res.send({ error: "Failed to save the user" });
+    } else {
+      res.send(
+        `The user with id ${id} names is now updated to: ${req.body.name}`
+      );
+    }
+  });
+}
 export default router;
