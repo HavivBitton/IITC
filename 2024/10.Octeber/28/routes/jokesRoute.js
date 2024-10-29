@@ -1,4 +1,5 @@
 import express from "express";
+import fs from "fs";
 import { validateJoke } from "../middleware/validator.js";
 
 // Dummy DB Import
@@ -31,7 +32,7 @@ router.post(`/`, validateJoke, (req, res) => {
     joke: req.body.joke,
   };
   jokes.push(newJoke);
-
+  updateDB();
   res.send(`The joke ${newJoke.joke} is in id ${newJoke.id}`);
 });
 
@@ -42,39 +43,34 @@ router.patch(`/:id`, (req, res) => {
 
   if (jokeIndex !== -1) {
     jokes[jokeIndex].joke = req.body.joke;
-
-    fs.writeFile("./db/jokes.json", JSON.stringify(jokes, null, 2), (err) => {
-      if (err) {
-        console.error("Error writing to file");
-        res.send({ error: "Failed to update the joke" });
-      } else {
-        res.send(`The joke with id ${id} is now updated to: ${req.body.joke}`);
-      }
-    });
+    updateDB();
   } else {
     res.send({ error: "Joke not found" });
   }
 });
 
-// //Edit joke by id
-// router.patch(`/:id`, (req, res) => {
-//   const id = +req.params.id;
-//   const jokeIndex = jokes.findIndex((joke) => joke.id === id);
+//Delete joke by id
+router.delete(`/:id`, (req, res) => {
+  const id = +req.params.id;
+  const jokeIndex = jokes.findIndex((joke) => joke.id === id);
 
-//   if (jokeIndex !== -1) {
-//     jokes.splice(jokeIndex, 1);
+  if (jokeIndex !== -1) {
+    jokes.splice(jokeIndex, 1);
+    updateDB();
+  } else {
+    res.send({ error: "Joke not found" });
+  }
+});
 
-//     fs.writeFile("./db/jokes.json", JSON.stringify(jokes, null, 2), (err) => {
-//       if (err) {
-//         console.error("Error writing to file");
-//         res.send({ error: "Failed to update the joke" });
-//       } else {
-//         res.send(`The joke with id ${id} is now updated to: ${req.body.joke}`);
-//       }
-//     });
-//   } else {
-//     res.send({ error: "Joke not found" });
-//   }
-// });
+function updateDB() {
+  fs.writeFile("../db/jokes.json", JSON.stringify(jokes, null, 2), (err) => {
+    if (err) {
+      console.error("Error writing to file");
+      res.send({ error: "Failed to save the joke" });
+    } else {
+      res.send(`The joke with id ${id} is now updated to: ${req.body.joke}`);
+    }
+  });
+}
 
 export default router;

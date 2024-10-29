@@ -1,4 +1,5 @@
 import express from "express";
+import fs from "fs";
 import { validateUser } from "../middleware/validator.js";
 
 // Dummy DB Import
