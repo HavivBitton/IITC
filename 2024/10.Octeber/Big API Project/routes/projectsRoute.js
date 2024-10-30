@@ -1,9 +1,9 @@
 import express from "express";
 import fs from "fs";
-import { validateProjects } from "../middleware/validator.js";
+import { validateProject } from "../middleware/validator.js";
 
 // Dummy DB Import
-import projects from "../db/projects.json" assert { type: "json" };
+// import projects from "../db/projects.json" assert { type: "json" };
 
 const router = express.Router();
 
@@ -26,7 +26,7 @@ router.get(`/:id`, (req, res) => {
 });
 
 // Add new projects
-router.post(`/`, validateProjects, (req, res) => {
+router.post(`/`, validateProject, (req, res) => {
   let newProject = {
     id: projects.length + 1,
     name: req.body.name,
@@ -34,8 +34,8 @@ router.post(`/`, validateProjects, (req, res) => {
     deadline: req.body.deadline,
   };
   projects.push(newProject);
-  updateProjectDB(newProject.id);
-  res.send(`The project ${newProject.name} is in id ${newProject.id}`);
+  updateProjectsDB(newProject.id);
+  res.send(`The project "${newProject.name}" is on id ${newProject.id}`);
 });
 
 //Edit project by id
@@ -68,16 +68,21 @@ router.delete(`/:id`, (req, res) => {
 
 function updateProjectsDB(projectIndex) {
   fs.writeFile(
-    "../db/projects.json",
+    "./db/projects.json",
     JSON.stringify(projects, null, 2),
     (err) => {
       if (err) {
         console.error("Error writing to file");
-        res.send({ error: "Failed to save the project" });
+        console.log({ error: "Failed to save the project" });
       } else {
-        res.send(
-          `The projects with id ${projectIndex} is now updated to: ${projects[projectIndex]}`
-        );
+        console
+          .log
+          // `The projects with id ${projectIndex} is now updated to: ${JSON.stringify(
+          //   projects[projectIndex],
+          //   null,
+          //   2
+          // )}`
+          ();
       }
     }
   );

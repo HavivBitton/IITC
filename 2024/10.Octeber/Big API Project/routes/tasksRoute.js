@@ -1,9 +1,9 @@
 import express from "express";
 import fs from "fs";
-import { validateTasks } from "../middleware/validator.js";
+import { validateTask } from "../middleware/validator.js";
 
 // Dummy DB Import
-import tasks from "../db/tasks.json" assert { type: "json" };
+// import tasks from "../db/tasks.json" assert { type: "json" };
 
 const router = express.Router();
 
@@ -28,7 +28,7 @@ router.get(`/:id`, (req, res) => {
 });
 
 // Add new task
-router.post(`/`, validateTasks, (req, res) => {
+router.post(`/`, validateTask, (req, res) => {
   let newTask = {
     id: tasks.length + 1,
     title: req.body.title,

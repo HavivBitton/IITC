@@ -1,76 +1,113 @@
 import express from "express";
-import fs from "fs";
-import { validateJoke } from "../middleware/validator.js";
+// import { validateJoke } from "../middleware/validator.js";
 
-// Dummy DB Import
-import jokes from "../db/jokes.json" assert { type: "json" };
+// Import Joke Model
+import Joke from "../models/jokeModel.js";
 
 const router = express.Router();
 
-// Get random jokes
-router.get(`/random`, (req, res) => {
-  const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
-  res.send(randomJoke);
-});
-
-// Get joke bu ID
-router.get(`/:id`, (req, res) => {
-  const id = +req.params[`id`];
-  const data = jokes.find((joke) => joke.id === id);
-  if (data) {
-    res.send(data);
-  }
-  res.send({
-    error: "ERROR",
-  });
-});
-
-// Add new jokes
-router.post(`/`, validateJoke, (req, res) => {
-  let newJoke = {
-    id: jokes.length + 1,
-    joke: req.body.joke,
-  };
-  jokes.push(newJoke);
-  updateJokeDB();
-  res.send(`The joke ${newJoke.joke} is in id ${newJoke.id}`);
-});
-
-//Edit joke by id
-router.patch(`/:id`, (req, res) => {
-  const id = +req.params.id;
-  const jokeIndex = jokes.findIndex((joke) => joke.id === id);
-
-  if (jokeIndex !== -1) {
-    jokes[jokeIndex].joke = req.body.joke;
-    updateJokeDB();
-  } else {
-    res.send({ error: "Joke not found" });
-  }
-});
-
-//Delete joke by id
-router.delete(`/:id`, (req, res) => {
-  const id = +req.params.id;
-  const jokeIndex = jokes.findIndex((joke) => joke.id === id);
-
-  if (jokeIndex !== -1) {
-    jokes.splice(jokeIndex, 1);
-    updateJokeDB();
-  } else {
-    res.send({ error: "Joke not found" });
-  }
-});
-
-function updateJokeDB() {
-  fs.writeFile("../db/jokes.json", JSON.stringify(jokes, null, 2), (err) => {
-    if (err) {
-      console.error("Error writing to file");
-      res.send({ error: "Failed to save the joke" });
+// Get All Jokes
+router.get("/all", async (req, res) => {
+  try {
+    const jokes = await Joke.find({});
+    if (jokes.length === 0) {
+      res.send({
+        message: "add some joke",
+      });
     } else {
-      res.send(`The joke with id ${id} is now updated to: ${req.body.joke}`);
+      res.send(jokes);
     }
-  });
-}
+  } catch (error) {
+    res.status(500).send("Unknown server error");
+  }
+});
+
+// Get one random joke
+router.get("/random", async (req, res) => {
+  try {
+    const randomJoke = await Joke.aggregate([{ $sample: { size: 1 } }]);
+
+    if (randomJoke.length > 0) {
+      res.status(200).send(randomJoke[0]);
+    } else {
+      res.status(404).send({ error: "No jokes found" });
+    }
+  } catch (err) {
+    console.error("Error fetching random joke:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
+
+// Add new joke
+router.post("/", async (req, res) => {
+  try {
+    const newJoke = new Joke({
+      joke: req.body.joke,
+    });
+
+    const savedJoke = await newJoke.save();
+    res.status(201).send({ msg: "Joke added successfully!", savedJoke });
+  } catch (err) {
+    console.error("Error adding new joke:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
+
+// Get joke by ID
+router.get(`/:id`, async (req, res) => {
+  const id = req.params[`id`];
+
+  try {
+    const joke = await Joke.findById(id);
+    if (joke) {
+      res.status(200).send(joke);
+    } else {
+      res.status(404).send({ error: "Joke not found" });
+    }
+  } catch (err) {
+    console.error("Error fetching joke by ID:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
+
+// Edit joke by ID
+router.patch("/:id", async (req, res) => {
+  const id = req.params["id"];
+  const updatedData = { joke: req.body.joke };
+
+  try {
+    const updatedJoke = await Joke.findByIdAndUpdate(id, updatedData, {
+      new: true,
+      runValidators: true,
+    });
+
+    if (updatedJoke) {
+      res.status(200).send(updatedJoke);
+    } else {
+      res.status(404).send({ error: "Joke not found" });
+    }
+  } catch (err) {
+    console.error("Error updating joke by ID:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
+
+// Delete joke by id
+router.delete("/:id", async (req, res) => {
+  const id = req.params["id"];
+
+  try {
+    const deletedJoke = await Joke.findByIdAndDelete(id);
+
+    if (deletedJoke) {
+      res.status(200).send({ msg: "Joke deleted successfully", deletedJoke });
+    } else {
+      res.status(404).send({ error: "Joke not found" });
+    }
+  } catch (err) {
+    console.error("Error deleting joke by ID:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
 
 export default router;

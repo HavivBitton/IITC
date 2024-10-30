@@ -1,5 +1,5 @@
 const validateProject = (req, res, next) => {
-  if (!req.body.joke) {
+  if (!req.body.name || !req.body.description || !req.body.deadline) {
     res.status(400).send({
       message: " Missing Fields",
     });

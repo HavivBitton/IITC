@@ -2,8 +2,8 @@ import express from "express";
 import fs from "fs";
 import { validateProduct } from "../middleware/validator.js";
 
-// Dummy DB Import
-import products from "../db/product.json" assert { type: "json" };
+// Import Joke Model
+import Product from "../models/productModel.js";
 
 const router = express.Router();
 
