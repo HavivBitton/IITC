@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 
 //Routes import
 import jokesRouter from "./routes/jokesRoute.js";
-// import usersRouter from "./routes/usersRoute.js";
+import usersRouter from "./routes/usersRoute.js";
 // import productRouter from "./routes/productsRoute.js";
 
 const app = express();
@@ -37,7 +37,7 @@ mongoose.connect(uri).then(() => {
 //Jokes
 app.use("/api/jokes", jokesRouter);
 // //Users
-// app.use("/api/users", usersRouter);
+app.use("/api/users", usersRouter);
 // //Product
 // app.use("/api/products", productRouter);
 
