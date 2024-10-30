@@ -13,6 +13,8 @@
   "description": "",
   "dependencies": {
     "express": "^4.21.1",
+    "mongoos": "^0.0.1-security",
+    "mongoose": "^8.7.3",
     "morgan": "^1.10.0"
   }
 }

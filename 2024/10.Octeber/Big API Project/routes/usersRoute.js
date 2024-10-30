@@ -1,79 +1,117 @@
 import express from "express";
-import fs from "fs";
-import { validateUser } from "../middleware/validator.js";
+// import { validateUser } from "../middleware/validator.js";
 
-// Dummy DB Import
-// import users from "../db/users.json" assert { type: "json" };
+// Import user Model
+import User from "../models/userModel.js";
 
 const router = express.Router();
 
-// Get random users
-router.get(`/random`, (req, res) => {
-  const randomUsers = users[Math.floor(Math.random() * users.length)];
-  res.send(randomUsers);
-});
-
-// Get users bu ID
-router.get(`/:id`, (req, res) => {
-  const id = +req.params[`id`];
-  const data = users.find((user) => user.id === id);
-  if (data) {
-    res.send(data);
+// Get All Users
+router.get("/all", async (req, res) => {
+  try {
+    const users = await User.find({});
+    if (users.length === 0) {
+      res.send({
+        message: "add some user ",
+      });
+    } else {
+      res.send(projects);
+    }
+  } catch (error) {
+    res.status(500).send("Unknown server error");
   }
-  res.send({
-    error: "ERROR",
-  });
 });
 
-// Add new users
-router.post(`/`, validateUser, (req, res) => {
-  let newUser = {
-    id: users.length + 1,
+// Get one random user
+router.get("/random", async (req, res) => {
+  try {
+    const randomUser = await User.aggregate([{ $sample: { size: 1 } }]);
+
+    if (randomUser.length > 0) {
+      res.status(200).send(randomUser[0]);
+    } else {
+      res.status(404).send({ error: "No users found" });
+    }
+  } catch (err) {
+    console.error("Error fetching random user:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
+
+// Add new user
+router.post("/", async (req, res) => {
+  try {
+    const newUser = new User({
+      name: req.body.name,
+      email: req.body.email,
+    });
+
+    const savedUser = await newUser.save();
+    res.status(201).send({ msg: "User added successfully!", savedUser });
+  } catch (err) {
+    console.error("Error adding new user:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
+
+// Get user by ID
+router.get(`/:id`, async (req, res) => {
+  const id = req.params[`id`];
+
+  try {
+    const user = await User.findById(id);
+    if (user) {
+      res.status(200).send(user);
+    } else {
+      res.status(404).send({ error: "User not found" });
+    }
+  } catch (err) {
+    console.error("Error fetching user by ID:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
+
+// Edit user by ID
+router.patch("/:id", async (req, res) => {
+  const id = req.params["id"];
+  const updatedData = {
     name: req.body.name,
     email: req.body.email,
   };
-  users.push(newUser);
-  updateUserDB(newUser.id);
-  res.send(`The user " ${newUser.name} " is in new in id ${newUser.id}`);
-});
 
-//Edit user by id
-router.patch(`/:id`, (req, res) => {
-  const id = +req.params.id;
-  const userIndex = users.findIndex((user) => user.id === id);
+  try {
+    const updatedUser = await User.findByIdAndUpdate(id, updatedData, {
+      new: true,
+      runValidators: true,
+    });
 
-  if (userIndex !== -1) {
-    users[userIndex].name = req.body.name;
-    users[userIndex].email = req.body.email;
-    updateUserDB(userIndex);
-  } else {
-    res.send({ error: "user not found" });
-  }
-});
-
-//Delete user by id
-router.delete(`/:id`, (req, res) => {
-  const id = +req.params.id;
-  const userIndex = users.findIndex((user) => user.id === id);
-
-  if (userIndex !== -1) {
-    users.splice(userIndex, 1);
-    updateUserDB(userIndex);
-  } else {
-    res.send({ error: "User not found" });
-  }
-});
-
-function updateUserDB(userIndex) {
-  fs.writeFile("../db/users.json", JSON.stringify(users, null, 2), (err) => {
-    if (err) {
-      console.error("Error writing to file");
-      res.send({ error: "Failed to save the user" });
+    if (updatedUser) {
+      res.status(200).send({ msg: "User Changed successfully!", updatedUser });
     } else {
-      res.send(
-        `The user with id ${userIndex} names is now updated to: ${users[userIndex]}`
-      );
+      res.status(404).send({ error: "User not found" });
     }
-  });
-}
+  } catch (err) {
+    console.error("Error updating user by ID:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
+
+// Delete user by id
+router.delete("/:id", async (req, res) => {
+  const id = req.params["id"];
+
+  try {
+    const deletedUser = await User.findByIdAndDelete(id);
+
+    if (deletedUser) {
+      res.status(200).send({ msg: "User deleted successfully", deletedUser });
+    } else {
+      res.status(404).send({ error: "User not found" });
+    }
+  } catch (err) {
+    console.error("Error deleting user by ID:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
+
 export default router;

@@ -1,86 +1,121 @@
 import express from "express";
-import fs from "fs";
-import { validateTask } from "../middleware/validator.js";
+import mongoose from "mongoose";
+// import { validateTask } from "../middleware/validator.js";
 
-// Dummy DB Import
-// import tasks from "../db/tasks.json" assert { type: "json" };
+// Import Product Model
+import Task from "../models/taskModel.js";
 
 const router = express.Router();
 
-// Get random tasks
-router.get(`/random`, (req, res) => {
-  const randomTask = tasks[Math.floor(Math.random() * tasks.length)];
-  res.send(
-    `The product is ${randomTask.name} and his price is ${randomTask.price}`
-  );
+// Get All Tasks
+router.get("/all", async (req, res) => {
+  try {
+    const tasks = await Task.find({});
+    if (tasks.length === 0) {
+      res.send({
+        message: "add some Tasks ",
+      });
+    } else {
+      res.send(tasks);
+    }
+  } catch (error) {
+    res.status(500).send("Unknown server error");
+  }
 });
 
-// Get task bu ID
-router.get(`/:id`, (req, res) => {
-  const id = +req.params[`id`];
-  const data = tasks.find((task) => task.id === id);
-  if (data) {
-    res.send(data);
+// Get one random tasks
+router.get("/random", async (req, res) => {
+  try {
+    const randomTask = await Task.aggregate([{ $sample: { size: 1 } }]);
+
+    if (randomTask.length > 0) {
+      res.status(200).send(randomTask[0]);
+    } else {
+      res.status(404).send({ error: "No tasks found" });
+    }
+  } catch (err) {
+    console.error("Error fetching random task:", err);
+    res.status(500).send({ error: "Server error" });
   }
-  res.send({
-    error: "ERROR",
-  });
 });
 
 // Add new task
-router.post(`/`, validateTask, (req, res) => {
-  let newTask = {
-    id: tasks.length + 1,
+router.post("/", async (req, res) => {
+  try {
+    const newTask = new Task({
+      title: req.body.title,
+      description: req.body.description,
+      projectId: req.body.projectId,
+      status: req.body.status,
+    });
+
+    const savedTasks = await newTask.save();
+    res.status(201).send({ msg: "Task added successfully!", savedTasks });
+  } catch (err) {
+    console.error("Error adding new task:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
+
+// Get task by ID
+router.get(`/:id`, async (req, res) => {
+  const id = req.params[`id`];
+
+  try {
+    const task = await Task.findById(id);
+    if (task) {
+      res.status(200).send(task);
+    } else {
+      res.status(404).send({ error: "Task not found" });
+    }
+  } catch (err) {
+    console.error("Error fetching task by ID:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
+
+// Edit task by ID
+router.patch("/:id", async (req, res) => {
+  const id = req.params["id"];
+  const updatedData = {
     title: req.body.title,
     description: req.body.description,
     projectId: req.body.projectId,
-    status: req.body.status,
   };
-  tasks.push(newTask);
-  updateProductDB(newTask.id);
-  res.send(`The product " ${newTask.title} " is in new in id ${newTask.id}.`);
-});
 
-//Edit task by id
-router.patch(`/:id`, (req, res) => {
-  const id = +req.params.id;
-  const taskIndex = tasks.findIndex((task) => task.id === id);
+  try {
+    const updatedTask = await Task.findByIdAndUpdate(id, updatedData, {
+      new: true,
+      runValidators: true,
+    });
 
-  if (taskIndex !== -1) {
-    tasks[taskIndex].title = req.body.title;
-    tasks[taskIndex].description = req.body.description;
-    tasks[taskIndex].projectId = req.body.projectId;
-    tasks[taskIndex].status = req.body.status;
-    updateProductDB(taskIndex);
-  } else {
-    res.send({ error: "task not found" });
-  }
-});
-
-//Delete task by id
-router.delete(`/:id`, (req, res) => {
-  const id = +req.params.id;
-  const taskIndex = tasks.findIndex((task) => task.id === id);
-
-  if (taskIndex !== -1) {
-    tasks.splice(taskIndex, 1);
-    updateProductDB(taskIndex);
-  } else {
-    res.send({ error: "Task not found" });
-  }
-});
-
-function updateProductDB(taskIndex) {
-  fs.writeFile("../db/task.json", JSON.stringify(tasks, null, 2), (err) => {
-    if (err) {
-      console.error("Error writing to file");
-      res.send({ error: "Failed to update the task" });
+    if (updatedTask) {
+      res.status(200).send({ msg: "Task Changed successfully!", updatedTask });
     } else {
-      res.send(
-        `The task with id ${taskIndex} is now updated to: ${tasks[taskIndex]} `
-      );
+      res.status(404).send({ error: "Task not found" });
     }
-  });
-}
+  } catch (err) {
+    console.error("Error updating task by ID:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
+
+// Delete task by id
+router.delete("/:id", async (req, res) => {
+  const id = req.params["id"];
+
+  try {
+    const deletedTask = await Task.findByIdAndDelete(id);
+
+    if (deletedTask) {
+      res.status(200).send({ msg: "Task deleted successfully", deletedTask });
+    } else {
+      res.status(404).send({ error: "Task not found" });
+    }
+  } catch (err) {
+    console.error("Error deleting task by ID:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
 
 export default router;

@@ -38,17 +38,18 @@ router.get("/random", async (req, res) => {
   }
 });
 
-// Add new user
+// Add new product
 router.post("/", async (req, res) => {
   try {
-    const newUser = new User({
+    const newProduct = new User({
       name: req.body.name,
+      price: req.body.price,
     });
 
-    const savedUser = await newUser.save();
-    res.status(201).send({ msg: "User added successfully!", savedUser });
+    const savedProduct = await newProduct.save();
+    res.status(201).send({ msg: "User added successfully!", savedProduct });
   } catch (err) {
-    console.error("Error adding new user:", err);
+    console.error("Error adding new product:", err);
     res.status(500).send({ error: "Server error" });
   }
 });

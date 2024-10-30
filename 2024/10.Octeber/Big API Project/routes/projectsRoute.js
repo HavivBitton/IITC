@@ -1,91 +1,123 @@
 import express from "express";
-import fs from "fs";
-import { validateProject } from "../middleware/validator.js";
+// import { validateProject } from "../middleware/validator.js";
 
-// Dummy DB Import
-// import projects from "../db/projects.json" assert { type: "json" };
+// Import Product Model
+import Project from "../models/projectsModel.js";
 
 const router = express.Router();
 
-// Get random projects
-router.get(`/random`, (req, res) => {
-  const randomProject = projects[Math.floor(Math.random() * projects.length)];
-  res.send(randomProject);
-});
-
-// Get projects bu ID
-router.get(`/:id`, (req, res) => {
-  const id = +req.params[`id`];
-  const data = projects.find((project) => project.id === id);
-  if (data) {
-    res.send(data);
+// Get All Projects
+router.get("/all", async (req, res) => {
+  try {
+    const projects = await Project.find({});
+    if (projects.length === 0) {
+      res.send({
+        message: "add some project ",
+      });
+    } else {
+      res.send(projects);
+    }
+  } catch (error) {
+    res.status(500).send("Unknown server error");
   }
-  res.send({
-    error: "ERROR",
-  });
 });
 
-// Add new projects
-router.post(`/`, validateProject, (req, res) => {
-  let newProject = {
-    id: projects.length + 1,
+// Get one random project
+router.get("/random", async (req, res) => {
+  try {
+    const randomProject = await Project.aggregate([{ $sample: { size: 1 } }]);
+
+    if (randomProject.length > 0) {
+      res.status(200).send(randomProject[0]);
+    } else {
+      res.status(404).send({ error: "No projects found" });
+    }
+  } catch (err) {
+    console.error("Error fetching random project:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
+
+// Add new project
+router.post("/", async (req, res) => {
+  try {
+    const newProject = new Project({
+      name: req.body.name,
+      description: req.body.description,
+      deadline: req.body.deadline,
+    });
+
+    const savedProject = await newProject.save();
+    res.status(201).send({ msg: "Project added successfully!", savedProject });
+  } catch (err) {
+    console.error("Error adding new project:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
+
+// Get project by ID
+router.get(`/:id`, async (req, res) => {
+  const id = req.params[`id`];
+
+  try {
+    const project = await Project.findById(id);
+    if (project) {
+      res.status(200).send(project);
+    } else {
+      res.status(404).send({ error: "Project not found" });
+    }
+  } catch (err) {
+    console.error("Error fetching project by ID:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
+
+// Edit project by ID
+router.patch("/:id", async (req, res) => {
+  const id = req.params["id"];
+  const updatedData = {
     name: req.body.name,
     description: req.body.description,
     deadline: req.body.deadline,
   };
-  projects.push(newProject);
-  updateProjectsDB(newProject.id);
-  res.send(`The project "${newProject.name}" is on id ${newProject.id}`);
-});
 
-//Edit project by id
-router.patch(`/:id`, (req, res) => {
-  const id = +req.params.id;
-  const projectIndex = projects.findIndex((project) => project.id === id);
+  try {
+    const updatedProject = await Project.findByIdAndUpdate(id, updatedData, {
+      new: true,
+      runValidators: true,
+    });
 
-  if (projectIndex !== -1) {
-    projects[projectIndex].name = req.body.name;
-    projects[projectIndex].description = req.body.description;
-    projects[projectIndex].deadline = req.body.deadline;
-    updateProjectsDB(projectIndex);
-  } else {
-    res.send({ error: "Project not found" });
-  }
-});
-
-//Delete project by id
-router.delete(`/:id`, (req, res) => {
-  const id = +req.params.id;
-  const projectIndex = projects.findIndex((project) => project.id === id);
-
-  if (projectIndex !== -1) {
-    projects.splice(projectIndex, 1);
-    updateProjectsDB(projectIndex);
-  } else {
-    res.send({ error: "Projects not found" });
-  }
-});
-
-function updateProjectsDB(projectIndex) {
-  fs.writeFile(
-    "./db/projects.json",
-    JSON.stringify(projects, null, 2),
-    (err) => {
-      if (err) {
-        console.error("Error writing to file");
-        console.log({ error: "Failed to save the project" });
-      } else {
-        console
-          .log
-          // `The projects with id ${projectIndex} is now updated to: ${JSON.stringify(
-          //   projects[projectIndex],
-          //   null,
-          //   2
-          // )}`
-          ();
-      }
+    if (updatedProject) {
+      res
+        .status(200)
+        .send({ msg: "Project Changed successfully!", updatedProject });
+    } else {
+      res.status(404).send({ error: "Project not found" });
     }
-  );
-}
+  } catch (err) {
+    console.error("Error updating project by ID:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
+
+// Delete project by id
+router.delete("/:id", async (req, res) => {
+  const id = req.params["id"];
+
+  try {
+    const deletedProject = await Project.findByIdAndDelete(id);
+
+    if (deletedProject) {
+      res
+        .status(200)
+        .send({ msg: "Project deleted successfully", deletedProject });
+    } else {
+      res.status(404).send({ error: "Project not found" });
+    }
+  } catch (err) {
+    console.error("Error deleting project by ID:", err);
+    res.status(500).send({ error: "Server error" });
+  }
+});
 
 export default router;
