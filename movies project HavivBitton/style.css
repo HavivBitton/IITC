@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #262524;
+}
+
+.movies-container {
+  display: flex;
+}
+
+.movie-card {
+  background-color: aqua;
+  /* border: 2px solid black; */
+  /* border-color: black; */
+}
+
+.movie-img {
+  width: 10em;
+  /* height: 2em; */
+}
