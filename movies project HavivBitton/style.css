@@ -1,24 +1,157 @@
+:root {
+  --background-gray: #262524;
+  --nav-bar-gray: #1d1d1c;
+  --search-gray: #3e3e3d;
+  --light-pink: #ff708d;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Sen", sans-serif;
 }
 
 body {
-  background-color: #262524;
+  background-color: var(--background-gray);
 }
-
+.container-title,
+.movie-detail-container,
+.movie-page-similar-movie,
 .movies-container {
   display: flex;
+  color: white;
 }
 
 .movie-card {
-  background-color: aqua;
-  /* border: 2px solid black; */
-  /* border-color: black; */
+  /* background-color: var(--light-pink); */
+  border-radius: 10px;
+  margin: 10px;
+  color: white;
 }
 
 .movie-img {
   width: 10em;
+  /* opacity: 30%; */
   /* height: 2em; */
+}
+
+/* Navbar Styles */
+.nav-bar {
+  width: 100%;
+  height: 50px;
+  background-color: var(--nav-bar-gray);
+  position: sticky;
+  top: 0;
+  /* z-index: 1000; */
+}
+
+.nav-bar-container {
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+  /* height: 100%; */
+  color: white;
+  /* font-family: "Sen", sans-serif; */
+}
+
+.logo-container {
+  /* flex: 1; */
+}
+
+.logo {
+  height: 3rem;
+  width: 3rem;
+}
+
+.menu-container {
+  flex: 6;
+}
+
+.menu-list {
+  display: flex;
+  list-style: none;
+}
+
+/* .menu-list.active {
+  max-height: 500px;
+  display: flex;
+  list-style-type: none;
+} */
+
+.menu-button {
+  margin-right: 30px;
+  padding: 10px;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  cursor: pointer;
+  color: var(--light-pink);
+}
+
+.menu-list-item.active {
+  font-weight: bold;
+  color: var(--base-yellow);
+}
+
+/* Search Styles */
+.search-container {
+  margin-right: 1rem;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  background-color: var(--search-gray);
+  border: 1px solid var(--search-gray);
+  /* border-radius: 12px; */
+  outline: none;
+  font-size: 14px;
+  color: white;
+}
+
+/* Toggle Mode Styles */
+.toggle-mode {
+  width: 40px;
+  height: 20px;
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+
+.toggle-icon {
+  color: var(--base-yellow);
+}
+
+.toggle-ball {
+  width: 18px;
+  height: 18px;
+  background-color: black;
+  position: absolute;
+  right: 1px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 1s ease all;
+}
+
+/* movie page CSS */
+.movie-page-container {
+  display: flex;
+}
+
+.movie-detail-img {
+  width: 20em;
+}
+.movie-page-detail {
+  color: white;
 }
