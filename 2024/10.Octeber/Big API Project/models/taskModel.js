@@ -7,20 +7,18 @@ const taskSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: true,
+  },
+  status: {
+    type: String,
+    enum: ["In Progress", "Done", "To Do"],
+    default: "To-Do",
+  },
+  dueDate: {
+    type: Date,
   },
   projectId: {
     type: Number,
     required: true,
-  },
-  status: {
-    type: String,
-    required: true,
-    enum: ["in-progress", "completed", "not-started"], // Enum validation
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
   },
 });
 

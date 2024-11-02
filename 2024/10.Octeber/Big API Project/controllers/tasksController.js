@@ -39,8 +39,9 @@ export const addNewTask = async (req, res) => {
     const newTask = new Task({
       title: req.body.title,
       description: req.body.description,
-      projectId: req.body.projectId,
       status: req.body.status,
+      dueDate: req.body.dueDate,
+      projectId: req.body.projectId,
     });
 
     const savedTasks = await newTask.save();
@@ -74,6 +75,8 @@ export const editTaskByID = async (req, res) => {
   const updatedData = {
     title: req.body.title,
     description: req.body.description,
+    status: req.body.status,
+    dueDate: req.body.dueDate,
     projectId: req.body.projectId,
   };
 

@@ -24,7 +24,7 @@ router.post("/", validateUser, addNewUser);
 router.get(`/:id`, getUserByID);
 
 // Edit user by ID
-router.patch("/:id", validateUser, editUserByID);
+router.patch("/:id", editUserByID);
 
 // Delete user by id
 router.delete("/:id", deleteUserByID);

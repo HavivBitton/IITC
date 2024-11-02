@@ -10,7 +10,7 @@ export const getAllUsers = async (req, res) => {
         message: "add some user ",
       });
     } else {
-      res.send(projects);
+      res.send(users);
     }
   } catch (error) {
     res.status(500).send("Unknown server error");
@@ -39,6 +39,7 @@ export const addNewUser = async (req, res) => {
     const newUser = new User({
       name: req.body.name,
       email: req.body.email,
+      role: req.body.role,
     });
 
     const savedUser = await newUser.save();
@@ -72,6 +73,7 @@ export const editUserByID = async (req, res) => {
   const updatedData = {
     name: req.body.name,
     email: req.body.email,
+    role: req.body.role,
   };
 
   try {

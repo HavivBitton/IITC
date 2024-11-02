@@ -38,7 +38,7 @@ export const addNewProject = async (req, res) => {
     const newProject = new Project({
       name: req.body.name,
       description: req.body.description,
-      deadline: req.body.deadline,
+      status: req.body.status,
     });
 
     const savedProject = await newProject.save();
@@ -72,7 +72,7 @@ export const editProjectByID = async (req, res) => {
   const updatedData = {
     name: req.body.name,
     description: req.body.description,
-    deadline: req.body.deadline,
+    status: req.body.status,
   };
 
   try {

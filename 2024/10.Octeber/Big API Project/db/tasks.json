@@ -1,72 +1,37 @@
 [
   {
-    "id": 1,
     "title": "Task 1",
     "description": "Description of Task 1",
-    "projectId": 1,
-    "status": "in-progress"
+    "status": "In Progress",
+    "dueDate": "2024-11-02T20:44:39.377Z",
+    "projectId": 1
   },
   {
-    "id": 2,
     "title": "Task 2",
     "description": "Description of Task 2",
-    "projectId": 1,
-    "status": "completed"
+    "status": "To Do",
+    "dueDate": "2024-11-10T15:00:00.000Z",
+    "projectId": 2
   },
   {
-    "id": 3,
     "title": "Task 3",
     "description": "Description of Task 3",
-    "projectId": 2,
-    "status": "not-started"
+    "status": "Done",
+    "dueDate": "2024-11-05T10:30:00.000Z",
+    "projectId": 1
   },
   {
-    "id": 4,
     "title": "Task 4",
     "description": "Description of Task 4",
-    "projectId": 2,
-    "status": "in-progress"
+    "status": "In Progress",
+    "dueDate": "2024-11-12T18:00:00.000Z",
+    "projectId": 3
   },
   {
-    "id": 5,
     "title": "Task 5",
     "description": "Description of Task 5",
-    "projectId": 3,
-    "status": "completed"
-  },
-  {
-    "id": 6,
-    "title": "Task 6",
-    "description": "Description of Task 6",
-    "projectId": 3,
-    "status": "in-progress"
-  },
-  {
-    "id": 7,
-    "title": "Task 7",
-    "description": "Description of Task 7",
-    "projectId": 4,
-    "status": "not-started"
-  },
-  {
-    "id": 8,
-    "title": "Task 8",
-    "description": "Description of Task 8",
-    "projectId": 4,
-    "status": "in-progress"
-  },
-  {
-    "id": 9,
-    "title": "Task 9",
-    "description": "Description of Task 9",
-    "projectId": 5,
-    "status": "completed"
-  },
-  {
-    "id": 10,
-    "title": "Task 10",
-    "description": "Description of Task 10",
-    "projectId": 5,
-    "status": "not-started"
+    "status": "To Do",
+    "dueDate": "2024-11-15T08:00:00.000Z",
+    "projectId": 2
   }
 ]

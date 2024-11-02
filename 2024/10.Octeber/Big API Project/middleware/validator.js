@@ -1,14 +1,14 @@
 const validateProject = (req, res, next) => {
-  if (!req.body.name || !req.body.description || !req.body.deadline) {
+  if (!req.body.name) {
     res.status(400).send({
-      message: " Missing Fields",
+      message: "Missing Fields! You have to enter project name",
     });
   }
   next();
 };
 
 const validateUser = (req, res, next) => {
-  if (!req.body.name) {
+  if (!req.body.name || !req.body.email) {
     res.status(400).send({
       message: " Missing Fields",
     });
@@ -16,9 +16,9 @@ const validateUser = (req, res, next) => {
   next();
 };
 const validateTask = (req, res, next) => {
-  if (!req.body.name || !req.body.price) {
+  if (!req.body.title || !req.body.projectId) {
     res.status(400).send({
-      message: " Missing Fields",
+      message: " Missing Fields!",
     });
   }
   next();

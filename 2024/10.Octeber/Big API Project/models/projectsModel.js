@@ -7,11 +7,11 @@ const projectSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: true,
   },
-  deadline: {
-    type: Date,
-    required: true,
+  status: {
+    type: String,
+    enum: ["in-progress", "completed", "not-started"],
+    default: "not-started",
   },
   createdAt: {
     type: Date,
@@ -19,4 +19,4 @@ const projectSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model("Projects", projectSchema);
+export default mongoose.model("Project", projectSchema);
