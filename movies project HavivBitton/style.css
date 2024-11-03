@@ -18,11 +18,13 @@ body {
 .container-title,
 .movie-detail-container,
 .movie-page-similar-movie,
+.movie-page-movie-cast,
 .movies-container {
   display: flex;
   color: white;
 }
 
+.actor-card,
 .movie-card {
   /* background-color: var(--light-pink); */
   border-radius: 10px;
@@ -30,6 +32,7 @@ body {
   color: white;
 }
 
+.actor-img,
 .movie-img {
   width: 10em;
   /* opacity: 30%; */
@@ -43,16 +46,13 @@ body {
   background-color: var(--nav-bar-gray);
   position: sticky;
   top: 0;
-  /* z-index: 1000; */
 }
 
 .nav-bar-container {
   display: flex;
   align-items: center;
   padding: 0 50px;
-  /* height: 100%; */
   color: white;
-  /* font-family: "Sen", sans-serif; */
 }
 
 .logo-container {
@@ -65,7 +65,7 @@ body {
 }
 
 .menu-container {
-  flex: 6;
+  /* flex: 6; */
 }
 
 .menu-list {
@@ -117,31 +117,44 @@ a:hover {
   color: white;
 }
 
-/* Toggle Mode Styles */
-.toggle-mode {
-  width: 40px;
-  height: 20px;
-  background-color: white;
-  border-radius: 30px;
+/* Search Results */
+.search-results {
+  position: absolute;
+  display: none;
+  top: 45px;
+  width: 25vw;
+  background-color: var(--nav-bar-gray);
+  border-radius: 8px;
+  list-style: none;
+  padding: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.search-results li {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  position: relative;
+  padding: 10px;
+  border-bottom: 2px solid black;
 }
 
-.toggle-icon {
-  color: var(--base-yellow);
-}
-
-.toggle-ball {
-  width: 18px;
-  height: 18px;
-  background-color: black;
-  position: absolute;
-  right: 1px;
-  border-radius: 50%;
+.search-results li:hover {
+  background-color: #343434;
   cursor: pointer;
-  transition: 1s ease all;
+}
+
+.search-results img {
+  width: 40px;
+  height: 60px;
+  border-radius: 4px;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.search-results p {
+  margin: 0;
+  font-size: 16px;
 }
 
 /* movie page CSS */
