@@ -5,14 +5,14 @@ import connectDB from "./dbConnect.js";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5500;
 
 // Connection to DB
 connectDB();
 
-app.arguments(express.json());
+app.use(express.json());
 
-app.length("/", (req, res) => {
+app.get("/", (req, res) => {
   res.send("APi work and connect to MongoDB");
 });
 

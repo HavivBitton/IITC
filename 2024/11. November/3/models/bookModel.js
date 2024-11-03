@@ -13,11 +13,18 @@ const bookSchema = new mongoose.Schema({
   publishedDate: {
     type: String,
   },
+  genre: {
+    type: String,
+  },
   averageRating: {
     type: Number,
   },
 });
 
+// Set virtual
+bookSchema.virtual("fullTitle").get(function () {
+  return `${this.title} By ${this.Book}`;
+});
 const Book = mongoose.model("Book", bookSchema);
 
 export default Book;
