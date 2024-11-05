@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import Book from "./models/Book.js";
-import Author from "./models/Author.js";
+import Book from "./models/bookModel.js";
+import Author from "./models/authorModel.js";
 import { books, authors } from "./seedData.js";
 
 dotenv.config();
 
-async function seedDatabase() {
+export async function seedDatabase() {
   try {
     await mongoose.connect(process.env.MONGODB_URI);
     await Author.insertMany(authors);

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,9 +9,6 @@
   <body>
     <div class="nav-bar">
       <div class="nav-bar-container">
-        <div class="logo-container">
-          <img class="logo" src="../image/cinema hd logo.png" alt="IMDB Logo" />
-        </div>
         <div class="menu-container">
           <ul class="menu-list">
             <li>
@@ -59,6 +56,72 @@
       <div class="nowPlaying-container">
         <h1 class="container-title">Now Playing</h1>
         <div class="nowPlaying-movies-container movies-container"></div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.min.js"></script>
+    <script src="../main.js" type="module"></script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <!-- Static Sidebar -->
+    <div class="sidebar">
+      <div class="menu-container">
+        <ul class="menu-list">
+          <li>
+            <a href="../html/index.html" id="home-button" class="menu-button"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="../html/about.html" id="about-button" class="menu-button"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="../html/favorites.html"
+              id="Favorite-button"
+              class="menu-button"
+              >Favorites</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="search-container">
+        <input
+          type="text"
+          id="searchInput"
+          class="search-bar"
+          placeholder="Search..."
+        />
+        <ul id="searchResults" class="search-results"></ul>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <div id="to-display">
+        <div class="popular-container">
+          <h1 class="container-title">Popular Now</h1>
+          <div class="popular-movies-container movies-container"></div>
+        </div>
+        <div class="topRate-container">
+          <h1 class="container-title">Top Rate</h1>
+          <div class="topRate-movies-container movies-container"></div>
+        </div>
+        <div class="nowPlaying-container">
+          <h1 class="container-title">Now Playing</h1>
+          <div class="nowPlaying-movies-container movies-container"></div>
+        </div>
       </div>
     </div>
 

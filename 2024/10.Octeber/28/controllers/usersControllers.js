@@ -3,13 +3,13 @@ import User from "../models/userModel.js";
 // Get All Users
 export const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find({});
-    if (users.length === 0) {
+    const allFetchedUsers = await User.find({});
+    if (allFetchedUsers.length === 0) {
       res.send({
         message: "add some user",
       });
     } else {
-      res.send(users);
+      res.send(allFetchedUsers);
     }
   } catch (error) {
     res.status(500).send("Unknown server error");

@@ -2,6 +2,7 @@
   --background-gray: #262524;
   --nav-bar-gray: #1d1d1c;
   --search-gray: #3e3e3d;
+  --light-gray: #dedede;
   --light-pink: #ff708d;
 }
 
@@ -15,7 +16,7 @@
 body {
   background-color: var(--background-gray);
 }
-.container-title,
+
 .movie-detail-container,
 .movie-page-similar-movie,
 .movie-page-movie-cast,
@@ -24,19 +25,56 @@ body {
   color: white;
 }
 
+.container-title {
+  display: flex;
+  color: white;
+  font-size: 25px;
+  margin-left: 15px;
+  margin-top: 15px;
+}
+
 .actor-card,
 .movie-card {
-  /* background-color: var(--light-pink); */
-  border-radius: 10px;
+  /* background-color: var(--search-gray); */
+  border-radius: 5px;
   margin: 10px;
   color: white;
+}
+
+.card-movie-details {
+  height: 50px;
+  font-size: 12px;
+  color: var(--light-gray);
 }
 
 .actor-img,
 .movie-img {
   width: 10em;
-  /* opacity: 30%; */
-  /* height: 2em; */
+  transition: all 0.2s ease-in-out;
+}
+
+.movie-img:hover {
+  cursor: pointer;
+  filter: brightness(70%);
+}
+
+/* Heart Icon  */
+.heart-icon {
+  width: 30px;
+  height: 30px;
+  background-image: url("./image/empty-heart-icon-W.png");
+  background-size: cover;
+  cursor: pointer;
+  transition: background-image 0.3s ease;
+}
+
+.heart-icon {
+  display: block;
+  width: 25px;
+}
+
+.heart-icon.full {
+  background-image: url("./image/full-heart-icon-W.png");
 }
 
 /* Navbar Styles */
@@ -167,4 +205,65 @@ a:hover {
 }
 .movie-page-detail {
   color: white;
+}
+
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.menu-container {
+  margin-bottom: 20px;
+}
+
+.menu-list {
+  list-style: none;
+}
+
+.menu-button {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.menu-button:hover {
+  background-color: #444;
+}
+
+.search-container {
+  margin-top: auto;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Main Content Styling */
+.main-content {
+  margin-left: 250px; /* Same width as sidebar */
+  padding: 20px;
+}
+
+.container-title {
+  margin-bottom: 10px;
 }
