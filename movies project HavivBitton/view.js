@@ -1,12 +1,13 @@
 import { getMovieCast, getSimilarMovie } from "./main.js";
+import { searchMoviesByID, searchMoviesByText } from "./controller.js";
 
 // DOM Element
 const toDisplayContainer = document.getElementById("to-display");
 const searchResultsContainer = document.getElementById("searchResults");
 
-// Function to create a card for each movie
-function displayMovies(container, moviesArray) {
-  moviesArray.forEach((movie) => {
+// Function to create and display card for each movie
+function displayMovies(container, moviesArray, num) {
+  moviesArray.slice(0, num).forEach((movie) => {
     // Create card element
     const card = document.createElement("div");
     card.id = movie.id;
@@ -32,7 +33,7 @@ function displayMovies(container, moviesArray) {
   });
 }
 
-// Function to display specific movie page
+// Function to create and display specific movie page
 function displayMoviePage(movie) {
   // Clear the current content
   toDisplayContainer.innerHTML = "";
@@ -92,6 +93,7 @@ function displayMoviePage(movie) {
   toDisplayContainer.appendChild(moviePageSimilarMovie);
 }
 
+// Function to create and display similar movies list
 function displayCast(container, actorsArray) {
   container.innerHTML = `<h3 id="cast-title"> cast:</h3> `;
   actorsArray.forEach((actor) => {
@@ -117,56 +119,54 @@ function displayCast(container, actorsArray) {
   });
 }
 
-function displaySearchResults(movies) {
+// Function that display the search result
+async function displaySearchResults(query) {
   searchResultsContainer.innerHTML = "";
-  if (movies.length === 0) {
-    const listItem = document.createElement("li");
-    listItem.innerHTML = " Not movie found";
-    searchResultsContainer.appendChild(listItem);
-  } else {
-    movies.slice(0, 10).forEach((movie) => {
+  // Check if the input is number or string
+  if (!isNaN(query)) {
+    const movie = await searchMoviesByID(query);
+    searchResultsContainer.style.display = "block";
+    if (movie.success === false) {
+      const listItem = document.createElement("li");
+      listItem.innerHTML = " Not movie found";
+      searchResultsContainer.appendChild(listItem);
+      return;
+    } else {
       const listItem = document.createElement("li");
       listItem.innerHTML = `
-      <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title}">
-      <p>${movie.title}</p>
-      `;
+          <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.original_title}">
+          <p>${movie.original_title}</p>
+          `;
       searchResultsContainer.appendChild(listItem);
       listItem.addEventListener("click", () => {
         displayMoviePage(movie);
         searchInput.value = "";
         searchResultsContainer.style.display = "none";
       });
-    });
-  }
-}
-
-function displaySearchResultsByID(movie) {
-  console.log(movie);
-
-  searchResultsContainer.innerHTML = "";
-  if (movie.success === false) {
-    const listItem = document.createElement("li");
-    listItem.innerHTML = " Not movie found";
-    searchResultsContainer.appendChild(listItem);
-    return;
+    }
   } else {
-    const listItem = document.createElement("li");
-    listItem.innerHTML = `
-      <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.original_title}">
-      <p>${movie.original_title}</p>
-      `;
-    searchResultsContainer.appendChild(listItem);
-    listItem.addEventListener("click", () => {
-      displayMoviePage(movie);
-      searchInput.value = "";
-      searchResultsContainer.style.display = "none";
-    });
+    const movies = await searchMoviesByText(query);
+    searchResultsContainer.style.display = "block";
+    if (movies.length === 0) {
+      const listItem = document.createElement("li");
+      listItem.innerHTML = " Not movie found";
+      searchResultsContainer.appendChild(listItem);
+    } else {
+      movies.slice(0, 10).forEach((movie) => {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `
+          <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title}">
+          <p>${movie.title}</p>
+          `;
+        searchResultsContainer.appendChild(listItem);
+        listItem.addEventListener("click", () => {
+          displayMoviePage(movie);
+          searchInput.value = "";
+          searchResultsContainer.style.display = "none";
+        });
+      });
+    }
   }
 }
 
-export {
-  displayMovies,
-  displayCast,
-  displaySearchResults,
-  displaySearchResultsByID,
-};
+export { displayMovies, displayCast, displaySearchResults };

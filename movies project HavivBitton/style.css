@@ -29,8 +29,7 @@ body {
   display: flex;
   color: white;
   font-size: 25px;
-  margin-left: 15px;
-  margin-top: 15px;
+  margin: 10px;
 }
 
 /* ////////////////////////////////// movie-card */
@@ -51,6 +50,16 @@ body {
 .movie-img:hover {
   cursor: pointer;
   filter: brightness(70%);
+}
+
+.container-title-div {
+  display: flex;
+  align-items: center;
+}
+
+#popular-arrow-icon {
+  width: 25px;
+  height: 25px;
 }
 
 /* ////////////////////////////////// Search Styles */
