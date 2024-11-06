@@ -1,4 +1,5 @@
 import API_KEY from "./env.js";
+const accountID = 21570547;
 
 import {
   displayMovies,
@@ -20,6 +21,7 @@ const nowPlayingMoviesContainer = document.querySelector(
 );
 const searchInput = document.getElementById("searchInput");
 const searchResultsContainer = document.getElementById("searchResults");
+const favoriteMoviesContainer = document.getElementById("favorite-container");
 
 // API url's
 const api_URI_popular = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
@@ -61,11 +63,7 @@ async function getMovieCast(container, id) {
   try {
     const response = await fetch(api_URI_cast);
     const data = await response.json();
-    console.log(data);
-
     const actorsArray = data.cast;
-    console.log(actorsArray);
-
     displayCast(container, actorsArray);
   } catch (error) {
     console.error("Error fetching movies:", error);
@@ -91,9 +89,5 @@ searchInput.addEventListener("input", async function () {
 });
 
 //Favorite
-function addMovieToFavorite(movie) {
-  const favoriteMoviesContainer = document.querySelector(".favorite-container");
-  const api_URI_AddToFavorite = `https://api.themoviedb.org/3/account/21570547/favorite`;
-}
 
-export { getSimilarMovie, getMovieCast, addMovieToFavorite };
+export { getSimilarMovie, getMovieCast };

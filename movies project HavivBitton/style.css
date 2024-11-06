@@ -33,33 +33,42 @@ body {
   margin-top: 15px;
 }
 
-.actor-card,
+/* movie-card */
 .movie-card {
   border-radius: 5px;
   margin: 10px;
   color: white;
 }
-
 .card-movie-details {
   height: 50px;
   font-size: 12px;
   color: var(--light-gray);
 }
-
-.actor-img,
 .movie-img {
   width: 10em;
   transition: all 0.2s ease-in-out;
 }
-
 .movie-img:hover {
   cursor: pointer;
   filter: brightness(70%);
 }
 
+/* actor-card */
+.actor-img {
+  width: 6em;
+}
+.actor-card {
+  border-radius: 5px;
+  margin: 10px;
+  color: white;
+}
+.actor-details {
+  font-size: 10px;
+}
+
 /* Heart Icon  */
 .heart-icon {
-  width: 30px;
+  width: 34px;
   height: 30px;
   background-image: url("./image/empty-heart-icon-W.png");
   background-size: cover;
@@ -69,11 +78,11 @@ body {
 
 .heart-icon {
   display: block;
-  width: 25px;
 }
 
 .heart-icon.full {
   background-image: url("./image/full-heart-icon-W.png");
+  height: 28px;
 }
 
 /* Search Styles */
@@ -159,7 +168,7 @@ body {
   width: 250px;
   height: 100vh;
   background-color: var(--nav-bar-gray);
-  color: #fff;
+  color: white;
   display: flex;
   flex-direction: column;
   padding: 20px;

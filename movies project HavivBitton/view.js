@@ -1,4 +1,4 @@
-import { getMovieCast, getSimilarMovie, addMovieToFavorite } from "./main.js";
+import { getMovieCast, getSimilarMovie } from "./main.js";
 
 // DOM Element
 const toDisplayContainer = document.getElementById("to-display");
@@ -17,8 +17,7 @@ function displayMovies(container, moviesArray) {
       movie.title
     }" />
          <div class="card-movie-details"><h3>${movie.title}</h3></div>
-         <div class="heart-icon" id="heart"></div>
-      `;
+         `;
     container.appendChild(card);
 
     // Add click event to show specific movie details
@@ -62,7 +61,6 @@ function displayMoviePage(movie) {
   heartIcon.classList.add("heart-icon");
   heartIcon.addEventListener("click", () => {
     heartIcon.classList.toggle("full");
-    addMovieToFavorite(movie);
   });
 
   // Create a back button
@@ -103,14 +101,14 @@ function displayCast(container, actorsArray) {
 
     // Create actor image element
     const img = document.createElement("img");
-    img.src = `https://image.tmdb.org/t/p/w500${actor.profile_path}`;
+    img.src = `https://image.tmdb.org/t/p/w500${actor.profile_path}` || "./";
     img.alt = actor.name;
     img.className = "actor-img";
 
     // Create actor details element
     const details = document.createElement("div");
     details.className = "actor-details";
-    details.innerHTML = `<h3>${actor.name}</h3> /n <h3>${actor.character}</h3>`;
+    details.innerHTML = `<h3>${actor.name}</h3> ${actor.character}`;
 
     card.appendChild(img);
     card.appendChild(details);
