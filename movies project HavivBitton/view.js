@@ -6,7 +6,6 @@ const searchResultsContainer = document.getElementById("searchResults");
 
 // Function to create a card for each movie
 function displayMovies(container, moviesArray) {
-  container.innerHTML = ""; // Clear container first
   moviesArray.forEach((movie) => {
     // Create card element
     const card = document.createElement("div");
@@ -64,15 +63,16 @@ function displayMoviePage(movie) {
   });
 
   // Create a back button
-  const backButton = document.createElement("button");
-  backButton.innerText = "Back";
+  const backButton = document.createElement("div");
+  backButton.classList.add("back-icon");
+  //   backButton.innerHTML = `<img src="../image/back-icon-white.png" alt="back-icon" id="back-icon" />`;
   backButton.addEventListener("click", () => {
     window.location.href = "./index.html";
   });
 
   // Append elements to detail container
-  moviePageDetail.appendChild(backButton);
   moviePageDetail.appendChild(heartIcon);
+  moviePageDetail.appendChild(backButton);
   moviePageContainer.appendChild(moviePageImg);
   moviePageContainer.appendChild(moviePageDetail);
 
@@ -83,6 +83,7 @@ function displayMoviePage(movie) {
 
   const moviePageSimilarMovie = document.createElement("div");
   moviePageSimilarMovie.classList.add("movie-page-similar-movie");
+  moviePageSimilarMovie.innerHTML = `<h3 id="similar-title"> Similar Movie:</h3>`;
   getSimilarMovie(moviePageSimilarMovie, movie.id);
 
   // Append detail container to 'to-display'
@@ -92,7 +93,7 @@ function displayMoviePage(movie) {
 }
 
 function displayCast(container, actorsArray) {
-  container.innerHTML = ""; // Clear container first
+  container.innerHTML = `<h3 id="cast-title"> cast:</h3> `;
   actorsArray.forEach((actor) => {
     // Create actor card element
     const card = document.createElement("div");

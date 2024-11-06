@@ -33,7 +33,7 @@ body {
   margin-top: 15px;
 }
 
-/* movie-card */
+/* ////////////////////////////////// movie-card */
 .movie-card {
   border-radius: 5px;
   margin: 10px;
@@ -53,39 +53,7 @@ body {
   filter: brightness(70%);
 }
 
-/* actor-card */
-.actor-img {
-  width: 6em;
-}
-.actor-card {
-  border-radius: 5px;
-  margin: 10px;
-  color: white;
-}
-.actor-details {
-  font-size: 10px;
-}
-
-/* Heart Icon  */
-.heart-icon {
-  width: 34px;
-  height: 30px;
-  background-image: url("./image/empty-heart-icon-W.png");
-  background-size: cover;
-  cursor: pointer;
-  transition: background-image 0.3s ease;
-}
-
-.heart-icon {
-  display: block;
-}
-
-.heart-icon.full {
-  background-image: url("./image/full-heart-icon-W.png");
-  height: 28px;
-}
-
-/* Search Styles */
+/* ////////////////////////////////// Search Styles */
 .search-container {
   margin-right: 1rem;
 }
@@ -141,7 +109,7 @@ body {
   font-size: 16px;
 }
 
-/* Single movie page  */
+/* ////////////////////////// Single movie page  */
 .movie-page-container {
   display: flex;
 }
@@ -157,8 +125,53 @@ body {
   margin-block: 10px;
   line-height: 1.4;
 }
+#cast-title,
+#similar-title {
+  margin-top: 10px;
+  color: var(--light-pink);
+}
+/* actor-card */
+.actor-img {
+  width: 6em;
+}
+.actor-card {
+  border-radius: 5px;
+  margin: 10px;
+  color: white;
+}
+.actor-details {
+  font-size: 10px;
+}
+/* back-icon */
+.back-icon {
+  background-image: url("/image/back-icon-white.png");
+  background-size: cover;
+  width: 35px;
+  height: 35px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-image 0.3s ease;
+}
+.back-icon:hover {
+  background-image: url("/image/back-icon.png");
+}
+/* Heart Icon  */
+.heart-icon {
+  width: 34px;
+  height: 30px;
+  background-image: url("./image/empty-heart-icon-W.png");
+  background-size: cover;
+  cursor: pointer;
+  transition: background-image 0.3s ease;
+}
+.heart-icon:hover {
+  background-image: url("./image/pink-heart-icon.png");
+}
+.heart-icon.full {
+  background-image: url("./image/full-heart-pink.png");
+}
 
-/* Sidebar Styling */
+/* ////////////////////////////////// Sidebar Styling */
 .sidebar {
   position: fixed;
   top: 0;
@@ -230,7 +243,7 @@ li {
   color: white;
 }
 
-/* About Page */
+/* ////////////////////////////////// About Page */
 .about-main ul,
 .about-main p {
   margin-block: 15px;
