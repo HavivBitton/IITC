@@ -7,35 +7,39 @@
     <link rel="stylesheet" href="../style.css" />
   </head>
   <body>
-    <div class="nav-bar">
-      <div class="nav-bar-container">
-        <div class="menu-container">
-          <ul class="menu-list">
-            <li>
-              <a href="./index.html" id="home-button" class="menu-button"
-                >Home</a
-              >
-            </li>
-            <li>
-              <a href="./about.html" id="about-button" class="menu-button"
-                >About</a
-              >
-            </li>
-            <li>
-              <a
-                href="./favorites.html"
-                id="Favorite-button"
-                class="menu-button"
-                >Favorites</a
-              >
-            </li>
-          </ul>
+    <!-- Sidebar  -->
+    <div class="sidebar">
+      <div class="menu-container">
+        <div class="search-container">
+          <input
+            type="text"
+            id="searchInput"
+            class="search-bar"
+            placeholder="Search..."
+          />
+          <ul id="searchResults" class="search-results"></ul>
         </div>
+        <ul class="menu-list">
+          <li>
+            <a href="../html/index.html" id="home-button" class="menu-button"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="../html/about.html" id="about-button" class="menu-button"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="../html/favorites.html"
+              id="Favorite-button"
+              class="menu-button"
+              >Favorites</a
+            >
+          </li>
+        </ul>
       </div>
-    </div>
-    <div class="favorite-container">
-      <h1 class="container-title">your Favorite</h1>
-      <div class="favorite-movies-container movies-container"></div>
     </div>
   </body>
 </html>

@@ -35,7 +35,6 @@ body {
 
 .actor-card,
 .movie-card {
-  /* background-color: var(--search-gray); */
   border-radius: 5px;
   margin: 10px;
   color: white;
@@ -77,67 +76,6 @@ body {
   background-image: url("./image/full-heart-icon-W.png");
 }
 
-/* Navbar Styles */
-.nav-bar {
-  width: 100%;
-  height: 50px;
-  background-color: var(--nav-bar-gray);
-  position: sticky;
-  top: 0;
-}
-
-.nav-bar-container {
-  display: flex;
-  align-items: center;
-  padding: 0 50px;
-  color: white;
-}
-
-.logo-container {
-  /* flex: 1; */
-}
-
-.logo {
-  height: 3rem;
-  width: 3rem;
-}
-
-.menu-container {
-  /* flex: 6; */
-}
-
-.menu-list {
-  display: flex;
-  list-style: none;
-}
-
-/* .menu-list.active {
-  max-height: 500px;
-  display: flex;
-  list-style-type: none;
-} */
-
-.menu-button {
-  margin-right: 30px;
-  padding: 10px;
-}
-
-a {
-  cursor: pointer;
-  text-decoration: none;
-  color: white;
-}
-
-a:hover {
-  cursor: pointer;
-  color: var(--light-pink);
-}
-
-.menu-list-item.active {
-  font-weight: bold;
-  color: var(--base-yellow);
-}
-
 /* Search Styles */
 .search-container {
   margin-right: 1rem;
@@ -149,7 +87,6 @@ a:hover {
   padding: 10px;
   background-color: var(--search-gray);
   border: 1px solid var(--search-gray);
-  /* border-radius: 12px; */
   outline: none;
   font-size: 14px;
   color: white;
@@ -221,7 +158,7 @@ a:hover {
   left: 0;
   width: 250px;
   height: 100vh;
-  background-color: #333;
+  background-color: var(--nav-bar-gray);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -244,7 +181,8 @@ a:hover {
 }
 
 .menu-button:hover {
-  background-color: #444;
+  background-color: var(--search-gray);
+  color: var(--light-pink);
 }
 
 .search-container {
@@ -266,4 +204,8 @@ a:hover {
 
 .container-title {
   margin-bottom: 10px;
+}
+
+.about-main {
+  color: white;
 }

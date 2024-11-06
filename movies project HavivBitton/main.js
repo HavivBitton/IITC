@@ -54,6 +54,8 @@ function getSimilarMovie(container, id) {
   const api_URI_similar = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`;
   fetchMovies(container, api_URI_similar);
 }
+
+// Fetch Movie cast
 async function getMovieCast(container, id) {
   const api_URI_cast = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=en-US`;
   try {

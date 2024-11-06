@@ -1,3 +1,5 @@
+import API_KEY from "./env.js";
+
 async function searchMoviesByText(query) {
   try {
     const response = await fetch(

@@ -2,6 +2,7 @@ import { getMovieCast, getSimilarMovie, addMovieToFavorite } from "./main.js";
 
 // DOM Element
 const toDisplayContainer = document.getElementById("to-display");
+const searchResultsContainer = document.getElementById("searchResults");
 
 // Function to create a card for each movie
 function displayMovies(container, moviesArray) {
