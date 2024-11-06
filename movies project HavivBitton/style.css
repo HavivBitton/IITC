@@ -141,7 +141,7 @@ body {
   font-size: 16px;
 }
 
-/* movie page CSS */
+/* Single movie page  */
 .movie-page-container {
   display: flex;
 }
@@ -150,14 +150,12 @@ body {
   width: 20em;
 }
 .movie-page-detail {
+  padding: 10px;
   color: white;
 }
-
-/* Basic Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.movie-page-detail p {
+  margin-block: 10px;
+  line-height: 1.4;
 }
 
 /* Sidebar Styling */
@@ -165,7 +163,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 250px;
+  width: 230px;
   height: 100vh;
   background-color: var(--nav-bar-gray);
   color: white;
@@ -174,12 +172,21 @@ body {
   padding: 20px;
 }
 
-.menu-container {
-  margin-bottom: 20px;
+.menu-list {
+  margin-top: 15px;
+  list-style: none;
 }
 
-.menu-list {
-  list-style: none;
+.sidebar-li {
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+}
+
+.sidebar-icon {
+  display: flex;
+  width: 15px;
+  height: 15px;
 }
 
 .menu-button {
@@ -189,7 +196,11 @@ body {
   text-decoration: none;
 }
 
-.menu-button:hover {
+li {
+  list-style-type: none;
+}
+
+.sidebar-li:hover {
   background-color: var(--search-gray);
   color: var(--light-pink);
 }
@@ -206,8 +217,8 @@ body {
 }
 
 /* Main Content Styling */
-.main-content {
-  margin-left: 250px; /* Same width as sidebar */
+.main-container {
+  margin-left: 230px;
   padding: 20px;
 }
 
@@ -217,4 +228,14 @@ body {
 
 .about-main {
   color: white;
+}
+
+/* About Page */
+.about-main ul,
+.about-main p {
+  margin-block: 15px;
+}
+.about-main h1,
+.about-main h2 {
+  color: var(--light-pink);
 }
