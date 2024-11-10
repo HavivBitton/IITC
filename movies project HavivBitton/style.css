@@ -16,7 +16,7 @@
 body {
   background-color: var(--background-gray);
 }
-.movies-container:-webkit-scrollbar {
+::-webkit-scrollbar {
   display: none;
 }
 
@@ -123,6 +123,12 @@ body {
 }
 
 /* ////////////////////////// Single movie page  */
+.movie-page-similar-movie,
+.movie-page-movie-cast {
+  display: flex;
+  flex-direction: column;
+}
+
 .movie-page-container {
   display: flex;
 }
@@ -143,6 +149,13 @@ body {
   margin-top: 10px;
   color: var(--light-pink);
 }
+/* cast */
+.movie-page-Similar-container,
+.movie-page-cast-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 /* actor-card */
 .actor-img {
   width: 6em;
@@ -281,8 +294,17 @@ li {
   cursor: pointer;
 }
 
-/* carousel */
+/*///////////////////////// carousel */
 
+.popular-container,
+.topRate-container,
+.nowPlaying-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nowPlaying-movies-container,
 .topRate-movies-container,
 .popular-movies-container {
   display: flex;
@@ -291,6 +313,7 @@ li {
   padding-bottom: 10px;
 }
 
+.nowPlaying-movies-container .movie-card,
 .topRate-movies-container .movie-card,
 .popular-movies-container .movie-card {
   scroll-snap-align: start;
@@ -306,24 +329,9 @@ li {
   cursor: pointer;
   padding: 10px;
   opacity: 0.8;
-  position: absolute;
-  /* transform: translate(0em, 5em); */
   z-index: 2;
-}
-
-.left-carousel-button {
-  transform: translate(0em, 5em);
-}
-.right-carousel-button {
-  transform: translate(1000%, 5em);
-}
-
-.prev-button {
-  left: 10px;
-}
-
-.next-button {
-  right: 10px;
+  height: 50px;
+  margin-bottom: 60px;
 }
 
 .carousel-button:hover {

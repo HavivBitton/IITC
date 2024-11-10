@@ -1,12 +1,10 @@
 import API_KEY from "./env.js";
-// const accountID = 21570547;
-
 import { displayMovies, displayCast, displaySearchResults } from "./view.js";
 
 // DOM Element
 const popularContainer = document.querySelector(".popular-movies-container");
 const topRateContainer = document.querySelector(".topRate-movies-container");
-const nowPlayingMoviesContainer = document.querySelector(
+const nowPlayingContainer = document.querySelector(
   ".nowPlaying-movies-container"
 );
 const searchInput = document.getElementById("searchInput");
@@ -17,7 +15,6 @@ const favoriteMoviesContainer = document.getElementById("favorite-container");
 const api_URI_popular = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
 const api_URI_topRate = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
 const api_URI_nowPlaying = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`;
-// const api_URI_favorite = `https://api.themoviedb.org/3/account/21570547/favorite/movies?api_key=${API_KEY}&language=en-US&page=1&sort_by=created_at.asc`;
 
 // Render movies when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
@@ -30,16 +27,16 @@ document.addEventListener("DOMContentLoaded", () => {
 function renderAllMovie() {
   fetchMovies(popularContainer, api_URI_popular);
   fetchMovies(topRateContainer, api_URI_topRate);
-  fetchMovies(nowPlayingMoviesContainer, api_URI_nowPlaying);
+  fetchMovies(nowPlayingContainer, api_URI_nowPlaying);
 }
 
 // Fetch movies from API
-async function fetchMovies(container, api_uri) {
+async function fetchMovies(container, api_uri, numberOfMovieToDisplay) {
   try {
     const response = await fetch(api_uri);
     const data = await response.json();
     const moviesArray = data.results;
-    displayMovies(container, moviesArray);
+    displayMovies(container, moviesArray, numberOfMovieToDisplay);
   } catch (error) {
     console.error("Error fetching movies:", error);
   }
@@ -48,7 +45,7 @@ async function fetchMovies(container, api_uri) {
 // Fetch the Similar movies
 function getSimilarMovie(container, id) {
   const api_URI_similar = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`;
-  fetchMovies(container, api_URI_similar);
+  fetchMovies(container, api_URI_similar, 10);
 }
 
 // Fetch Movie cast
@@ -75,7 +72,6 @@ searchInput.addEventListener("input", async function () {
 });
 
 //Favorite
-
 if (favoriteMoviesContainer) {
   renderFavoriteMovie();
 }
@@ -105,14 +101,22 @@ async function renderFavoriteMovie() {
   // fetchMovies(favoriteMoviesContainer, api_URI_favorite);
 }
 
-// Carousel navigation buttons
+// Carousel navigation buttons - DOM Element
 const popularLeftButton = document.querySelector(".popular-left-button");
 const popularRightButton = document.querySelector(".popular-right-button");
 const topRateLeftButton = document.querySelector(".topRate-left-button");
 const topRateRightButton = document.querySelector(".topRate-right-button");
+const nowPlayingLeftButton = document.querySelector(".topRate-left-button");
+const nowPlayingRightButton = document.querySelector(".topRate-right-button");
 
+//Add Event listener to the button
 defineCarouselButtons(popularContainer, popularRightButton, popularLeftButton);
 defineCarouselButtons(topRateContainer, topRateRightButton, topRateLeftButton);
+defineCarouselButtons(
+  nowPlayingContainer,
+  nowPlayingRightButton,
+  nowPlayingLeftButton
+);
 
 function defineCarouselButtons(container, rightBtn, LeftBtn) {
   rightBtn.addEventListener("click", () => {
@@ -122,13 +126,5 @@ function defineCarouselButtons(container, rightBtn, LeftBtn) {
     container.scrollBy({ left: -300, behavior: "smooth" });
   });
 }
-
-// nextButton.addEventListener("click", () => {
-//   popularContainer.scrollBy({ left: 300, behavior: "smooth" });
-// });
-
-// prevButton.addEventListener("click", () => {
-//   popularContainer.scrollBy({ left: -300, behavior: "smooth" });
-// });
 
 export { getSimilarMovie, getMovieCast };

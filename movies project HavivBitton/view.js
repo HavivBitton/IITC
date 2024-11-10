@@ -14,8 +14,11 @@ const toDisplayContainer = document.querySelector(".main-container");
 const searchResultsContainer = document.getElementById("searchResults");
 
 // Function to create and display card for each movie
-function displayMovies(container, moviesArray) {
-  moviesArray.forEach((movie) => {
+function displayMovies(container, moviesArray, numberOfMovieToDisplay) {
+  if (!moviesArray.length) {
+    container.innerHTML = "No Favorite Movie yet";
+  }
+  moviesArray.slice(0, numberOfMovieToDisplay).forEach((movie) => {
     // Create card element
     const card = document.createElement("div");
     card.id = movie.id;
@@ -96,12 +99,19 @@ function displayMoviePage(movie) {
   // ADD cast list
   const moviePageMovieCast = document.createElement("div");
   moviePageMovieCast.classList.add("movie-page-movie-cast");
-  getMovieCast(moviePageMovieCast, movie.id);
+  moviePageMovieCast.innerHTML = ` <h3 id="cast-title"> cast:</h3> `;
+  const moviePageCastContainer = document.createElement("div");
+  moviePageCastContainer.classList.add("movie-page-cast-container");
+  getMovieCast(moviePageCastContainer, movie.id);
+  moviePageMovieCast.appendChild(moviePageCastContainer);
 
   const moviePageSimilarMovie = document.createElement("div");
   moviePageSimilarMovie.classList.add("movie-page-similar-movie");
   moviePageSimilarMovie.innerHTML = `<h3 id="similar-title"> Similar Movie:</h3>`;
-  getSimilarMovie(moviePageSimilarMovie, movie.id);
+  const moviePageSimilarContainer = document.createElement("div");
+  moviePageSimilarContainer.classList.add("movie-page-Similar-container");
+  getSimilarMovie(moviePageSimilarContainer, movie.id);
+  moviePageSimilarMovie.appendChild(moviePageSimilarContainer);
 
   // Append detail container to 'to-display'
   toDisplayContainer.appendChild(moviePageContainer);
@@ -111,7 +121,6 @@ function displayMoviePage(movie) {
 
 // Function to create and display similar movies list
 function displayCast(container, actorsArray) {
-  container.innerHTML = `<h3 id="cast-title"> cast:</h3> `;
   actorsArray.slice(0, 10).forEach((actor) => {
     // Create actor card element
     const card = document.createElement("div");
@@ -120,7 +129,12 @@ function displayCast(container, actorsArray) {
 
     // Create actor image element
     const img = document.createElement("img");
-    img.src = `https://image.tmdb.org/t/p/w500${actor.profile_path}` || "./";
+    if (actor.profile_path) {
+      img.src = `https://image.tmdb.org/t/p/w500${actor.profile_path}`;
+    } else {
+      img.src = "../image/FS_Lohamim_3-266.jpg";
+    }
+
     img.alt = actor.name;
     img.className = "actor-img";
 
