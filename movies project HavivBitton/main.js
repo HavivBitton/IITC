@@ -106,8 +106,10 @@ const popularLeftButton = document.querySelector(".popular-left-button");
 const popularRightButton = document.querySelector(".popular-right-button");
 const topRateLeftButton = document.querySelector(".topRate-left-button");
 const topRateRightButton = document.querySelector(".topRate-right-button");
-const nowPlayingLeftButton = document.querySelector(".topRate-left-button");
-const nowPlayingRightButton = document.querySelector(".topRate-right-button");
+const nowPlayingLeftButton = document.querySelector(".nowPlaying-left-button");
+const nowPlayingRightButton = document.querySelector(
+  ".nowPlaying-right-button"
+);
 
 //Add Event listener to the button
 defineCarouselButtons(popularContainer, popularRightButton, popularLeftButton);
@@ -124,6 +126,15 @@ function defineCarouselButtons(container, rightBtn, LeftBtn) {
   });
   LeftBtn.addEventListener("click", () => {
     container.scrollBy({ left: -300, behavior: "smooth" });
+  });
+}
+
+// navbar
+const burgerButton = document.querySelector(".burger-icon");
+const sidebar = document.querySelector(".sidebar");
+if (burgerButton) {
+  burgerButton.addEventListener("click", () => {
+    sidebar.classList.toggle("mobile");
   });
 }
 

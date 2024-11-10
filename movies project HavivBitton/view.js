@@ -16,7 +16,11 @@ const searchResultsContainer = document.getElementById("searchResults");
 // Function to create and display card for each movie
 function displayMovies(container, moviesArray, numberOfMovieToDisplay) {
   if (!moviesArray.length) {
-    container.innerHTML = "No Favorite Movie yet";
+    container.innerHTML = `<img
+                src="../image/not-found.png"
+                alt="notFound-icon"
+                class="notFound-icon"
+              />`;
   }
   moviesArray.slice(0, numberOfMovieToDisplay).forEach((movie) => {
     // Create card element
