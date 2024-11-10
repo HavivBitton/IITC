@@ -27,7 +27,7 @@
               alt="home-icon"
               class="sidebar-icon"
               />
-              <a href="../html/index.html" id="home-button" class="menu-button"
+              <a href="./index.html" id="home-button" class="menu-button"
               >Home</a
               >
             </li>
@@ -39,7 +39,7 @@
               alt="about-icon"
               class="sidebar-icon"
               />
-              <a href="../html/about.html" id="about-button" class="menu-button"
+              <a href="./about.html" id="about-button" class="menu-button"
               >About</a
               >
             </div>
@@ -52,7 +52,7 @@
               class="sidebar-icon"
               />
               <a
-              href="../html/favorites.html"
+              href="./favorites.html"
               id="Favorite-button"
               class="menu-button"
               >Favorites</a
@@ -65,26 +65,30 @@
 
     <!-- Main Container Area -->
     <div class="main-container">
-      <div id="to-display">
+      
+      
         <div class="popular-container">
-          <div class="container-title-div">
-            <h1 class="container-title">Popular Now</h1>
-            <img src="/image/32213.png" alt="arrow" id="popular-arrow-icon">
+          <h1 class="container-title">Popular Now</h1>
+          <div class="popular-movies-container movies-container">
+            <button class="left-carousel-button popular-left-button">‹</button>
+            <button class="right-carousel-button popular-right-button">›</button>
           </div>
-          <div class="popular-movies-container movies-container"></div>
         </div>
+        
         <div class="topRate-container">
           <h1 class="container-title">Top Rate</h1>
+          <button class="left-carousel-button topRate-left-button">‹</button>
           <div class="topRate-movies-container movies-container"></div>
+          <button class="right-carousel-button topRate-right-button">›</button>
         </div>
         <div class="nowPlaying-container">
           <h1 class="container-title">Now Playing</h1>
           <div class="nowPlaying-movies-container movies-container"></div>
         </div>
-      </div>
+     
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.min.js"></script> -->
     <script src="../main.js" type="module"></script>
   </body>
 </html>

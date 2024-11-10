@@ -1,23 +1,32 @@
 import { getMovieCast, getSimilarMovie } from "./main.js";
-import { searchMoviesByID, searchMoviesByText } from "./controller.js";
+import {
+  searchMoviesByID,
+  searchMoviesByText,
+  addMovieToFavorite,
+  removeMovieToFavorite,
+  saveFavoriteToLocalStorage,
+  isFavorite,
+  removeFavoriteFromLocalStorage,
+} from "./controller.js";
 
 // DOM Element
-const toDisplayContainer = document.getElementById("to-display");
+const toDisplayContainer = document.querySelector(".main-container");
 const searchResultsContainer = document.getElementById("searchResults");
 
 // Function to create and display card for each movie
-function displayMovies(container, moviesArray, num) {
-  moviesArray.slice(0, num).forEach((movie) => {
+function displayMovies(container, moviesArray) {
+  moviesArray.forEach((movie) => {
     // Create card element
     const card = document.createElement("div");
     card.id = movie.id;
-    card.className = "movie-card";
+    card.className = "swiper-slide movie-card";
     card.innerHTML = `
        <img class="movie-img" src=${`"https://image.tmdb.org/t/p/w500${movie.poster_path}"`} alt="${
       movie.title
     }" />
          <div class="card-movie-details"><h3>${movie.title}</h3></div>
          `;
+
     container.appendChild(card);
 
     // Add click event to show specific movie details
@@ -59,14 +68,21 @@ function displayMoviePage(movie) {
   // Create a Favorite button
   const heartIcon = document.createElement("div");
   heartIcon.classList.add("heart-icon");
+  if (isFavorite(movie.id)) heartIcon.classList.add("full");
   heartIcon.addEventListener("click", () => {
     heartIcon.classList.toggle("full");
+    if (!heartIcon.classList.contains("full")) {
+      removeMovieToFavorite(movie.id);
+      removeFavoriteFromLocalStorage(movie.id);
+    } else {
+      saveFavoriteToLocalStorage(movie.id);
+      addMovieToFavorite(movie.id);
+    }
   });
 
   // Create a back button
   const backButton = document.createElement("div");
   backButton.classList.add("back-icon");
-  //   backButton.innerHTML = `<img src="../image/back-icon-white.png" alt="back-icon" id="back-icon" />`;
   backButton.addEventListener("click", () => {
     window.location.href = "./index.html";
   });
@@ -96,7 +112,7 @@ function displayMoviePage(movie) {
 // Function to create and display similar movies list
 function displayCast(container, actorsArray) {
   container.innerHTML = `<h3 id="cast-title"> cast:</h3> `;
-  actorsArray.forEach((actor) => {
+  actorsArray.slice(0, 10).forEach((actor) => {
     // Create actor card element
     const card = document.createElement("div");
     card.id = actor.id;

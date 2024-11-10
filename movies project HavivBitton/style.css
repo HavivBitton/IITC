@@ -16,6 +16,9 @@
 body {
   background-color: var(--background-gray);
 }
+.movies-container:-webkit-scrollbar {
+  display: none;
+}
 
 .movie-detail-container,
 .movie-page-similar-movie,
@@ -42,6 +45,7 @@ body {
   height: 50px;
   font-size: 12px;
   color: var(--light-gray);
+  max-width: 160px;
 }
 .movie-img {
   width: 10em;
@@ -275,4 +279,59 @@ li {
   width: 40px;
   height: 40px;
   cursor: pointer;
+}
+
+/* carousel */
+
+.topRate-movies-container,
+.popular-movies-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+}
+
+.topRate-movies-container .movie-card,
+.popular-movies-container .movie-card {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+.right-carousel-button,
+.left-carousel-button {
+  background-color: var(--nav-bar-gray);
+  color: var(--light-pink);
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  opacity: 0.8;
+  position: absolute;
+  /* transform: translate(0em, 5em); */
+  z-index: 2;
+}
+
+.left-carousel-button {
+  transform: translate(0em, 5em);
+}
+.right-carousel-button {
+  transform: translate(1000%, 5em);
+}
+
+.prev-button {
+  left: 10px;
+}
+
+.next-button {
+  right: 10px;
+}
+
+.carousel-button:hover {
+  opacity: 1;
+}
+
+/*////////////////////////// favorite */
+#favorite-container {
+  display: flex;
+  flex-wrap: wrap;
 }
