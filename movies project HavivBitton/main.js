@@ -2,13 +2,13 @@ import API_KEY from "./env.js";
 import { displayMovies, displayCast, displaySearchResults } from "./view.js";
 
 // DOM Element
+const searchInput = document.getElementById("searchInput");
+const searchResultsContainer = document.getElementById("searchResults");
 const popularContainer = document.querySelector(".popular-movies-container");
 const topRateContainer = document.querySelector(".topRate-movies-container");
 const nowPlayingContainer = document.querySelector(
   ".nowPlaying-movies-container"
 );
-const searchInput = document.getElementById("searchInput");
-const searchResultsContainer = document.getElementById("searchResults");
 const favoriteMoviesContainer = document.getElementById("favorite-container");
 
 // API url's

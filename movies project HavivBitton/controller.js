@@ -1,6 +1,6 @@
 import API_KEY from "./env.js";
-const accountID = 21570547;
 
+// Search Function
 async function searchMoviesByText(query) {
   try {
     const response = await fetch(
@@ -12,7 +12,6 @@ async function searchMoviesByText(query) {
     console.error("Error searching movies:", error);
   }
 }
-
 async function searchMoviesByID(id) {
   try {
     const response = await fetch(
@@ -24,6 +23,8 @@ async function searchMoviesByID(id) {
     console.error("Error searching movies:", error);
   }
 }
+
+//Favorite - from api
 
 async function addMovieToFavorite(movieID) {
   console.log(movieID);
@@ -82,6 +83,9 @@ async function removeMovieToFavorite(movieID) {
   }
 }
 
+//Favorite - from Local Storage
+
+// Create array of favorite in local storage
 let favoriteArray = new Set(JSON.parse(localStorage.getItem("movieIDs")) || []);
 
 function saveFavoriteToLocalStorage(id) {
@@ -89,13 +93,11 @@ function saveFavoriteToLocalStorage(id) {
   localStorage.setItem("movieIDs", JSON.stringify([...favoriteArray]));
   console.log(favoriteArray);
 }
-
 function removeFavoriteFromLocalStorage(id) {
   favoriteArray.delete(id);
   localStorage.setItem("movieIDs", JSON.stringify([...favoriteArray]));
   console.log(favoriteArray);
 }
-
 function isFavorite(id) {
   const savedIDs = JSON.parse(localStorage.getItem("movieIDs")) || [];
   return savedIDs.includes(id);
