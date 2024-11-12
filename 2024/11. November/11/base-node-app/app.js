@@ -5,6 +5,9 @@ require("dotenv").config();
 // Models
 const userSchema = require("./models/userModel.js");
 
+//Router
+const usersRouter = require("./routes/userRoutes.js");
+
 const PORT = process.env.PORT;
 
 const app = express();
@@ -18,6 +21,9 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT} `);
 });
+
+//Users
+app.use("/api/users", usersRouter);
 
 //Connection to mongoDB
 const URI = process.env.URI;
