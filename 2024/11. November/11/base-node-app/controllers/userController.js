@@ -35,13 +35,14 @@ const getRandomUser = async (req, res) => {
 // Add new User
 const addNewUser = async (req, res) => {
   try {
-    const { fName, lName, phoneNumber, email } = req.body;
+    const { fName, lName, phoneNumber, email, password } = req.body;
 
     const newUser = new userModel({
       fName,
       lName,
       phoneNumber,
       email,
+      password,
     });
 
     await newUser.save();
@@ -67,7 +68,7 @@ const getUserByID = async (req, res) => {
   try {
     const user = await userModel.findById(id);
     if (user) {
-      res.status(200).send(user);
+      res.status(200).send(user.fullName);
     } else {
       res.status(404).send({ error: `The user with id: ${id} is not found` });
     }
@@ -80,12 +81,13 @@ const getUserByID = async (req, res) => {
 // Edit User by ID
 const editUserByID = async (req, res) => {
   const id = req.params["id"];
-  const { fName, lName, phoneNumber, email, role } = req.body;
+  const { fName, lName, phoneNumber, email, password, role } = req.body;
   const updatedData = {
     fName,
     lName,
     phoneNumber,
     email,
+    password,
     role,
   };
   try {
