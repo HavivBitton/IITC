@@ -1,5 +1,19 @@
 .app-div {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: hsl(30, 54%, 90%);
+  font-family: "Outfit";
+  color: hsl(24, 5%, 18%);
+}
+
+@font-face {
+  font-family: "YoungSerif";
+  src: local("YoungSerif"),
+    url("./fonts/young-serif/YoungSerif-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Outfit";
+  src: local("Outfit"),
+    url("./fonts/outfit/Outfit-VariableFont_wght.ttf") format("truetype");
 }

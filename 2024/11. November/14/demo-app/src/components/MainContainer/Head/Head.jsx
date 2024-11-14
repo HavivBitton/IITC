@@ -10,7 +10,6 @@ import "./Head.css";
 const Head = () => {
   return (
     <div className="head">
-      This is the Head
       <Intro />
       <PreTime />
     </div>

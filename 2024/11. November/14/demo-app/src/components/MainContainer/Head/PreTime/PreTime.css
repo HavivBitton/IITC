@@ -1,6 +1,12 @@
 .PreTime {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
+  background-color: hsl(330, 100%, 98%);
+  border-radius: 10px;
 }
 .preTime-title {
   color: hsl(332, 51%, 32%);
+  margin-left: 18px;
+  margin-top: 18px;
+  font-size: 13px;
+  font-weight: bold;
 }

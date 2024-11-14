@@ -1,7 +1,14 @@
 .intro {
-  border: 1px solid blue;
-  background-color: hsl(330, 100%, 98%);
+  /* border: 1px solid blue; */
 }
 .omelette-img {
-  width: 50vw;
+  width: 100%;
+  border-radius: 8px;
+}
+h1 {
+  font-family: "YoungSerif";
+  font-size: 21px;
+}
+p {
+  font-size: 8.5px;
 }

@@ -10,7 +10,6 @@ import "./MainContainer.css";
 const MainContainer = () => {
   return (
     <div className="main-container">
-      Hello To Main container!
       <Head />
       <Recipe />
     </div>
