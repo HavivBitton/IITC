@@ -5,8 +5,7 @@ import MainContainer from "../src/components/MainContainer/main-container";
 
 function App() {
   return (
-    <div>
-      Welcome to my React Project !
+    <div className="app-div">
       <MainContainer />
     </div>
   );

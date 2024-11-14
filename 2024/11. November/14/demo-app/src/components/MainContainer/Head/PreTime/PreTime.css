@@ -1,3 +1,6 @@
 .PreTime {
   border: 1px solid blue;
 }
+.preTime-title {
+  color: hsl(332, 51%, 32%);
+}

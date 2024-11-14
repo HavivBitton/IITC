@@ -1,0 +1,5 @@
+.app-div {
+  display: flex;
+  justify-content: center;
+  background-color: hsl(30, 54%, 90%);
+}
