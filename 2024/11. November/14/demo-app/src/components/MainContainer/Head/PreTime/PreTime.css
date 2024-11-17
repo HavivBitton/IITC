@@ -2,11 +2,31 @@
   /* border: 1px solid blue; */
   background-color: hsl(330, 100%, 98%);
   border-radius: 10px;
+  margin-top: 20px;
 }
 .preTime-title {
   color: hsl(332, 51%, 32%);
   margin-left: 18px;
-  margin-top: 18px;
-  font-size: 13px;
+  padding-top: 15px;
+  font-size: 11px;
+  font-weight: bold;
+}
+li {
+  padding-left: 5px;
+}
+li::marker {
+  color: hsl(332, 51%, 32%);
+  font-size: 7px;
+}
+ol,
+ul {
+  font-size: 9px;
+  padding-bottom: 15px;
+  line-height: 20px;
+}
+.PreTime ul {
+  padding-left: 32px;
+}
+span {
   font-weight: bold;
 }

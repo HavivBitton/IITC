@@ -8,9 +8,15 @@ const PreTime = () => {
     <div className="PreTime">
       <p className="preTime-title">Preparation time</p>
       <ul>
-        <li>Total: Approximately 10 minutes</li>
-        <li>Preparation: 5 minutes</li>
-        <li>Cooking: 5 minutes</li>
+        <li>
+          <span>Total:</span> Approximately 10 minutes
+        </li>
+        <li>
+          <span>Preparation</span>: 5 minutes
+        </li>
+        <li>
+          <span>Cooking</span>: 5 minutes
+        </li>
       </ul>
     </div>
   );

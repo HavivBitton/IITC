@@ -5,6 +5,7 @@
   background-color: hsl(30, 54%, 90%);
   font-family: "Outfit";
   color: hsl(24, 5%, 18%);
+  height: 200vh;
 }
 
 @font-face {

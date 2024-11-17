@@ -11,9 +11,10 @@ import "./Recipe.css";
 const Recipe = () => {
   return (
     <div className="recipe">
-      This is the Recipe
       <Ingr />
+      <hr />
       <Inst />
+      <hr />
       <Nutr />
     </div>
   );

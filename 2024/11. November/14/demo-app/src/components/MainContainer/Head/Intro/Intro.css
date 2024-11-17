@@ -1,14 +1,12 @@
-.intro {
-  /* border: 1px solid blue; */
-}
 .omelette-img {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 7px;
 }
 h1 {
   font-family: "YoungSerif";
   font-size: 21px;
+  margin-block-end: 0.6em;
 }
 p {
-  font-size: 8.5px;
+  font-size: 9px;
 }

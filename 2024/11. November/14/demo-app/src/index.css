@@ -1,0 +1,13 @@
+:root {
+  --page-padding: 30px;
+  --color-White: hsl(0, 0%, 100%);
+  --color-Stone-100: hsl(30, 54%, 90%);
+  --color-Stone-150: hsl(30, 18%, 87%);
+  --color-Stone-600: hsl(30, 10%, 34%);
+  --color-Stone-900: hsl(24, 5%, 18%);
+
+  --color-Brown-800: hsl(14, 45%, 36%);
+
+  --color-Rose-800: hsl(332, 51%, 32%);
+  --color-Rose-50: hsl(330, 100%, 98%);
+}

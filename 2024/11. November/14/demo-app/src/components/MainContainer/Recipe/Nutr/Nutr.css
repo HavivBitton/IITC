@@ -1,3 +1,9 @@
-.nutr {
-  border: 1px solid blue;
+p.table {
+  display: inline;
+  font-size: 10px;
+}
+.nutr span {
+  font-size: 11px;
+  color: hsl(14, 45%, 36%);
+  padding-left: 150px;
 }
