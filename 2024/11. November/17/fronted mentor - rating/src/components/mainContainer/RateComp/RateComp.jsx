@@ -9,7 +9,7 @@ const RateComp = (props) => {
   };
   return (
     <div className="rateComp">
-      <div id="star" class="circle">
+      <div id="star" className="circle">
         <img className="icon-star" src={starIcon} alt="icon-star" />
       </div>
       <h1>How did we do?</h1>
