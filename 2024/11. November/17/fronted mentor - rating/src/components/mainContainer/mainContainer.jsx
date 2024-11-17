@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 
-import FormComp from "./components/FormComp/FormComp";
-import ResultComp from "./components/ResultComp/ResultComp";
+import "./mainContainer.css";
 
-function App() {
+// Import Components
+import RateComp from "./RateComp/RateComp";
+import ResultComp from "./ResultComp/ResultComp.jsx";
+
+const MainContainer = () => {
   const [userChoice, setUserChoice] = useState(0);
   const [didUserSubmit, setDidUserSubmit] = useState(false);
 
   return (
-    <div className="App">
-      Choose a Number
+    <div className="mainContainer">
       {didUserSubmit ? (
         <ResultComp userChoice={userChoice} />
       ) : (
-        <FormComp
+        <RateComp
           updateFunction={setUserChoice}
           setDidUserSubmit={setDidUserSubmit}
         />
       )}
     </div>
   );
-}
-
-export default App;
+};
+export default MainContainer;
