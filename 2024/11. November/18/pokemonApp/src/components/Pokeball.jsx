@@ -5,6 +5,7 @@ import Pokemon from "./Pokemon.jsx";
 
 const Pokeball = () => {
   const [pokemons, setPokemons] = useState([]);
+
   const fetchData = async () => {
     try {
       const {
@@ -23,13 +24,11 @@ const Pokeball = () => {
   return (
     <div>
       <ul>
-        {pokemons.map((pokemon) => {
-          return (
-            <li key={pokemon.name}>
-              <Pokemon name={pokemon.name} url={pokemon.url} />
-            </li>
-          );
-        })}
+        {pokemons.map((pokemon) => (
+          <li key={pokemon.name}>
+            <Pokemon name={pokemon.name} url={pokemon.url} />
+          </li>
+        ))}
       </ul>
     </div>
   );

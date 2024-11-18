@@ -3,7 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
-//Imprt Components
+//Import Components
 // import Button from "./components/Button.jsx";
 // import Card from "./components/Card.jsx";
 // import Modal from "./components/model.jsx";
