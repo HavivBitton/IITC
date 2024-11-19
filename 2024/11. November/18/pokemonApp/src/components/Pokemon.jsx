@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import styles from "./Pokemon.module.css";
 
-const Pokemon = ({ name, url }) => {
+const Pokemon = ({ name, url, setPokemonPage }) => {
   const [pokemon, setPokemon] = useState(null);
 
   const fetchData = async () => {
@@ -15,16 +15,21 @@ const Pokemon = ({ name, url }) => {
     }
   };
 
+  const sendPokemonNumber = () => {
+    setPokemonPage(pokemon.order);
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
 
-  //   console.log(pokemon);
-
   return (
     pokemon && (
-      <div className={`${styles.card} ${styles[pokemon.types[0].type.name]}`}>
-        <h1 className={styles.title1}>{name}</h1>
+      <div
+        className={`${styles.card} ${styles[pokemon.types[0].type.name]}`}
+        onClick={sendPokemonNumber}
+      >
+        <h1 className={styles.title1}>{String(name).toUpperCase()}</h1>
         <div className={styles.cardBody}>
           <div className={styles.abilities}>
             <h2 className={styles.title2}>Abilities</h2>
@@ -38,6 +43,7 @@ const Pokemon = ({ name, url }) => {
           </div>
           <img
             src={pokemon.sprites.other.dream_world.front_default}
+            // src={pokemon.sprites.other.showdown.front_default}
             alt={`${name} sprite`}
             className={styles.img}
           />
