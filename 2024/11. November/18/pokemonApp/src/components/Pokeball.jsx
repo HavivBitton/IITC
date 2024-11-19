@@ -28,21 +28,35 @@ const Pokeball = () => {
 
   return (
     <div className={style.pokemonListDiv}>
-      {pokemonPage ? (
-        <PokemonPage pokemonNumber={pokemonPage} />
-      ) : (
-        pokemons.map((pokemon) => (
-          <>
-            <Pokemon
-              name={pokemon.name}
-              url={pokemon.url}
-              setPokemonPage={setPokemonPage}
-            />
-          </>
-        ))
-      )}
+      {pokemons.map((pokemon) => (
+        <>
+          <Pokemon
+            name={pokemon.name}
+            url={pokemon.url}
+            setPokemonPage={setPokemonPage}
+          />
+        </>
+      ))}
     </div>
   );
 };
 
 export default Pokeball;
+
+{
+  /* <div className={style.pokemonListDiv}>
+{pokemonPage ? (
+  <PokemonPage pokemonNumber={pokemonPage} />
+) : (
+  pokemons.map((pokemon) => (
+    <>
+      <Pokemon
+        name={pokemon.name}
+        url={pokemon.url}
+        setPokemonPage={setPokemonPage}
+      />
+    </>
+  ))
+)}
+</div> */
+}
