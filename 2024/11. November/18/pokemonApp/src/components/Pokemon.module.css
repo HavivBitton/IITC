@@ -67,10 +67,27 @@
 .poison {
   background-image: url("../image/poison_type_pokemon.jpg");
   background-repeat: no-repeat;
-  background-position: right -460px bottom -246px;
+  background-position: right -566px bottom -300px;
 }
 .electric {
   background-image: url("../image/electric_type_pokemon.jpg");
   background-repeat: no-repeat;
-  background-position: right -460px bottom -246px;
+  background-position: right -410px bottom -205px;
+}
+.ground {
+  background-image: url("../image/ground_type_pokemon.jpg");
+  background-repeat: no-repeat;
+  background-position: right -418px bottom -208px;
+  background-size: 600%;
+}
+.dark {
+  background-image: url("../image/dark_type_pokemon.jpg");
+  background-repeat: no-repeat;
+  background-position: right -410px bottom -205px;
+}
+.fairy {
+  background-image: url("../image/fairy_type_pokemon.jpg");
+  background-repeat: no-repeat;
+  background-position: right -440px bottom -230px;
+  background-size: 650%;
 }

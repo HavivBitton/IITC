@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+// Import CSS
 import styles from "./Pokemon.module.css";
 
-const Pokemon = ({ name, url, setPokemonPage }) => {
+const Pokemon = ({ name, url, setSelectedPokemon }) => {
   const [pokemon, setPokemon] = useState(null);
 
   const fetchData = async () => {
@@ -15,20 +16,13 @@ const Pokemon = ({ name, url, setPokemonPage }) => {
     }
   };
 
-  const sendPokemonNumber = () => {
-    setPokemonPage(pokemon.order);
-  };
-
   useEffect(() => {
     fetchData();
   }, []);
 
   return (
     pokemon && (
-      <div
-        className={`${styles.card} ${styles[pokemon.types[0].type.name]}`}
-        onClick={sendPokemonNumber}
-      >
+      <div className={`${styles.card} ${styles[pokemon.types[0].type.name]}`}>
         <h1 className={styles.title1}>{String(name).toUpperCase()}</h1>
         <div className={styles.cardBody}>
           <div className={styles.abilities}>
