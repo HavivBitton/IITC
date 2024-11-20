@@ -1,16 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import CSSstyle from "./Pokeball.module.css";
+import CSSstyle from "./Pokedex.module.css";
 
 // Import from MUI
 import { Box, Modal } from "@mui/material";
 
 //Import Components
-import Pokemon from "./Pokemon.jsx";
+import Pokemon from "../pokemonCard/PokemonCard.jsx";
+import PokemonBox from "../pokemonBox/PokemonBox.jsx";
 
 const Pokeball = () => {
   const [pokemons, setPokemons] = useState([]);
-  const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const [clickedPokemon, setClickedPokemon] = useState({});
   const [open, setOpen] = useState(false);
 
   // Import data from API
@@ -19,7 +20,7 @@ const Pokeball = () => {
       const {
         data: { results },
       } = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon/?limit=100&offset=0"
+        "https://pokeapi.co/api/v2/pokemon/?limit=500&offset=0"
       );
       setPokemons(results);
     } catch (error) {
@@ -31,7 +32,7 @@ const Pokeball = () => {
     fetchData();
   }, []);
 
-  const toggle = () => {
+  const toggle = (e) => {
     setOpen((open) => !open);
   };
 
@@ -40,11 +41,13 @@ const Pokeball = () => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 400,
+    width: "85vw",
+    height: "60vh",
     bgcolor: "background.paper",
     border: "2px solid #000",
     boxShadow: 24,
     p: 4,
+    padding: "0px",
   };
 
   return (
@@ -54,7 +57,7 @@ const Pokeball = () => {
           <Pokemon
             name={pokemon.name}
             url={pokemon.url}
-            setSelectedPokemon={setSelectedPokemon}
+            setClickedPokemon={setClickedPokemon}
           />
         </div>
       ))}
@@ -65,7 +68,7 @@ const Pokeball = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <button onClick={toggle}>its work</button>
+          <PokemonBox clickedPokemon={clickedPokemon} />
         </Box>
       </Modal>
     </div>

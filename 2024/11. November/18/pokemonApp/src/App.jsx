@@ -2,7 +2,7 @@
 import "./App.css";
 
 //Import Components
-import Pokeball from "./components/Pokeball.jsx";
+import Pokeball from "./components/Pokedex/Pokedex.jsx";
 
 function App() {
   return (
