@@ -16,6 +16,7 @@ const PokemonBox = ({ clickedPokemon }) => {
         <h1 className={styles.title1}>
           {String(clickedPokemon.name).toUpperCase()}
         </h1>
+        <h1 className={styles.pokemonOrder}>#{clickedPokemon.order}</h1>
         <img
           src={clickedPokemon.sprites.other.dream_world.front_default}
           alt={`${clickedPokemon.name} sprite`}
