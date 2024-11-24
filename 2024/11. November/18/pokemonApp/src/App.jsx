@@ -1,13 +1,19 @@
-// import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
-//Import Components
-import Pokeball from "./components/Pokedex/Pokedex.jsx";
+//Import Pages
+import Home from "./pages/Home/HomeIndex.jsx";
+import PokemonPageIndex from "./pages/PokemonPage/PokemonPageindex.jsx";
 
 function App() {
   return (
     <>
-      <Pokeball />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/pokemon/:name" element={<PokemonPageIndex />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

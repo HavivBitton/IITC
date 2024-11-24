@@ -3,10 +3,11 @@
   height: 130px;
   border-radius: 20px;
   margin: 5px;
+  transition: transform 0.2s ease-in-out;
 }
 .card:hover {
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 1.2);
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .title1 {
@@ -39,6 +40,7 @@
   margin-block: 0;
   margin-right: 18px;
   margin-top: 2px;
+  text-shadow: 0px 0px 5px black;
 }
 .img {
   height: 75px;

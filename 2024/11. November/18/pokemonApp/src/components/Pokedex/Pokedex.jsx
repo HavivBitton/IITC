@@ -20,7 +20,7 @@ const Pokeball = () => {
       const {
         data: { results },
       } = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon/?limit=500&offset=0"
+        "https://pokeapi.co/api/v2/pokemon/?limit=648&offset=0"
       );
       setPokemons(results);
     } catch (error) {
@@ -42,7 +42,7 @@ const Pokeball = () => {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: "85vw",
-    height: "60vh",
+    height: "35vh",
     bgcolor: "background.paper",
     border: "2px solid #000",
     boxShadow: 24,
