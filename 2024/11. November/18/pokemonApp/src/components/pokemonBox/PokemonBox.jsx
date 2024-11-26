@@ -20,18 +20,28 @@ const PokemonBox = ({ clickedPokemon }) => {
         <div className={styles.headerContainer}>
           <h1 className={styles.pokemonOrder}>#{clickedPokemon.order}</h1>
           <img
+            // src={
+            //   clickedPokemon.sprites.versions["generation-v"]["black-white"]
+            //     .animated.front_default
+            // }
             src={clickedPokemon.sprites.other.showdown.front_default}
             alt={`${clickedPokemon.name} sprite`}
             className={styles.img}
           />
         </div>
       </div>
-      <div className="boxDetails">
+      <div className={styles.boxDetails}>
         <Link
           to={`pokemon/${clickedPokemon.name}`}
           state={{ pokemon: clickedPokemon }}
         >
-          <button>Show all</button>
+          <button
+            className={`${styles.showMoreBtn} ${
+              styles[clickedPokemon.types[0].type.name]
+            }`}
+          >
+            Show this Pokémon!
+          </button>
         </Link>
       </div>
     </div>

@@ -2,14 +2,14 @@
 import styles from "./DetailsContainer.module.css";
 
 //Import Components
-import PokemonAbout from "../DetailsMenus/DetailsMenu/PokemonAbout/PokemonAbout";
-import PokemonStats from "../DetailsMenus/PokemonStats/PokemonStats";
+import PokemonAbout from "../DetailsMenu/PokemonAbout/PokemonAbout";
+import PokemonStats from "../DetailsMenu/PokemonStats/PokemonStats";
 
-const DetailsContainer = ({ value, pokemon }) => {
-  if (value === 0) {
+const DetailsContainer = ({ dataToDisplay, pokemon }) => {
+  if (dataToDisplay === 0) {
     return <PokemonAbout pokemon={pokemon} />;
   }
-  if (value === 1) {
+  if (dataToDisplay === 1) {
     return <PokemonStats stats={pokemon.stats} />;
   }
 };

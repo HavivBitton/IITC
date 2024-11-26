@@ -1,4 +1,7 @@
-import React from "react";
+//Import react
+import { useState } from "react";
+
+//Import MUI
 import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
@@ -7,11 +10,13 @@ import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
 import InsightsIcon from "@mui/icons-material/Insights";
 
 //Import Components
-import DetailsContainer from "../../DetailsContainer/DetailsContainer";
 
-const DetailsMenu = ({ pokemon }) => {
-  const [value, setValue] = React.useState(0);
+const MenuBar = ({ setDataToDisplay }) => {
+  const [value, setValue] = useState(0);
 
+  const sendData = (value) => {
+    setDataToDisplay(value);
+  };
   return (
     <>
       <Box sx={{ width: "100%" }}>
@@ -20,6 +25,7 @@ const DetailsMenu = ({ pokemon }) => {
           value={value}
           onChange={(event, newValue) => {
             setValue(newValue);
+            sendData(newValue);
           }}
         >
           <BottomNavigationAction
@@ -30,9 +36,8 @@ const DetailsMenu = ({ pokemon }) => {
           <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
         </BottomNavigation>
       </Box>
-      <DetailsContainer value={value} pokemon={pokemon} />
     </>
   );
 };
 
-export default DetailsMenu;
+export default MenuBar;

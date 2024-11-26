@@ -9,7 +9,7 @@
 .headerTitle {
   color: white;
   margin-block: 0;
-  font-size: 6vh;
+  font-size: 5vh;
   margin-bottom: 1.5vh;
   text-align: center;
   background-color: rgb(0 0 0 / 50%);
@@ -34,6 +34,12 @@
   width: 40vw;
   height: 20vh;
 }
+.boxDetails {
+  align-items: center;
+}
+.showMoreBtn {
+  margin-top: 35px;
+}
 
 .fire {
   background-image: url("../../image/fire_type_pokemon.jpg");
@@ -44,6 +50,7 @@
   background-image: url("../../image/grass_type_pokemon.jpg");
   background-repeat: no-repeat;
   background-position: right -460px bottom -246px;
+  color: green;
 }
 .water {
   background-image: url("../../image/water_type_pokemon.jpg");

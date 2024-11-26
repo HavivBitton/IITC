@@ -1,0 +1,6 @@
+.StatSliderValue progress {
+  background: red;
+}
+progress::-webkit-progress-value {
+  background: black;
+}

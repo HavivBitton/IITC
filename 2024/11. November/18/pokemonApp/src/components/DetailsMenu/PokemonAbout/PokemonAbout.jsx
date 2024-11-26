@@ -19,13 +19,13 @@ const PokemonAbout = ({ pokemon }) => {
           <span>Weight</span>
           {pokemon.weight}
         </p>
-        <ul className={styles.ul}>
+        <div className={styles.ul}>
           {pokemon.abilities.map((ability) => (
-            <li key={ability.ability.name} className={styles.li}>
+            <p key={ability.ability.name} className={styles.li}>
               {ability.ability.name}
-            </li>
+            </p>
           ))}
-        </ul>
+        </div>
       </>
     </div>
   );

@@ -1,3 +1,6 @@
+//Import react
+import { useState } from "react";
+
 // Import route link
 import { Link } from "react-router-dom";
 
@@ -5,9 +8,12 @@ import { Link } from "react-router-dom";
 import styles from "./PokemonPage.module.css";
 
 //Import Components
-import DetailsMenu from "..//DetailsMenus/DetailsMenu/DetailsMenu";
+import DetailsContainer from "../DetailsContainer/DetailsContainer";
+import MenuBar from "../DetailsMenu/MenuBar/MenuBar";
 
 const PokemonPage = ({ pokemon }) => {
+  const [dataToDisplay, setDataToDisplay] = useState(0);
+
   return (
     <div className={styles.PokemonPage}>
       <div className={`${styles.header} ${styles[pokemon.types[0].type.name]}`}>
@@ -17,12 +23,13 @@ const PokemonPage = ({ pokemon }) => {
           alt={`${pokemon.name} sprite`}
         />
       </div>
-      <div className={styles.detailsMenu}>
-        <DetailsMenu pokemon={pokemon} />
+      <div className={styles.detailsContainer}>
+        <MenuBar setDataToDisplay={setDataToDisplay} />
+        <DetailsContainer dataToDisplay={dataToDisplay} pokemon={pokemon} />
+        <button className={styles.backHomeBtn}>
+          <Link to={`/`}>Back Home</Link>
+        </button>
       </div>
-      <Link to={`/`}>
-        <button>Back Home</button>
-      </Link>
     </div>
   );
 };

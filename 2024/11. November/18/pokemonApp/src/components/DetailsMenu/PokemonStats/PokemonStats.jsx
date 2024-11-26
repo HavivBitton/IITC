@@ -16,7 +16,11 @@ const PokemonStats = ({ stats }) => {
               <h4>{stat.base_stat}</h4>
             </div>
             <div className={styles.StatSliderValue}>
-              <progress max={100} value={stat.base_stat}></progress>
+              <progress
+                max={100}
+                value={stat.base_stat}
+                className={stat.base_stat < 50 ? "low" : ""}
+              ></progress>
             </div>
           </div>
         ))}
