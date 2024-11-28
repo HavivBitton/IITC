@@ -45,6 +45,7 @@
 .img {
   height: 20vw;
   width: 20vw;
+  width: 100%;
   /* max-width: 68px; */
   margin-right: 3vw;
   margin-top: 4vw;
