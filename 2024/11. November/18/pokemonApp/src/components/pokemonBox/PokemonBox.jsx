@@ -31,18 +31,18 @@ const PokemonBox = ({ clickedPokemon }) => {
         </div>
       </div>
       <div className={styles.boxDetails}>
-        <Link
-          to={`pokemon/${clickedPokemon.name}`}
-          state={{ pokemon: clickedPokemon }}
+        <button
+          className={`${styles.showMoreBtn} ${
+            styles[clickedPokemon.types[0].type.name]
+          }`}
         >
-          <button
-            className={`${styles.showMoreBtn} ${
-              styles[clickedPokemon.types[0].type.name]
-            }`}
+          <Link
+            to={`pokemon/${clickedPokemon.name}`}
+            state={{ pokemon: clickedPokemon }}
           >
             Show this Pokémon!
-          </button>
-        </Link>
+          </Link>
+        </button>
       </div>
     </div>
   );
