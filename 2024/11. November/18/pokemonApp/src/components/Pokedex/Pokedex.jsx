@@ -52,17 +52,18 @@ const Pokeball = () => {
   };
 
   const handleLoadMore = () => {
-    setLimit(() => limit + 20);
+    setLimit((prevLimit) => prevLimit + 20);
     console.log(limit);
-
     fetchData();
   };
 
   return (
     <div>
-      <SideBar />
-      <div className={CSSstyle.pokadexTitle}>
-        <h1>Pokadex</h1>
+      <div className={CSSstyle.pokadexHeader}>
+        <SideBar className={CSSstyle.burger} />
+        <div className={CSSstyle.pokadexTitle}>
+          <h1>Pokadex</h1>
+        </div>
       </div>
       <div className={CSSstyle.pokemonListDiv}>
         {pokemons.map((pokemon) => (
@@ -77,7 +78,7 @@ const Pokeball = () => {
         <div className={CSSstyle.loadBtnContainer}>
           <button
             className={CSSstyle.LoadMoreBtn}
-            onClick={() => handleLoadMore()}
+            onClick={() => handleLoadMore(limit)}
           >
             Load More !
           </button>

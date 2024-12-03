@@ -1,6 +1,22 @@
-.StatSliderValue progress {
-  background: red;
+.AllStatsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-progress::-webkit-progress-value {
-  background: black;
+.StatContainer {
+  display: flex;
+  align-items: center;
+}
+.StatSliderValue {
+  margin-inline: 10px;
+}
+
+.StatSliderValue .red {
+  accent-color: red;
+}
+.StatSliderValue .orange {
+  accent-color: orange;
+}
+.StatSliderValue .green {
+  accent-color: green;
 }

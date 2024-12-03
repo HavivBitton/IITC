@@ -8,6 +8,7 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
 import InsightsIcon from "@mui/icons-material/Insights";
+import FlashOnIcon from "@mui/icons-material/FlashOn";
 
 //Import Components
 
@@ -33,7 +34,7 @@ const MenuBar = ({ setDataToDisplay }) => {
             icon={<CatchingPokemonIcon />}
           />
           <BottomNavigationAction label="Base Stats" icon={<InsightsIcon />} />
-          <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+          <BottomNavigationAction label="Abilities" icon={<FlashOnIcon />} />
         </BottomNavigation>
       </Box>
     </>
