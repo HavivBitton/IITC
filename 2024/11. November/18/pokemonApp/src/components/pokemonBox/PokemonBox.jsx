@@ -39,6 +39,7 @@ const PokemonBox = ({ clickedPokemon }) => {
           <Link
             to={`pokemon/${clickedPokemon.name}`}
             state={{ pokemon: clickedPokemon }}
+            className={styles.link}
           >
             Show this Pokémon!
           </Link>

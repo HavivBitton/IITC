@@ -34,3 +34,8 @@
   font-family: "pokemonSolid";
   font-size: 25px;
 }
+.boxContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,12 +1,14 @@
 .PokemonPage {
   color: black;
 }
-.header {
-  height: 40vh;
-}
+
 .detailsMenu {
-  height: 60vh;
+  /* height: 60vh; */
 }
 .backHomeBtn {
   color: white;
+}
+.link {
+  color: white;
+  text-decoration: none;
 }

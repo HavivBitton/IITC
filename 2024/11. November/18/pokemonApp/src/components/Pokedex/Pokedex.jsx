@@ -43,7 +43,7 @@ const Pokeball = () => {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: "85vw",
-    height: "72vw",
+    height: "75vw",
     bgcolor: "background.paper",
     border: "2px solid #000",
     boxShadow: 24,
@@ -83,16 +83,18 @@ const Pokeball = () => {
             Load More !
           </button>
         </div>
-        <Modal
-          open={open}
-          onClose={toggle}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <PokemonBox clickedPokemon={clickedPokemon} />
-          </Box>
-        </Modal>
+        <div className={CSSstyle.boxContainer}>
+          <Modal
+            open={open}
+            onClose={toggle}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <PokemonBox clickedPokemon={clickedPokemon} />
+            </Box>
+          </Modal>
+        </div>
       </div>
     </div>
   );
