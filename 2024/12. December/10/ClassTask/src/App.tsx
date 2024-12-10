@@ -35,7 +35,7 @@ function App() {
   };
 
   const deleteTodo = (id: string) => {
-    setTodos(todos.filter((todo) => !todo.completed));
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
   const clearCompleted = () => {
     setTodos(todos.filter((todo) => !todo.completed));
@@ -63,15 +63,27 @@ function App() {
         <button onClick={() => setFilter("active")}> Active </button>
         <button onClick={() => setFilter("completed")}> Completed </button>
       </div>
-      <ul>
+      <ul
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
         {filteredTodos.map((todo) => (
-          <li key={todo.id}>
+          <li key={todo.id} style={{ display: "flex", alignItems: "center" }}>
             <input
               type="checkbox"
               checked={todo.completed}
               onChange={() => toggleCompleted(todo.id)}
             />
-            {todo.text}
+            <p
+              style={{
+                textDecoration: todo.completed ? "line-through" : "none",
+              }}
+            >
+              {todo.text}
+            </p>
             <button onClick={() => deleteTodo(todo.id)}>Delete</button>
           </li>
         ))}
