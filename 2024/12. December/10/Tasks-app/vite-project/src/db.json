@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Finish TypeScript Project",
+      "description": "Complete the TypeScript project for the coding bootcamp.",
+      "dueDate": "2024-12-15T00:00:00.000Z",
+      "priority": "High",
+      "Status": "In Progress"
+    },
+    {
+      "id": 2,
+      "title": "Grocery Shopping",
+      "description": "Buy vegetables, fruits, and other essentials.",
+      "dueDate": "2024-12-10T00:00:00.000Z",
+      "priority": "Medium",
+      "Status": "Pending"
+    },
+    {
+      "id": 3,
+      "title": "Read a Book",
+      "description": "Read 50 pages of 'Atomic Habits'.",
+      "dueDate": "2024-12-20T00:00:00.000Z",
+      "priority": "Low",
+      "Status": "Pending"
+    }
+  ]
+}
