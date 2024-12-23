@@ -1,6 +1,7 @@
-import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PostsFeed from "./pages/PostsFeed";
+import AddPostPage from "./pages/AddPostPage";
+import EditPostPage from "./pages/EditPostPage";
 
 function App() {
   return (
@@ -8,6 +9,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<PostsFeed />} />
+          <Route path="/addPost" element={<AddPostPage />} />
+          <Route path="/editPost/:id" element={<EditPostPage />} />
           {/* <Route path="/post/:id" element={<PostPage />} /> */}
         </Routes>
       </BrowserRouter>

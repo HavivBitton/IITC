@@ -51,17 +51,41 @@ async function getAllPosts(req, res, next) {
 
 //Get Post by ID
 async function getPostById(req, res, next) {
+  const { id } = req.params;
   try {
-    const { id } = req.params;
     const post = await Post.findById(id);
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+    res.json(post);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error fetching post", error: error.message });
+  }
+}
+
+// Update post by ID
+async function updatePost(req, res) {
+  const { id } = req.params;
+  const { title, content } = req.body;
+
+  try {
+    const post = await Post.findByIdAndUpdate(
+      id,
+      { title, content },
+      { new: true } // Ensure we get the updated post back
+    );
 
     if (!post) {
       return res.status(404).json({ message: "Post not found" });
     }
 
-    res.json({ post: post });
+    res.json({ message: "Post updated successfully", post });
   } catch (error) {
-    next(error);
+    res
+      .status(500)
+      .json({ message: "Error updating post", error: error.message });
   }
 }
 
@@ -70,4 +94,5 @@ module.exports = {
   getAllPosts,
   getPostById,
   deletePostByID,
+  updatePost,
 };
