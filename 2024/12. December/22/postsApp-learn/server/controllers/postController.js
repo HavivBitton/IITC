@@ -16,6 +16,26 @@ async function addPost(req, res, next) {
     next(error);
   }
 }
+// Delete Post
+async function deletePostByID(req, res, next) {
+  const { id } = req.params;
+
+  try {
+    const post = await Post.findById(id);
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    await Post.findByIdAndDelete(id);
+    return res.status(200).json({ message: "Post deleted successfully" });
+  } catch (error) {
+    if (error.name === "CastError") {
+      return res.status(400).json({ message: "Invalid post ID" });
+    }
+
+    next(error);
+  }
+}
 
 // Get All Posts
 async function getAllPosts(req, res, next) {
@@ -45,33 +65,9 @@ async function getPostById(req, res, next) {
   }
 }
 
-// Add Comment
-async function addCommentToPost(req, res, next) {
-  try {
-    const { postId, comment } = req.body;
-
-    if (!postId || !comment || !comment.content) {
-      return res.status(400).json({ message: "Invalid request body" });
-    }
-
-    const post = await Post.findById(postId);
-    if (!post) {
-      throw new Error("Post not found");
-    }
-    post.comments.push(comment);
-
-    const response = await post.save();
-    res.json({ post: response });
-    console.log("Comment added successfully:", post);
-  } catch (error) {
-    console.error("Error adding comment:", error);
-    next(error);
-  }
-}
-
 module.exports = {
   addPost,
   getAllPosts,
-  addCommentToPost,
   getPostById,
+  deletePostByID,
 };
