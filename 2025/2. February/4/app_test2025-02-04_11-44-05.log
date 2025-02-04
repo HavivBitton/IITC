@@ -1,0 +1,6 @@
+2025-02-04 11:44:05,542 - INFO - starting Automation Test ... ✅
+2025-02-04 11:44:05,983 - INFO - starting Automation Test 2 ... ✅
+2025-02-04 11:44:08,363 - INFO - starting Automation Test 3 ... ✅
+2025-02-04 11:44:08,364 - INFO - Checking the search bar
+2025-02-04 11:44:08,370 - INFO - ✅ search bar found!
+2025-02-04 11:44:08,418 - INFO - ❌ The search bar is not displayed.
