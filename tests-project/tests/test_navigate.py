@@ -19,6 +19,20 @@ def check_title(driver, title):
 @pytest.mark.parametrize("page",["store","men","women","accessories","about","contact-us"])
 def test_click_navbar(driver ,page):
         home_page = HomePage(driver)
-        home_page.click_navbar_button(page)  
+        home_page.click_button(page)  
         home_page.if_url_contain(page)
       
+@pytest.mark.parametrize(
+    "btn, page", 
+    [
+        ("shopNowBtn", "store"), 
+        ("findMoreBtn", "contact-us"), 
+        ("womenShopNowBtn", "women"), 
+        ("menShopNowBtn", "men"), 
+        ("checkOutBtn", "accessories")
+    ]
+)
+def test_click_home_btn(driver, btn, page):
+    home_page = HomePage(driver)
+    home_page.click_button(btn)  
+    home_page.if_url_contain(page)

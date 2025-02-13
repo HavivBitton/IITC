@@ -18,9 +18,16 @@ class HomePage:
             "about": (By.XPATH, "//li[@id='menu-item-828']//a[@class='menu-link'][normalize-space()='About']"),
             "contact-us": (By.XPATH, "//li[@id='menu-item-829']//a[@class='menu-link'][normalize-space()='Contact Us']")
         }
-        self.
+        self.homePage_buttuns ={
+            "shopNowBtn": (By.XPATH,"//a[@href='https://atid.store/store/']//span[@class='elementor-button-content-wrapper']//span[@class='elementor-button-text'][normalize-space()='Shop Now']"),
+            "findMoreBtn":  (By.XPATH,"//span[contains(text(),'Find More')]"),
+            "womenShopNowBtn":(By.XPATH,"//a[@href='https://atid.store/product-category/women/']//span[@class='elementor-button-content-wrapper']//span[@class='elementor-button-text'][normalize-space()='Shop Now']"),
+            "menShopNowBtn":(By.XPATH,"//div[@class='elementor-element elementor-element-61949240 elementor-align-left elementor-mobile-align-justify elementor-tablet-align-left elementor-widget elementor-widget-button']//a[@role='button']"),
+            "checkOutBtn":(By.XPATH,"//span[contains(text(),'Check Out')]")
+        }
 
-    def click_navbar_button(self, button_name):
+
+    def click_button(self, button_name):
         button_name = button_name.lower()
         if button_name in self.navbar_buttons:
             self.wait.until(EC.presence_of_element_located(self.navbar_buttons[button_name])).click()
